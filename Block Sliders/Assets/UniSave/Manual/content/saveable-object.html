@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta charset="UTF-8">
+
+  <title>MajinMHT » Saveable Object</title>
+
+  <meta name="description" content="The SaveableObject component is the tool that you use to tell UniSave what should be saved in a scene.">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="pingback" href="https://www.majinmht.com/xmlrpc.php">
+
+  <!--[if lte IE 7]>
+  <link rel="stylesheet" href="https://www.majinmht.com/wp-content/themes/mystique/css/ie.css" type="text/css" media="screen" />
+  <![endif]-->
+
+  <link rel="alternate" type="application/rss+xml" title="MajinMHT » Feed" href="https://www.majinmht.com/feed">
+<link rel="alternate" type="application/rss+xml" title="MajinMHT » Comments Feed" href="https://www.majinmht.com/comments/feed">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.majinmht.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.majinmht.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 3.8.3, ATOM 2.1.2">
+<link rel="canonical" href="https://www.majinmht.com/products/unisave/manual/saveable-object">
+<link rel="shortlink" href="https://www.majinmht.com/?p=211">
+<!-- WP-Members version 2.9.1, available at http://rocketgeek.com/wp-members -->
+
+<!-- Dynamic Widgets v1.5.6.1 by QURL - http://www.qurl.nl //-->
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="saveable-object.css" media="all">
+</head>
+<body class="page page-id-211 page-child parent-pageid-206 page-template-default logged-in admin-bar no-customize-support no-js no-fx page-saveable-object author-majinmht c2right fixed browser-gecko">
+
+  
+  
+  <!-- page -->
+  <div id="page">
+
+    
+    <div id="page-ext">
+
+      <!-- header -->
+      <div id="header">
+        <div class="page-content">
+          <div id="site-title" class="clear-block">
+            <div id="logo" class="size-m"><a indepth="true" href="default.html">MajinMHT</a></div>            <div class="headline">Manual v2.1</div>          </div>
+        </div>
+
+        
+        <div class="shadow-left page-content">
+          
+          
+
+
+
+
+
+
+        </div>
+		
+		<!-- Majin Edit: Breadcrumbs NavXT -->
+	    
+	  <!-- /Majin Edit -->
+
+      </div>
+      <!-- /header -->
+
+      
+      <!-- main -->
+      <div id="main" class="page-content">
+        <div id="main-ext" class="clear-block">
+
+<!-- main content: primary + sidebar(s) -->
+<div id="mask-3" class="clear-block">
+  <div id="mask-2">
+    <div id="mask-1">
+
+      <!-- primary content -->
+      <div id="primary-content">
+        <div class="blocks clear-block">
+
+          
+          
+          
+          <!-- page content -->
+          <div id="post-211" class="post-211 page type-page status-publish hentry primary count-1 odd author-admin first">
+
+                        <h1 class="title">Saveable Object</h1>
+            
+            <div class="clear-block">
+              <p>The <span class="inline_code">SaveableObject</span> component is the tool that you use to tell UniSave what should be saved in a scene. Since it doesn’t make sense to save every little bit of data in a scene (this makes your save files larger than necessary, and increases save/load times), <span class="inline_code">SaveableObject</span> allows you to be specific, and only save certain components on a game object.</p>
+<p>&nbsp;</p>
+<p><a class="lightbox" data-group="group1" href="saveableobject.png"><img class="aligncenter size-full wp-image-815" alt="SaveableObject" src="saveableobject.png" height="346" width="402"></a></p>
+<p>&nbsp;</p>
+<p>When <span class="inline_code">SaveableObject</span> is added to a game object, it will display a list of items that can be selected for saving. Even though the <span class="inline_code">SaveableObject</span> shows three categories (<strong>Classes</strong>, <strong>Components</strong>, and <strong>Actions</strong>), only the <strong>Components</strong> category is the category that lets you select things. The other two categories are just there to remind you of the default behavior of <span class="inline_code">SaveableObject</span>.</p>
+<p>The component list shows all the components that are currently on the game object. When you add new components to the game object, the list will automatically be updated. By selecting a game object, you tell UniSave that it should be saved.</p>
+<p class="info_block">UniSave requires parents of game objects that you’re going to save to have a <span class="inline_code">SaveableObject</span> added to them as well. This is something you don’t have to worry about, as UniSave does this automatically for you whenever you add a <span class="inline_code">SaveableObject</span> to a game object, or when you parent a game object that has a <span class="inline_code">SaveableObject component attached to it</span>.</p>
+<p>&nbsp;</p>
+<p>The <em>Ignore SaveScene()</em> option on the SaveableObject gives you the option to let UniSave ignore this SaveableObject when it saves the entire scene. This comes in handy when you’re saving certain SaveableObjects to their own save files manully, and don’t want them to be saved twice. You can read more about saving entire scenes and saving individual game objects on the <a title="Saving &amp; Loading" href="https://www.majinmht.com/products/unisave/manual/saving-loading"><strong>Saving &amp; Loading</strong></a> page in this manual.</p>
+<h2>Default Behavior</h2>
+<p>By default, a <span class="inline_code">SaveableObject</span> saves a game object’s properties like <strong>name</strong> and <strong>tag</strong>.&nbsp; If you don’t intend to save any components but, for example, do want to save the game object’s name, you can add a <span class="inline_code"> SaveableObject </span> to the game object and leave things as it is.</p>
+<p>Instantation and Destroy events are monitored by <span class="inline_code">SaveableObject</span>. When you’ve instantiated a game object at runtime, UniSave will remember the instantiation if the game object has a <span class="inline_code"> SaveableObject </span> on it. This will make sure that this game object will be instantiated (and be put in its pre-saving state) when loading a save file. &nbsp;In addition, if a game object was placed in the scene in the editor and gets destroyed at runtime, the <span class="inline_code">SaveableObject</span> will registrate this event, and UniSave will make sure this game object stays destroyed.</p>
+<p>&nbsp;</p>
+<p class="info_block">Note that if a <span class="inline_code">SaveableObject</span> is disabled, it will be ignored by UniSave during saving. This could be used as an optimization technique to save specific data only if necessary. For example, if the position of a weapon that’s lying on a table should be saved because it can be moved by the player, you can make it so that its position only gets saved when the object has actually moved from its starting position. The <span class="inline_code">SaveableObject</span> could be enabled when the player touches the item.</p>
+            </div>
+
+            
+            
+          </div>
+          <!-- /page content -->
+
+          
+          
+          
+        </div>
+      </div>
+      <!-- /primary content -->
+
+      
+
+<!-- 1st sidebar -->
+<div id="sidebar">
+    <ul class="blocks count-4">
+    <li class="block"><div class="block-content block-widget_nav_menu clear-block" id="instance-nav_menu-4"><div class="title"><h3>Manual</h3><div class="bl"></div><div class="br"></div></div><div class="i"></div><div class="menu-unisave-manual-container"><ul id="menu-unisave-manual" class="menu"><li id="menu-item-218" class="menu-overview"><a indepth="true" href="manual.html">Overview</a></li>
+<li id="menu-item-213" class="menu-saveableobject active"><a indepth="true" href="saveable-object.html">Saveable Object</a></li>
+<li id="menu-item-418" class="menu-savingloading"><a indepth="true" href="saving-loading.html">Saving &amp; Loading</a></li>
+<li id="menu-item-390" class="menu-multiscenepersistency"><a indepth="true" href="multiscene-persistency.html">MultiScene Persistency</a></li>
+<li id="menu-item-417" class="menu-savefiles"><a indepth="true" href="save-files.html">Save Files</a></li>
+<li id="menu-item-416" class="menu-scenetransitions"><a indepth="true" href="scene-transitions.html">Scene Transitions</a></li>
+<li id="menu-item-415" class="menu-api"><a indepth="true" href="api.html">API</a></li>
+</ul></div></div></li><li class="block"><div class="block-content block-wp-members clear-block" id="instance-widget_wpmemwidget-2"><div id="wp-members"><div class="title"></div><div class="i"></div></div></div></li><li class="block"><div class="block-content block-widget_nav_menu clear-block" id="instance-nav_menu-2"><div class="title"></div><div class="i"></div><div class="menu-sidetest-container"><ul id="menu-sidetest" class="menu">
+<li id="menu-item-125" class="menu-purchasehistory"></li>
+</ul></div></div></li><li class="block"><div class="block-content block-widget_edd_cart_widget clear-block" id="instance-edd_cart_widget-2"><div class="title"></div><div class="i"></div><p class="edd-cart-number-of-items" style="display: none;">Number of items in cart: <span class="edd-cart-quantity">0</span></p>
+	<ul class="edd-cart">
+	<!--dynamic-cached-content-->
+	
+
+	<!--/dynamic-cached-content-->
+	</ul>
+	</div></li>  </ul>
+  </div>
+<!-- /1st sidebar -->
+
+
+
+    </div>
+  </div>
+</div>
+<!-- /main content -->
+
+
+         </div>
+       </div>
+       <!-- /main -->
+
+       
+       
+       <!-- footer -->
+       <div class="shadow-left page-content">
+         <div class="shadow-right">
+
+           <div id="footer">
+
+             
+             <div id="copyright">
+               <p>© 2014 MajinMHT</p>               
+
+
+
+
+
+	
+			
+
+		             </div>
+           </div>
+
+         </div>
+       </div>
+       <!-- /footer -->
+
+       <a class="go-top" href="#page">Go to Top</a>
+
+     </div>
+    <!-- /page-ext -->
+
+
+    <!-- 68 queries in 0.32 seconds (38.15M) -->
+
+  </div>
+  <!-- page -->
+
+  
+
+
+
+
+
+</body></html>

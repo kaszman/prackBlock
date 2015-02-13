@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta charset="UTF-8">
+
+  <title>MajinMHT » Save Files</title>
+
+  <meta name="description" content="All the scene data that gets saved is stored in a save file. In the case of MultiScene Persistency, the scene data of all scenes can be saved to a single save file. Save files are encrypted, and can't be tampered with when opened with Notepad.">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="pingback" href="https://www.majinmht.com/xmlrpc.php">
+
+  <!--[if lte IE 7]>
+  <link rel="stylesheet" href="https://www.majinmht.com/wp-content/themes/mystique/css/ie.css" type="text/css" media="screen" />
+  <![endif]-->
+
+  <link rel="alternate" type="application/rss+xml" title="MajinMHT » Feed" href="https://www.majinmht.com/feed">
+<link rel="alternate" type="application/rss+xml" title="MajinMHT » Comments Feed" href="https://www.majinmht.com/comments/feed">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.majinmht.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.majinmht.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 3.8.3, ATOM 2.1.2">
+<link rel="canonical" href="https://www.majinmht.com/products/unisave/manual/save-files">
+<link rel="shortlink" href="https://www.majinmht.com/?p=406">
+<!-- WP-Members version 2.9.1, available at http://rocketgeek.com/wp-members -->
+
+<!-- Dynamic Widgets v1.5.6.1 by QURL - http://www.qurl.nl //-->
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="save-files.css" media="all">
+</head>
+<body class="page page-id-406 page-child parent-pageid-206 page-template-default logged-in admin-bar no-customize-support no-js no-fx page-save-files author-majinmht c2right fixed browser-gecko">
+
+  
+  
+  <!-- page -->
+  <div id="page">
+
+    
+    <div id="page-ext">
+
+      <!-- header -->
+      <div id="header">
+        <div class="page-content">
+          <div id="site-title" class="clear-block">
+            <div id="logo" class="size-m"><a indepth="true" href="default.html">MajinMHT</a></div>            <div class="headline">Manual v2.1</div>          </div>
+        </div>
+
+        
+        <div class="shadow-left page-content">
+          
+          
+
+<ul class="media nudge" data-dir="top" data-amt="10">
+    <li class="facebook">
+    
+  </li>
+    <li class="twitter">
+    
+  </li>
+    <li class="linkedin">
+    
+  </li>
+  </ul>
+
+
+
+
+        </div>
+		
+		<!-- Majin Edit: Breadcrumbs NavXT -->
+	    
+	  <!-- /Majin Edit -->
+
+      </div>
+      <!-- /header -->
+
+      
+      <!-- main -->
+      <div id="main" class="page-content">
+        <div id="main-ext" class="clear-block">
+
+<!-- main content: primary + sidebar(s) -->
+<div id="mask-3" class="clear-block">
+  <div id="mask-2">
+    <div id="mask-1">
+
+      <!-- primary content -->
+      <div id="primary-content">
+        <div class="blocks clear-block">
+
+          
+          
+          
+          <!-- page content -->
+          <div id="post-406" class="post-406 page type-page status-publish hentry primary count-1 odd author-admin first">
+
+                        <h1 class="title">Save Files</h1>
+            
+            <div class="clear-block">
+              <p>All the scene data that gets saved is stored in a save file. In the case of MultiScene Persistency, the scene data of all scenes can be saved to a single save file. Save files are encrypted, and can’t be tampered with when opened with Notepad.</p>
+<h2>Metadata</h2>
+<p>Sometimes it might be useful to be able to display a list of all the available save files. Most games have a saves menu that does exactly that, and sometimes they also show a save file’s information. By calling <span class="inline_code">SaveManager.GetSavesList()</span> you get the information you need. <span class="inline_code">SaveManager.GetSavesList()</span> returns an array of <span class="inline_code">Metafile</span>. These metafiles contain information (metadata) about the save file they’re associated with. They’re automatically created within the save file itself whenever you create or overwrite an existing save file.</p>
+<p>The <span class="inline_code">Metafile</span> class has the following accessible properties:</p>
+<p>Metafile</p>
+<ul>
+<li><strong>Name</strong> ( <span class="inline_code">string</span> ): The name of the save file that this metafile is associated with.</li>
+<li><strong>Date</strong> ( <span class="inline_code">string</span> ): Gets you the date of the.</li>
+<li><strong>LastScene</strong> ( <span class="inline_code">string</span> ): This is the name of the scene the player was in during the latest save. Only applicable if the save file is of the Scene File type.</li>
+</ul>
+<h2>Metafields</h2>
+<p>You can also supply your own metadata. When saving your game, you can call a different version of <span class="inline_code">SaveManager.SaveScene() or SaveManager.SaveObject()</span> which accepts an array of <span class="inline_code">Metafield</span>.</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>C#</strong></p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="csharp"><pre class="de1">Metafield<span class="br0">[</span><span class="br0">]</span> myMetadata <span class="sy0">=</span>
+<span class="br0">{</span> 
+    <span class="kw3">new</span> Metafield<span class="br0">(</span><span class="st0">"Coins"</span>, Player<span class="sy0">.</span><span class="me1">AmountOfCoins</span><span class="br0">)</span>, 
+    <span class="kw3">new</span> Metafield<span class="br0">(</span><span class="st0">"Character name"</span>, Player<span class="sy0">.</span><span class="me1">CharacterName</span><span class="br0">)</span> 
+<span class="br0">}</span><span class="sy0">;</span>
+&nbsp;
+SaveManager<span class="sy0">.</span><span class="me1">SaveScene</span><span class="br0">(</span>mySaveName, myMetadata<span class="br0">)</span><span class="sy0">;</span></pre></div></div></div></div></div></div></div>
+
+
+<p style="text-align: center;"><strong>JavaScript</strong></p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="javascript"><pre class="de1"><span class="kw1">var</span> myMetadata <span class="sy0">=</span> 
+<span class="br0">[</span>
+    <span class="kw1">new</span> Metafield<span class="br0">(</span><span class="st0">"Coins"</span><span class="sy0">,</span> Player.<span class="me1">AmountOfCoins</span><span class="br0">)</span><span class="sy0">,</span> 
+    <span class="kw1">new</span> Metafield<span class="br0">(</span><span class="st0">"Character name"</span><span class="sy0">,</span> Player.<span class="me1">CharacterName</span><span class="br0">)</span>
+<span class="br0">]</span><span class="sy0">;</span>
+&nbsp;
+SaveManager.<span class="me1">SaveScene</span><span class="br0">(</span>mySaveName<span class="sy0">,</span> myMetadata<span class="br0">)</span><span class="sy0">;</span></pre></div></div></div></div></div></div></div>
+
+
+<p>&nbsp;</p>
+<p>When creating a new <span class="inline_code">Metafield</span>, you have to pass the name you want to use for it, and the actual value. The value can be an <strong>int</strong>, <strong>float</strong>, or <strong>string</strong>.</p>
+<h2>File Location</h2>
+<p>Save files are saved at a persistent location that doesn’t get deleted when you uninstall your game. This location is a folder named ‘Saves’ that’s located at the location that <a href="http://docs.unity3d.com/ScriptReference/Application-dataPath.html" target="_top">Application.persisentDataPath</a> returns, which is different on every platform. These are the following known locations:</p>
+<p><strong>Windows:</strong> <em>/Users/&lt;User Name&gt;/AppData/LocalLow/&lt;User Name&gt;/&lt;Product Name&gt;/Saves</em><br>
+<strong>Mac:</strong> <em>/Users/&lt;User Name&gt;/Library/Caches/&lt;Product Name&gt;/Saves</em><br>
+<strong>Linux:</strong> <em>/home/[username]/.config/unity3d/[companyname]/[productname]</em>/Saves<br>
+<strong>Android:</strong> <em>/data/data/com.xxx.xxx/files/Saves </em><strong>or</strong> <strong>SD</strong> <strong>card:</strong> <em>/mnt/sdcard/Android/data/com.xxx.xxx/files/Saves</em><em></em></p>
+<h2>Forwards Compatibility</h2>
+<p>Forwards compatbility ensures that you can update your game objects and prefabs over time without breaking existing save files.</p>
+<p>Save files are compatible with newer versions of your project. After a save file is loaded, it goes through a check list to see if any game objects that have been saved still exist. If a non-instantiated game object that was saved doesn’t exist in the scene anymore (deleted in the editor by the developer), UniSave will gracefully skip the object. If a game object does still exist but has been modified (components removed or new ones added), it will work fine as well, and will just update the components that were saved and are still present on the game object.</p>
+<p>When it comes to instantiated game objects, UniSave will detect if the prefab still exists. If it doesn’t, it will skip instantiating it.</p>
+<p>&nbsp;</p>
+<p class="info_block">If you change the name or data type of a field or property on a component, or move things to a different <a href="http://docs.unity3d.com/Manual/Namespaces.html" target="_top">namespace</a>, existing saved values for them won’t be applied when loading a save file. When there’s a name or type mismatch, they will be skipped during loading. While this will technically not break your save files, it’s just something to keep in mind.</p>
+<p>&nbsp;</p>
+<h2>Cross-Platform</h2>
+<p>Save files that were made on one plaform, can be used on another. This means that if you have multiplatform versions of your project, the same save files will work with all of them. The only exception is that save files made on another platform won’t work on iOS, because a different serialization format is being used for that platform.</p>
+            </div>
+
+            
+            
+          </div>
+          <!-- /page content -->
+
+          
+          
+          
+        </div>
+      </div>
+      <!-- /primary content -->
+
+      
+
+<!-- 1st sidebar -->
+<div id="sidebar">
+    <ul class="blocks count-4">
+    <li class="block"><div class="block-content block-widget_nav_menu clear-block" id="instance-nav_menu-4"><div class="title"><h3>Manual</h3><div class="bl"></div><div class="br"></div></div><div class="i"></div><div class="menu-unisave-manual-container"><ul id="menu-unisave-manual" class="menu"><li id="menu-item-218" class="menu-overview"><a indepth="true" href="manual.html">Overview</a></li>
+<li id="menu-item-213" class="menu-saveableobject"><a indepth="true" href="saveable-object.html">Saveable Object</a></li>
+<li id="menu-item-418" class="menu-savingloading"><a indepth="true" href="saving-loading.html">Saving &amp; Loading</a></li>
+<li id="menu-item-390" class="menu-multiscenepersistency"><a indepth="true" href="multiscene-persistency.html">MultiScene Persistency</a></li>
+<li id="menu-item-417" class="menu-savefiles active"><a indepth="true" href="save-files.html">Save Files</a></li>
+<li id="menu-item-416" class="menu-scenetransitions"><a indepth="true" href="scene-transitions.html">Scene Transitions</a></li>
+<li id="menu-item-415" class="menu-api"><a indepth="true" href="api.html">API</a></li>
+</ul></div></div></li><li class="block"><div class="block-content block-wp-members clear-block" id="instance-widget_wpmemwidget-2"><div id="wp-members"><div class="title"></div><div class="i"></div></div></div></li><li class="block"><div class="block-content block-widget_nav_menu clear-block" id="instance-nav_menu-2"><div class="title"></div><div class="i"></div><div class="menu-sidetest-container"><ul id="menu-sidetest" class="menu"><li id="menu-item-139" class="menu-settings"></li>
+
+</ul></div></div></li><li class="block"><div class="block-content block-widget_edd_cart_widget clear-block" id="instance-edd_cart_widget-2"><div class="title"></div><div class="i"></div><p class="edd-cart-number-of-items" style="display: none;">Number of items in cart: <span class="edd-cart-quantity">0</span></p>
+	<ul class="edd-cart">
+	<!--dynamic-cached-content-->
+	
+
+	<!--/dynamic-cached-content-->
+	</ul>
+	</div></li>  </ul>
+  </div>
+<!-- /1st sidebar -->
+
+
+
+    </div>
+  </div>
+</div>
+<!-- /main content -->
+
+
+         </div>
+       </div>
+       <!-- /main -->
+
+       
+       
+       <!-- footer -->
+       <div class="shadow-left page-content">
+         <div class="shadow-right">
+
+           <div id="footer">
+
+             
+             <div id="copyright">
+               <p>© 2014 MajinMHT</p>               
+
+
+
+
+
+	
+			
+
+		             </div>
+           </div>
+
+         </div>
+       </div>
+       <!-- /footer -->
+
+       <a class="go-top" href="#page">Go to Top</a>
+
+     </div>
+    <!-- /page-ext -->
+
+
+    <!-- 68 queries in 0.35 seconds (39.23M) -->
+
+  </div>
+  <!-- page -->
+
+  
+
+
+
+
+
+</body></html>
