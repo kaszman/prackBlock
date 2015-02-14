@@ -28,6 +28,7 @@ public class LevelSelect : MonoBehaviour {
 		if (action == sel.Forward)
 		{
 			//advance scene one from current
+			Application.LoadLevel(Application.loadedLevel + 1);
 		}
 
 		else if (action == sel.Backward)
@@ -36,7 +37,7 @@ public class LevelSelect : MonoBehaviour {
 		}
 		else if (action == sel.levelSelect)
 		{
-			// select the scene described by ApplicableLevelDest
+			Application.LoadLevel(sel.levelSelect);
 		}
 		else
 		{			
