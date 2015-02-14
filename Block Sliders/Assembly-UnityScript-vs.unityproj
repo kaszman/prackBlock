@@ -123,19 +123,19 @@
      <None Include="Assets\Fonts\PressStart2P-Regular\OFL.txt" />
      <None Include="Assets\Plugins\Android\unityads\AndroidManifest.xml" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>/Users/user/Desktop/Practicum/Block Sliders/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="FileDB">
- <HintPath>/Users/user/Desktop/Practicum/Block Sliders/Assets/UniSave/Dependencies/FileDB.dll</HintPath>
+ <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/FileDB.dll</HintPath>
  </Reference>
  <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>/Users/user/Desktop/Practicum/Block Sliders/Assets/UniSave/Dependencies/ICSharpCode.SharpZipLib.dll</HintPath>
+ <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
  <Reference Include="protobuf-net">
- <HintPath>/Users/user/Desktop/Practicum/Block Sliders/Assets/UniSave/Dependencies/protobuf-net.dll</HintPath>
+ <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/protobuf-net.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

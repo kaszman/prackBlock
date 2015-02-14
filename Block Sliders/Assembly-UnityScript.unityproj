@@ -126,13 +126,13 @@
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="FileDB">
- <HintPath>/Users/user/Desktop/Practicum/Block Sliders/Assets/UniSave/Dependencies/FileDB.dll</HintPath>
+ <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/FileDB.dll</HintPath>
  </Reference>
  <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>/Users/user/Desktop/Practicum/Block Sliders/Assets/UniSave/Dependencies/ICSharpCode.SharpZipLib.dll</HintPath>
+ <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
  <Reference Include="protobuf-net">
- <HintPath>/Users/user/Desktop/Practicum/Block Sliders/Assets/UniSave/Dependencies/protobuf-net.dll</HintPath>
+ <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/protobuf-net.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
