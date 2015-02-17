@@ -13,8 +13,7 @@ public class LevelSelect : MonoBehaviour {
 	void Update ()
 	{
 	//if there is a collision with a player
-		if (button.onClick.Invoke())
-			DoSelection();
+
 	}
 
 	//do what the selection says
