@@ -34,5 +34,16 @@
       <Ignored>1</Ignored>
       <Time />
     </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2015-02-17T13:06:40</TestDate>
+      <Passed>11</Passed>
+      <Errors>1</Errors>
+      <Failures>2</Failures>
+      <Inconclusive>4</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>1</Ignored>
+      <Time />
+    </UnitTestResult>
   </Results>
 </TestRecord>

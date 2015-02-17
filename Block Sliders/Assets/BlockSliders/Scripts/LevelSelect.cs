@@ -7,18 +7,16 @@ public class LevelSelect : MonoBehaviour {
 	public enum sel {Forward = 0, Backward = 1, levelSelect = 2};
 	public sel action = sel.Forward;
 	public int ApplicableLevelDest = 0;
-
 	
 	// Update is called once per frame
 	void Update ()
 	{
-	//if there is a collision with a player
 
 	}
 
 	//do what the selection says
 
-	private void DoSelection()
+	public void DoAction()
 	{
 	//go forward
 		if (action == 0)
