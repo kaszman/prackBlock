@@ -3,21 +3,18 @@ using System.Collections;
 
 public class LevelSelect : MonoBehaviour {
 
+	public UnityEngine.UI.Button button;
 	public enum sel {Forward = 0, Backward = 1, levelSelect = 2};
-	public sel action;
+	public sel action = sel.Forward;
 	public int ApplicableLevelDest = 0;
 
-	// Use this for initialization
-	void Start ()
-	{
-	
-	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 	//if there is a collision with a player
-		DoSelection();
+		if (button.onClick.Invoke())
+			DoSelection();
 	}
 
 	//do what the selection says
@@ -25,10 +22,10 @@ public class LevelSelect : MonoBehaviour {
 	private void DoSelection()
 	{
 	//go forward
-		if (action == sel.Forward)
+		if (action == 0)
 		{
 			//advance scene one from current
-			Application.LoadLevel(Application.loadedLevel + 1);
+			Application.LoadLevel("PrototypeScene");
 		}
 
 		else if (action == sel.Backward)
@@ -37,7 +34,7 @@ public class LevelSelect : MonoBehaviour {
 		}
 		else if (action == sel.levelSelect)
 		{
-			Application.LoadLevel(sel.levelSelect);
+			Application.LoadLevel("PrototypeScene");
 		}
 		else
 		{			

@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BlockSliders\Scripts\BallRoller.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\FollowPlayer.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\LevelSelect.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\PlayerBehavior.cs" />

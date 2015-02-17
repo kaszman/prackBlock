@@ -46,7 +46,6 @@
 -define:ENABLE_PROFILER
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_OSX
-'Assets/BlockSliders/Scripts/BallRoller.cs'
 'Assets/BlockSliders/Scripts/FollowPlayer.cs'
 'Assets/BlockSliders/Scripts/LevelSelect.cs'
 'Assets/BlockSliders/Scripts/PlayerBehavior.cs'
