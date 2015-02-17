@@ -45,5 +45,38 @@
       <Ignored>1</Ignored>
       <Time />
     </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2015-02-17T13:11:17</TestDate>
+      <Passed>11</Passed>
+      <Errors>1</Errors>
+      <Failures>2</Failures>
+      <Inconclusive>4</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>1</Ignored>
+      <Time />
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2015-02-17T13:14:36</TestDate>
+      <Passed>11</Passed>
+      <Errors>1</Errors>
+      <Failures>2</Failures>
+      <Inconclusive>4</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>1</Ignored>
+      <Time />
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2015-02-17T13:16:41</TestDate>
+      <Passed>11</Passed>
+      <Errors>1</Errors>
+      <Failures>2</Failures>
+      <Inconclusive>4</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>1</Ignored>
+      <Time />
+    </UnitTestResult>
   </Results>
 </TestRecord>

@@ -16,7 +16,7 @@ public class LevelSelect : MonoBehaviour {
 
 	//do what the selection says
 
-	public void DoAction()
+	public void DoAction(int toLevel)
 	{
 	//go forward
 		if (action == 0)
