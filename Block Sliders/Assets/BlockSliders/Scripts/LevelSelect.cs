@@ -4,38 +4,16 @@ using System.Collections;
 public class LevelSelect : MonoBehaviour {
 
 	public UnityEngine.UI.Button button;
-	public enum sel {Forward = 0, Backward = 1, levelSelect = 2};
-	public sel action = sel.Forward;
-	public int ApplicableLevelDest = 0;
-	
-	// Update is called once per frame
-	void Update ()
-	{
-
-	}
+	public enum select {Forward = 0, Backward = 1, Select = 2};
+	public select selection;
 
 	//do what the selection says
 
-	public void DoAction(int toLevel)
+	public void DoAction(string toLevel)
 	{
-	//go forward
-		if (action == 0)
+		if (selection == select.Select)
 		{
-			//advance scene one from current
-			Application.LoadLevel("PrototypeScene");
-		}
-
-		else if (action == sel.Backward)
-		{
-			//decriment current scene by one
-		}
-		else if (action == sel.levelSelect)
-		{
-			Application.LoadLevel("PrototypeScene");
-		}
-		else
-		{			
-			//should never happen. default to main menu for testing?
+		Application.LoadLevel(toLevel);
 		}
 	}
 }
