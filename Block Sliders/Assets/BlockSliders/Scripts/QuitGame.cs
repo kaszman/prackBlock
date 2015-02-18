@@ -5,7 +5,7 @@ public class QuitGame : MonoBehaviour {
 
 	public void quitGame(bool AreYouSure)
 	{
-		if (AreYouSure = true)
+		if (AreYouSure == true)
 		{
 			Application.Quit();
 		}

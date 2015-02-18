@@ -123,6 +123,7 @@
      <None Include="Assets\UnityTestTools\LICENSE.txt" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleAdditiveBlend.shader" />
      <None Include="Assets\Plugins\Android\unityads\build.xml" />
+     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-18.xml" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\Additive.shader" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-10.xml" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
@@ -152,6 +153,7 @@
      <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-17.xml" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-17.xml" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleBlend.shader" />
+     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-18.xml" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-13.xml" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-07.xml" />
      <None Include="Assets\Fonts\PressStart2P-Regular\OFL.txt" />

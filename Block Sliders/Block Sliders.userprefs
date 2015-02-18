@@ -1,33 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/LevelSelect.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PlayerBehavior.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/LevelSelect.cs" Line="23" Column="4" />
+      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="64" Column="19" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="BlockSliders" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="QuitGame.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-          <Node name="Assembly-UnityScript" expanded="True">
-            <Node name="UnityTestTools" expanded="True">
-              <Node name="Examples" expanded="True">
-                <Node name="IntegrationTestsFrameworkExamples" expanded="True">
-                  <Node name="AngryBotsTests" expanded="True">
-                    <Node name="Scripts" expanded="True">
-                      <Node name="AI" expanded="True" />
-                    </Node>
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
+        <State expanded="True" />
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
