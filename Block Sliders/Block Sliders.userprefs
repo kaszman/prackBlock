@@ -2,11 +2,19 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PlayerBehavior.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="64" Column="19" />
+      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="72" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" />
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="BlockSliders" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="PlayerBehavior.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />

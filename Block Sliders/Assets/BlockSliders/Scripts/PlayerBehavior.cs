@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerBehavior : MonoBehaviour
 {
 
-	public GameObject player;
+	public SpriteRenderer player;
 	GameObject coco;
 	private LevelSelect selector;
 	protected bool ramming = false;
@@ -24,10 +24,14 @@ public class PlayerBehavior : MonoBehaviour
 			timerLeft = timerLength;
 		}
 
-		//change color while timer is still running
-		if (timerRunning)
+
+		if (ramming == true)
 		{
-			player.light.color = Color.blue;
+			player.color = Color.blue;
+		}
+		else
+		{
+			player.color = Color.white;
 		}
 
 		handleCollisionEvents();
