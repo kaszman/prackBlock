@@ -106,9 +106,11 @@
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\Fallback.shader" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-07.xml" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\Multiply.shader" />
+     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-23.xml" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-10.xml" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\CharacterSelfIlluminationReflective.shader" />
+     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-23.xml" />
      <None Include="Assets\link.xml" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-09.xml" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-01-27.xml" />
