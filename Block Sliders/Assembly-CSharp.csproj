@@ -53,6 +53,7 @@
      <Compile Include="Assets\BlockSliders\Scripts\QuitGame.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\Reset.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\SlideBlocks.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\holeBehavior.cs" />
      <Compile Include="Assets\UniSave\Scripts\Attributes\UniSaveIgnoreDataMemberAttribute.cs" />
      <Compile Include="Assets\UniSave\Scripts\Components\SaveableObject.cs" />
      <Compile Include="Assets\UniSave\Scripts\Containers\ComponentContainer.cs" />
