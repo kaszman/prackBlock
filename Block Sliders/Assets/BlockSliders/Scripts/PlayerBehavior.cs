@@ -5,22 +5,21 @@ public class PlayerBehavior : MonoBehaviour
 {
 
 	public SpriteRenderer player;
-	GameObject coco;
+	private GameObject coco;
 	private LevelSelect selector;
 	protected bool ramming = false;
 	public string tagCanCollide;
 	public int timerLength;
 	private int timerLeft;
-	protected bool timerRunning = false;
 
 	void FixedUpdate()
 	{
+		player.color = Color.white;
 
 		//start ramming
 		if (Input.GetKey(KeyCode.E))
 		{	
 			ramming = true;
-			timerRunning = true;
 			timerLeft = timerLength;
 		}
 
@@ -28,10 +27,6 @@ public class PlayerBehavior : MonoBehaviour
 		if (ramming == true)
 		{
 			player.color = Color.blue;
-		}
-		else
-		{
-			player.color = Color.white;
 		}
 
 		handleCollisionEvents();
@@ -56,7 +51,6 @@ void handleCollisionEvents()
 			{
 			Destroy(coco);
 			ramming = false;
-			timerRunning = false;
 			}
 		}
 	}
@@ -65,17 +59,15 @@ void handleCollisionEvents()
 
 void timerSeconds()
 	{			
-		if (timerRunning)
-		{
-			if (timerLeft > 0)
+			if (timerLeft >= 0)
 			{
 				timerLeft--;
 			}
 			else
 			{
 				ramming = false;
-				timerRunning = false;
+			player.color = Color.white;
 			}
-		}
+
 	}
 }
