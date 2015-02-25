@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/Door.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PlayerBehavior.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/Door.cs" Line="24" Column="19" />
-      <File FileName="Assets/BlockSliders/Scripts/holeBehavior.cs" Line="15" Column="30" />
+      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="52" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,7 +10,7 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="BlockSliders" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Door.cs" selected="True" />
+                <Node name="PlayerBehavior.cs" selected="True" />
               </Node>
             </Node>
           </Node>

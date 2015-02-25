@@ -5,16 +5,19 @@ public class PlayerBehavior : MonoBehaviour
 {
 
 	public SpriteRenderer player;
-	private GameObject coco;
-	private LevelSelect selector;
-	protected bool ramming = false;
 	public string tagCanCollide;
 	public int timerLength;
+
+	protected bool ramming = false;
+
+	private GameObject coco;
+	private LevelSelect selector;
 	private float timerLeft = 3;
 
 	void FixedUpdate()
 	{		
 		timerLeft -= Time.deltaTime*10;
+
 		if (timerLeft <= 0)
 		{
 			ramming = false;
@@ -41,12 +44,11 @@ public class PlayerBehavior : MonoBehaviour
 
 void OnCollisionEnter2D(Collision2D col) 
 	{			
-		coco = new GameObject();
-
 		if (ramming)
 		{
 			coco = col.gameObject;
 		}
+		//Destroy(col.gameObject);
 	}
 
 void handleCollisionEvents()
