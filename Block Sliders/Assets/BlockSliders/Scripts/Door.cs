@@ -23,6 +23,7 @@ public class Door : MonoBehaviour {
 		{
 			//LoadNextLevel
 			Application.LoadLevel(nextScene);
+			System.GC.Collect();
 		}
 	}
 	

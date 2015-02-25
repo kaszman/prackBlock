@@ -10,10 +10,17 @@ public class PlayerBehavior : MonoBehaviour
 	protected bool ramming = false;
 	public string tagCanCollide;
 	public int timerLength;
-	private int timerLeft;
+	private float timerLeft = 3;
 
 	void FixedUpdate()
-	{
+	{		
+		timerLeft -= Time.deltaTime*10;
+		if (timerLeft <= 0)
+		{
+			ramming = false;
+			player.color = Color.white;
+		}
+
 		player.color = Color.white;
 
 		//start ramming
@@ -30,7 +37,6 @@ public class PlayerBehavior : MonoBehaviour
 		}
 
 		handleCollisionEvents();
-		timerSeconds();
 	}
 
 void OnCollisionEnter2D(Collision2D col) 
@@ -53,21 +59,5 @@ void handleCollisionEvents()
 			ramming = false;
 			}
 		}
-	}
-
-	
-
-void timerSeconds()
-	{			
-			if (timerLeft >= 0)
-			{
-				timerLeft--;
-			}
-			else
-			{
-				ramming = false;
-			player.color = Color.white;
-			}
-
 	}
 }

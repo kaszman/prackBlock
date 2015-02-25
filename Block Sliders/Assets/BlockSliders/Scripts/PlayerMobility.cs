@@ -5,6 +5,8 @@ public class PlayerMobility : MonoBehaviour {
 
 	public Animator anim;
 	public GameObject owner;
+	public PolygonCollider2D polygon;
+	public CircleCollider2D circle;
 	public float speed;
 	private Vector2 velocity;
 	
@@ -17,6 +19,8 @@ public class PlayerMobility : MonoBehaviour {
 		{
 			velocity.y += 1;
 			anim.SetTrigger("WalkingUp");
+			circle.enabled = false;
+			polygon.enabled = true;
 		}
 		
 		//down
@@ -24,6 +28,8 @@ public class PlayerMobility : MonoBehaviour {
 		{
 			velocity.y -= 1;
 			anim.SetTrigger("WalkingDown");
+			circle.enabled = false;
+			polygon.enabled = true;
 		}
 		
 		//left
@@ -31,6 +37,8 @@ public class PlayerMobility : MonoBehaviour {
 		{
 			velocity.x -= 1;
 			anim.SetTrigger("WalkingLeft");
+			polygon.enabled = false;
+			circle.enabled = true;
 		}
 		
 		//right
@@ -38,6 +46,8 @@ public class PlayerMobility : MonoBehaviour {
 		{
 			velocity.x += 1;
 			anim.SetTrigger("WalkingRight");
+			polygon.enabled = false;
+			circle.enabled = true;
 		}
 		
 		velocity.Normalize();
