@@ -1,12 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PlayerMobility.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/holeBehavior.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/PlayerMobility.cs" Line="40" Column="33" />
+      <File FileName="Assets/BlockSliders/Scripts/holeBehavior.cs" Line="65" Column="45" />
+      <File FileName="Assets/BlockSliders/Scripts/Reset.cs" Line="10" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="BlockSliders" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="holeBehavior.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
