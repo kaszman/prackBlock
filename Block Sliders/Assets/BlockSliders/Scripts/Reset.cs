@@ -5,6 +5,7 @@ public class Reset : MonoBehaviour {
 
 	public string resetKey;
 	public bool doReset;
+	public GameObject playerObj = GameObject.Find("player");
 	// Update is called once per frame
 	void Update () 
 	{

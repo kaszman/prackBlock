@@ -58,7 +58,7 @@ public class holeBehavior : MonoBehaviour {
 		else if (collisionObject.tag == "Player")
 		{
 			//decide what to do
-			controlObj.SendMessage("Reset.DoReset == true");
+
 		}
 	}
 
