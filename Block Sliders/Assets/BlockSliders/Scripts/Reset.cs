@@ -4,6 +4,7 @@ using System.Collections;
 public class Reset : MonoBehaviour {
 
 	public string resetKey;
+	public bool doReset;
 	// Update is called once per frame
 	void Update () 
 	{
@@ -11,5 +12,11 @@ public class Reset : MonoBehaviour {
 		{
 			Application.LoadLevel ("PrototypeScene");
 		}
+	}
+
+	public bool DoReset
+	{
+		get { return doReset;}
+		set { doReset = value;}
 	}
 }

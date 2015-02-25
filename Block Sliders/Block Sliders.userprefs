@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../Block Sliders/Assets/BlockSliders/Scripts/PlayerMobility.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/holeBehavior.cs">
     <Files>
-      <File FileName="../../Block Sliders/Assets/BlockSliders/Scripts/PlayerMobility.cs" Line="17" Column="20" />
+      <File FileName="Assets/BlockSliders/Scripts/holeBehavior.cs" Line="42" Column="30" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,7 +10,7 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="BlockSliders" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="PlayerMobility.cs" selected="True" />
+                <Node name="holeBehavior.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -23,7 +23,7 @@
         <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

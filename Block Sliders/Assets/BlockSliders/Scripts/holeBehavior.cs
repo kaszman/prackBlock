@@ -3,10 +3,11 @@ using System.Collections;
 
 public class holeBehavior : MonoBehaviour {
 
+	public GameObject ownerObject;
+	public Camera controlObj;
 	public SpriteRenderer ownerRenderer;	
 	public Sprite filledHoleSprite;
-
-	private GameObject coco;
+	private GameObject collisionObject;
 	private bool filled = false;
 
 	// Use this for initialization
@@ -19,41 +20,55 @@ public class holeBehavior : MonoBehaviour {
 	void FixedUpdate ()
 	{
 //what to do while the hole is empty
-		if (filled == false)
+		if (!filled)
 		{
 			handleCollisionEvents();
 		}
 
 //what to do if the hole is filled
-		else
+		if (filled)
 		{
-	//set the texture to the filled hole texture
-			ownerRenderer.sprite = filledHoleSprite;
+			//make hole walkable
+			ownerObject.collider2D.enabled = false;
 		}
 	}
-
-	void OnCollisionEnter2D(Collision2D col) 
-	{			
-		coco = new GameObject();
-		coco = col.gameObject;
-	}
-
+	
+	/// <summary>
+	/// Determine what to do when the hole is collided with
+	/// </summary>
 	void handleCollisionEvents()
 	{
 		//if the object is a moveable block
-		if (coco.tag == "Enemy")
+		if (collisionObject.tag == "Enemy")
 		{	
 			//destroy the offencing object
-			Destroy(coco);
-			
+			Destroy(collisionObject);
+
 			//set filled to true
 			filled = true;
+
+			//change the sprite to a filled hole
+			ownerRenderer.sprite = filledHoleSprite;
+
+
+
 		}
 		
 		//if the object is a player, (restart? move back before hole?)
-		else if (coco.tag == "Player")
+		else if (collisionObject.tag == "Player")
 		{
 			//decide what to do
+			controlObj.SendMessage("Reset.DoReset == true");
 		}
+	}
+
+	/// <summary>
+	/// Sets collisionObject to the offending collision object
+	/// </summary>
+	/// <param name="col">Col.</param>
+	void OnCollisionEnter2D(Collision2D col) 
+	{			
+		//collisionObject = new GameObject();
+		collisionObject = col.gameObject;
 	}
 }
