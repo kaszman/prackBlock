@@ -3,10 +3,14 @@ using System.Collections;
 
 public class holeBehavior : MonoBehaviour {
 
+	//parameters recieved from the game
 	public GameObject ownerObject;
 	public Camera controlObj;
 	public SpriteRenderer ownerRenderer;	
-	public Sprite filledHoleSprite;
+	public Sprite filledHoleSprite;	
+	public string currentSceneName;
+
+	//private use variables
 	private GameObject collisionObject;
 	private bool filled = false;
 
@@ -57,8 +61,8 @@ public class holeBehavior : MonoBehaviour {
 		//if the object is a player, (restart? move back before hole?)
 		else if (collisionObject.tag == "Player")
 		{
-			//decide what to do
-
+			//Reset the level
+			Application.LoadLevel (currentSceneName);
 		}
 	}
 
