@@ -30,14 +30,14 @@ public class PlayerMobility : MonoBehaviour {
 		if (Input.GetKey("a"))
 		{
 			velocity.x -= 1;
-			anim.SetTrigger("WalkingSide");
+			anim.SetTrigger("WalkingLeft");
 		}
 		
 		//right
 		if (Input.GetKey("d"))
 		{
 			velocity.x += 1;
-			anim.SetTrigger("WalkingSide");
+			anim.SetTrigger("WalkingRight");
 		}
 		
 		velocity.Normalize();
