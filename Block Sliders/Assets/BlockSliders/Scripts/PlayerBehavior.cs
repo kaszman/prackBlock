@@ -12,11 +12,11 @@ public class PlayerBehavior : MonoBehaviour
 
 	private GameObject coco;
 	private LevelSelect selector;
-	private float timerLeft = 3;
+	private float timerLeft;
 
 	void FixedUpdate()
 	{		
-		timerLeft -= Time.deltaTime*10;
+		timerLeft -= Time.deltaTime;
 
 		if (timerLeft <= 0)
 		{
