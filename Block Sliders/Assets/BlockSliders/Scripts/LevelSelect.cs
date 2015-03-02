@@ -16,7 +16,7 @@ public class LevelSelect : MonoBehaviour {
 	}
 
 
-	void Update()
+	void FixedUpdate()
 	{
 			DoAction(toLevel);
 	}
