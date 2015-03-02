@@ -10,7 +10,7 @@ public class Door : MonoBehaviour {
 	private GameObject collisionObject;
 
 	// Update is called once per frame
-	void FixedUpdate ()
+	void Update ()
 	{
 		handleCollisionEvents();
 	}

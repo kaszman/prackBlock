@@ -21,7 +21,7 @@ public class holeBehavior : MonoBehaviour {
 	//}
 	
 	// Update is called once per frame
-	void FixedUpdate ()
+	void Update ()
 	{
 //what to do while the hole is empty
 		if (!filled)

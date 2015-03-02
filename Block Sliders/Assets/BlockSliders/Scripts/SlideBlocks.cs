@@ -7,7 +7,8 @@ public class SlideBlocks : MonoBehaviour {
 	private Vector2 velocity;
 	
 	void FixedUpdate()
-	{	
+	{	 
+		//speed = 0;//SPEED * 0;
 		velocity = Vector2.zero;
 		
 		//left (add in sprite motion)
