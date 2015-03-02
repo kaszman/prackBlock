@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/holeBehavior.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PauseMenu.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets/BlockSliders/Scripts/holeBehavior.cs" Line="49" Column="1" />
+      <File FileName="Assets/BlockSliders/Scripts/PauseMenu.cs" Line="53" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,7 +10,7 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="BlockSliders" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="holeBehavior.cs" selected="True" />
+                <Node name="PauseMenu.cs" selected="True" />
               </Node>
             </Node>
           </Node>
