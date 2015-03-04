@@ -11,14 +11,13 @@ public class PauseMenu : MonoBehaviour
 	private bool paused = false;
 	private bool isHelpShown = false;
 	private int rectSize = 200;
-	private int rectRemaining;
+	private float rectRemaining;
 	private int padding = 1;
 	private int numOfBtn = 4;
 	
 	void Start()
 	{
 		windowRect = new Rect(0, 0, rectSize, rectSize);
-		rectRemaining = rectSize - 35;
 
 		//set the menu rectangle center
 		Vector2 centerPos = new Vector2(myCanvis.pixelRect.center.x, myCanvis.pixelRect.center.y * 1.5f);
@@ -34,6 +33,16 @@ public class PauseMenu : MonoBehaviour
 			isHelpShown = false;
 		}
 
+		if (Application.isMobilePlatform)
+		{
+			windowRect.height = Screen.height / 2;
+			windowRect.width = Screen.width / 2;
+			windowRect.center = new Vector2(Screen.width/2, Screen.height/2);
+		}
+
+		
+		rectRemaining = windowRect.height - 35;
+
 		myCanvis.enabled = isHelpShown;
 
 		//control game speed
@@ -43,6 +52,8 @@ public class PauseMenu : MonoBehaviour
 	
 	private void OnGUI()
 	{
+		GUI.skin.button.fontSize = (int)windowRect.width/10;
+
 		if (paused)
 		{
 			windowRect = GUI.Window(0, windowRect, windowFun, "Pause Menu");

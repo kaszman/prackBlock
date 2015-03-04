@@ -9,7 +9,7 @@ public class SlideBlocks : MonoBehaviour {
 	void FixedUpdate()
 	{	
 		velocity = Vector2.zero;
-		
+
 		//left (add in sprite motion)
 		if (Input.GetKey(KeyCode.LeftArrow))
 		{
@@ -33,8 +33,15 @@ public class SlideBlocks : MonoBehaviour {
 		{
 			velocity.y -= 1;
 		}
-		
+
 		velocity.Normalize();
+
+		//get input from screen tilt
+		//if (Application.isMobilePlatform)
+		//{
+			velocity = Input.acceleration.normalized;
+		//}		
+
 		velocity *= speed;
 		rigidbody2D.AddForce(velocity);
 		
