@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PlayerMobility.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/PlayerMobility.cs" Line="12" Column="2" />
+      <File FileName="Assets/BlockSliders/Scripts/GameControl.cs" Line="15" Column="48" />
+      <File FileName="Assets/BlockSliders/Scripts/PlayerMobility.cs" Line="36" Column="2" />
+      <File FileName="Assets/BlockSliders/Scripts/SlideBlocks.cs" Line="28" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,9 +23,6 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State />
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

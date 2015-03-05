@@ -18,7 +18,27 @@ public class PlayerMobility : MonoBehaviour {
 	void FixedUpdate()
 	{
 		velocity = Vector2.zero;
+
+		if (Application.isMobilePlatform)
+		{
+			doMobileMovement();
+		}
+		else
+		{
+			doKeyboardMovement();
+		}
 		
+		velocity.Normalize();
+		velocity *= speed;
+		rigidbody2D.AddForce(velocity);
+	}
+
+	#region Movement methods
+	/// <summary>
+	/// Does the keyboard movement script.
+	/// </summary>
+	private void doKeyboardMovement()
+	{
 		//up
 		if (Input.GetKey("w"))
 		{
@@ -54,10 +74,13 @@ public class PlayerMobility : MonoBehaviour {
 			polygon.enabled = false;
 			circle.enabled = true;
 		}
-		
-		velocity.Normalize();
-		velocity *= speed;
-		rigidbody2D.AddForce(velocity);
 	}
-	
+
+	private void doMobileMovement()
+	{
+		Vector2 tempDest = Input.GetTouch(0).deltaPosition;
+		velocity = tempDest;
+	}
+
+	#endregion
 }

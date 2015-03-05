@@ -9,10 +9,14 @@ public class GameControl : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
+
+	//what to do with the screen on mobile devices
 	if (Application.isMobilePlatform)
 		{
 			Screen.orientation = ScreenOrientation.LandscapeLeft;
+			Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		}
 
 	}
