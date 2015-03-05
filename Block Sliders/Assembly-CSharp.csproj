@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\BlockSliders\Scripts\Door.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\FollowPlayer.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\GameControl.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\LevelSelect.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\PlayerBehavior.cs" />
@@ -56,143 +57,14 @@
      <Compile Include="Assets\BlockSliders\Scripts\Reset.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\SlideBlocks.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\holeBehavior.cs" />
-     <Compile Include="Assets\UniSave\Scripts\Attributes\UniSaveIgnoreDataMemberAttribute.cs" />
-     <Compile Include="Assets\UniSave\Scripts\Components\SaveableObject.cs" />
-     <Compile Include="Assets\UniSave\Scripts\Containers\ComponentContainer.cs" />
-     <Compile Include="Assets\UniSave\Scripts\Containers\Container.cs" />
-     <Compile Include="Assets\UniSave\Scripts\Containers\GameObjectContainer.cs" />
-     <Compile Include="Assets\UniSave\Scripts\Containers\MemberContainer.cs" />
-     <Compile Include="Assets\UniSave\Scripts\Containers\MemberType.cs" />
-     <Compile Include="Assets\UniSave\Scripts\Containers\OptimizationContainer.cs" />
-     <Compile Include="Assets\UniSave\Scripts\FileFilterMode.cs" />
-     <Compile Include="Assets\UniSave\Scripts\FileType.cs" />
-     <Compile Include="Assets\UniSave\Scripts\Metafield.cs" />
-     <Compile Include="Assets\UniSave\Scripts\Metafile.cs" />
-     <Compile Include="Assets\UniSave\Scripts\ObjectData.cs" />
-     <Compile Include="Assets\UniSave\Scripts\SaveManager.cs" />
-     <Compile Include="Assets\UniSave\Scripts\SaveableObjectListItem.cs" />
-     <Compile Include="Assets\UniSave\Scripts\SaveableObjectManager.cs" />
-     <Compile Include="Assets\UniSave\Scripts\SceneData.cs" />
-     <Compile Include="Assets\UniSave\Scripts\SceneTransition.cs" />
-     <Compile Include="Assets\UniSave\Scripts\SerializationHandler.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Assertions.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\CheckMethod.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\ActionBase.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\BoolComparer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\ColliderComparer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\ComparerBase.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\FloatComparer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\GeneralComparer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\IntComparer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\IsRenderedByCamera.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\StringComparer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\TransformComparer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\ValueDoesNotChange.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\Vector2Comparer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\Vector3Comparer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\Vector4Comparer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Comparers\VectorComparerBase.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\InvalidPathException.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\MemberResolver.cs" />
-     <Compile Include="Assets\UnityTestTools\Common\ITestResult.cs" />
-     <Compile Include="Assets\UnityTestTools\Common\TestResultState.cs" />
-     <Compile Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Scripts\GameScore.cs" />
-     <Compile Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\CodeBasedAssertionExample.cs" />
-     <Compile Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\CustomComponent.cs" />
-     <Compile Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\DynamicIntegrationTest.cs" />
-     <Compile Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\ThrowCustomException.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\ITestRunnerCallback.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\IntegrationTest.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\IntegrationTestAttribute.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\IntegrationTestsProvider.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\NetworkResultSender.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\ResultDTO.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestComponent.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestResult.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestResultRenderer.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunner.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerCallbackList.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerConfigurator.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestingAssets\CallTesting.cs" />
-     <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
-     <None Include="Assets\UniSave\readme.txt" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-02.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-01-27.xml" />
      <None Include="Assets\Plugins\Android\unityads\proguard-project.txt" />
-     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\Cursor.shader" />
-     <None Include="Assets\UnityTestTools\LICENSE.txt" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleAdditiveBlend.shader" />
      <None Include="Assets\Plugins\Android\unityads\build.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-18.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-03-02.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-24.xml" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\Additive.shader" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-03-02.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-10.xml" />
-     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\Fallback.shader" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-07.xml" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\Multiply.shader" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-23.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-10.xml" />
-     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-03-03.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-27.xml" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\CharacterSelfIlluminationReflective.shader" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-23.xml" />
      <None Include="Assets\link.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-09.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-01-27.xml" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\PlanarRealtimeReflection.shader" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\ReflectiveBackgroundPlanar.shader" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-02.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-25.xml" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\EnemySelfIlluminationReflective.shader" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-19.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-19.xml" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\AngryInclude.cginc" />
-     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleAdditive.shader" />
      <None Include="Assets\Plugins\Android\unityads\res\values\strings.xml" />
-     <None Include="Assets\Fonts\LuckiestGuy\LICENSE.txt" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-24.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-13.xml" />
-     <None Include="Assets\UnityTestTools\changelog.txt" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-25.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-09.xml" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\LaserScope.shader" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\SuperSimpleSelfIllumination.shader" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-17.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-17.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-03-03.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-27.xml" />
-     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleBlend.shader" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-18.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-13.xml" />
-     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-07.xml" />
-     <None Include="Assets\Fonts\PressStart2P-Regular\OFL.txt" />
      <None Include="Assets\Plugins\Android\unityads\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="FileDB">
- <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/FileDB.dll</HintPath>
- </Reference>
- <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/ICSharpCode.SharpZipLib.dll</HintPath>
- </Reference>
- <Reference Include="protobuf-net">
- <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/protobuf-net.dll</HintPath>
- </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{41115586-0977-BAA7-42D3-5C923B17D2BA}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
-    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{7A7DF52F-5B96-530C-8492-8DBFE786DA96}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

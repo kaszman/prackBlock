@@ -64,7 +64,6 @@
      <Compile Include="Assets\Standard Assets\Editor\UnityAds\XCodeEditor\XCSourceFile.cs" />
      <Compile Include="Assets\Standard Assets\Editor\UnityAds\XCodeEditor\XCTarget.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
-     <None Include="Assets\UniSave\readme.txt" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-02.xml" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-01-27.xml" />
      <None Include="Assets\Plugins\Android\unityads\proguard-project.txt" />
@@ -94,6 +93,7 @@
      <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-09.xml" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-01-27.xml" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\PlanarRealtimeReflection.shader" />
+     <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-03-04.xml" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\ReflectiveBackgroundPlanar.shader" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-02.xml" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-02-25.xml" />
@@ -109,6 +109,7 @@
      <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-13.xml" />
      <None Include="Assets\UnityTestTools\changelog.txt" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-25.xml" />
+     <None Include="Assets\test-results\Assembly-CSharp-Editor.csproj-Debug-2015-03-04.xml" />
      <None Include="Assets\test-results\Assembly-CSharp-Editor-firstpass.csproj-Debug-2015-02-09.xml" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\LaserScope.shader" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\SuperSimpleSelfIllumination.shader" />
@@ -130,18 +131,6 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/Editor/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="FileDB">
- <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/FileDB.dll</HintPath>
- </Reference>
- <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/ICSharpCode.SharpZipLib.dll</HintPath>
- </Reference>
- <Reference Include="protobuf-net">
- <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Dependencies/protobuf-net.dll</HintPath>
- </Reference>
- <Reference Include="UpdateChecker">
- <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UniSave/Editor/UpdateChecker.dll</HintPath>
  </Reference>
  <Reference Include="NSubstitute">
  <HintPath>/Users/user/Desktop/Practicum/prackBlock/Block Sliders/Assets/UnityTestTools/UnitTesting/Editor/NSubstitute/NSubstitute.dll</HintPath>

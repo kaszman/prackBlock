@@ -9,7 +9,12 @@ public class PlayerMobility : MonoBehaviour {
 	public CircleCollider2D circle;
 	public float speed;
 	private Vector2 velocity;
-	
+
+	void Start()
+	{
+		polygon.enabled = true;
+	}
+
 	void FixedUpdate()
 	{
 		velocity = Vector2.zero;

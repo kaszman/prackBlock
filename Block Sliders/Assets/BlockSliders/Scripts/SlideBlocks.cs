@@ -37,10 +37,11 @@ public class SlideBlocks : MonoBehaviour {
 		velocity.Normalize();
 
 		//get input from screen tilt
-		//if (Application.isMobilePlatform)
-		//{
+		if (Application.isMobilePlatform)
+		{
+			velocity = Vector2.zero;
 			velocity = Input.acceleration.normalized;
-		//}		
+		}		
 
 		velocity *= speed;
 		rigidbody2D.AddForce(velocity);
