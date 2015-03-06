@@ -30,7 +30,7 @@ public class PlayerMobility : MonoBehaviour {
 		
 		velocity.Normalize();
 		velocity *= speed;
-		GetComponent<Rigidbody2D>().AddForce(velocity);
+		rigidbody2D.AddForce(velocity);
 	}
 
 	#region Movement methods
@@ -80,7 +80,6 @@ public class PlayerMobility : MonoBehaviour {
 	{
 		Vector2 tempDest = Input.GetTouch(0).deltaPosition;
 		velocity = tempDest;
-		velocity *= 3;
 	}
 
 	#endregion

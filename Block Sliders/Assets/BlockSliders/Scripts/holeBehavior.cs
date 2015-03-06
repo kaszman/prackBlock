@@ -33,7 +33,7 @@ public class holeBehavior : MonoBehaviour {
 		if (filled)
 		{
 			//make hole walkable
-			ownerObject.GetComponent<Collider2D>().enabled = false;
+			ownerObject.collider2D.enabled = false;
 		}
 	}
 	

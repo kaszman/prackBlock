@@ -21,7 +21,7 @@ public class SlideBlocks : MonoBehaviour {
 		}
 
 		velocity *= speed;
-		GetComponent<Rigidbody2D>().AddForce(velocity);
+		rigidbody2D.AddForce(velocity);
 	}
 		
 		#region Movement methods
@@ -60,7 +60,6 @@ public class SlideBlocks : MonoBehaviour {
 		private void doMobileMovement()
 		{
 			velocity = Input.acceleration.normalized;
-			velocity *= 5;
 		}
 		#endregion
 }
