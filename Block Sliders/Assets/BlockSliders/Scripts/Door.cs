@@ -5,25 +5,49 @@ public class Door : MonoBehaviour {
 
 	//parameters recieved from the game
 	public string nextScene;
+	public AudioSource playerCollide;
+	public GameControl controlObject;
 
 	//collision object
 	private GameObject collisionObject;
+	protected bool doorSoundStarted;
+
+	void Start()
+	{	
+		doorSoundStarted = false;
+	}
+
+	//update method only used for sound cause it's stupid
+	void Update()
+	{
+		handleCollisionEvents();
+	}
 
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		handleCollisionEvents();
+
+
+
 	}
 
 
 	void handleCollisionEvents()
 	{
-		//if the object is a player, (restart? move back before hole?)
+		//if the object is a player, move to the next level and play sound
 		if (collisionObject.tag == "Player")
 		{
-			//LoadNextLevel
-			Application.LoadLevel(nextScene);
-			System.GC.Collect();
+			if (!playerCollide.isPlaying)
+			{
+				if (doorSoundStarted == true)
+				{
+				  Application.LoadLevel(nextScene);
+				}	
+				playerCollide.Play();	
+				Time.timeScale = 0;
+			}			
+			doorSoundStarted = true;
+
 		}
 	}
 	
