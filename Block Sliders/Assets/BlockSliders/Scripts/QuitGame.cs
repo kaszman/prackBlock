@@ -7,6 +7,9 @@ public class QuitGame : MonoBehaviour {
 	{
 		if (AreYouSure == true)
 		{
+			UnityEngine.Resources.UnloadUnusedAssets();
+			System.GC.Collect();
+			System.GC.WaitForPendingFinalizers();
 			Application.Quit();
 		}
 	}
