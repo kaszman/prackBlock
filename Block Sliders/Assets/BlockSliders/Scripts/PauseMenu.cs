@@ -39,6 +39,7 @@ public class PauseMenu : MonoBehaviour
 			windowRect.height = Screen.height / 2;
 			windowRect.width = Screen.width / 2;
 			windowRect.center = new Vector2(Screen.width/2, Screen.height/2);
+			displayCanvas.scaleFactor = 3f;
 		}
 		
 		rectRemaining = windowRect.height - 35;
