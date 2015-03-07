@@ -18,14 +18,14 @@ public class LevelSelect : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-			DoAction(toLevel);
+			ChangeLevel(toLevel);
 	}
 
 	//do what the selection says
 
 
 
-	public void DoAction(string toLevel)
+	public void ChangeLevel(string toLevel)
 	{
 		if (selection == select.Select)
 		{
