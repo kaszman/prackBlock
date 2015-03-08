@@ -20,7 +20,7 @@ public class SlideBlocks : MonoBehaviour {
 			doKeyboardMovement();
 		}
 
-		velocity *= PlayerPrefs.GetInt("MobileSpeed");
+		velocity *= speed * PlayerPrefs.GetInt("MobileSpeed");
 		GetComponent<Rigidbody2D>().AddForce(velocity);
 	}
 		
