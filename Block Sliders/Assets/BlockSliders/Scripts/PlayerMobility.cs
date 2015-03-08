@@ -29,13 +29,14 @@ public class PlayerMobility : MonoBehaviour {
 		}
 		
 		velocity.Normalize();
-		velocity *= speed;
+		velocity *= speed * PlayerPrefs.GetInt("PlayerSpeed");
 		GetComponent<Rigidbody2D>().AddForce(velocity);
+		doAnimation();
 	}
 
 	#region Movement methods
 	/// <summary>
-	/// Does the keyboard movement script.
+	/// Does the keyboard movement.
 	/// </summary>
 	private void doKeyboardMovement()
 	{
@@ -43,7 +44,7 @@ public class PlayerMobility : MonoBehaviour {
 		if (Input.GetKey("w"))
 		{
 			velocity.y += 1;
-			anim.SetTrigger("WalkingUp");
+			//anim.SetTrigger("WalkingUp");
 			circle.enabled = false;
 			polygon.enabled = true;
 		}
@@ -52,7 +53,7 @@ public class PlayerMobility : MonoBehaviour {
 		if (Input.GetKey("s"))
 		{
 			velocity.y -= 1;
-			anim.SetTrigger("WalkingDown");
+			//anim.SetTrigger("WalkingDown");
 			circle.enabled = false;
 			polygon.enabled = true;
 		}
@@ -61,7 +62,7 @@ public class PlayerMobility : MonoBehaviour {
 		if (Input.GetKey("a"))
 		{
 			velocity.x -= 1;
-			anim.SetTrigger("WalkingLeft");
+			//anim.SetTrigger("WalkingLeft");
 			polygon.enabled = false;
 			circle.enabled = true;
 		}
@@ -70,18 +71,63 @@ public class PlayerMobility : MonoBehaviour {
 		if (Input.GetKey("d"))
 		{
 			velocity.x += 1;
-			anim.SetTrigger("WalkingRight");
+			//anim.SetTrigger("WalkingRight");
 			polygon.enabled = false;
 			circle.enabled = true;
 		}
 	}
 
+	/// <summary>
+	/// Does the mobile movement.
+	/// </summary>
 	private void doMobileMovement()
 	{
 		Vector2 tempDest = Input.GetTouch(0).deltaPosition;
 		velocity = tempDest;
 		velocity *= 3;
 	}
-
 	#endregion
+
+	/// <summary>
+	/// Does proper animation based on movement direction.
+	/// </summary>
+	private void doAnimation()
+	{
+		//walking right
+		if (velocity.normalized.x == 1)
+		{
+			anim.SetTrigger("WalkingRight");
+		}
+		else
+		{
+			anim.ResetTrigger("WalkingRight");
+		}
+		//walking left
+		if (velocity.normalized.x == -1)
+		{
+			anim.SetTrigger("WalkingLeft");
+		}
+		else
+		{
+			anim.ResetTrigger("WalkingLeft");
+		}
+		//walking up
+		if (velocity.normalized.y >= .1f)
+		{
+			anim.SetTrigger("WalkingUp");
+		}
+		else
+		{
+			anim.ResetTrigger("WalkingUp");
+		}
+		//walking down
+		if (velocity.normalized.y <= -.1f)
+		{
+			anim.SetTrigger("WalkingDown");
+		}
+		else
+		{
+			anim.ResetTrigger("WalkingDown");
+		}
+	}
 }

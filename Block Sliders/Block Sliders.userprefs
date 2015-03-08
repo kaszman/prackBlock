@@ -1,29 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/QuitGame.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../untitled folder/New Unity Project/Assets/WorldBuilder/Editor/WorldGen.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/PauseMenu.cs" Line="56" Column="3" />
-      <File FileName="Assets/BlockSliders/Scripts/QuitGame.cs" Line="12" Column="41" />
+      <File FileName="../../../untitled folder/New Unity Project/Assets/WorldBuilder/Editor/WorldGen.cs" Line="125" Column="42" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="BlockSliders" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="QuitGame.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

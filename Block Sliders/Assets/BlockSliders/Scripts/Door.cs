@@ -11,16 +11,24 @@ public class Door : MonoBehaviour {
 	//collision object
 	private GameObject collisionObject;
 	protected bool doorSoundStarted;
+	private bool paused;
 
 	void Start()
 	{	
 		doorSoundStarted = false;
+		paused = false;
 	}
 
 	//update method only used for sound cause it's stupid
 	void Update()
 	{
 		handleCollisionEvents();
+
+		//control game speed
+		if(paused)
+		{ 
+			Time.timeScale = 0;
+		}
 	}
 
 	// Update is called once per frame
@@ -44,7 +52,7 @@ public class Door : MonoBehaviour {
 				  Application.LoadLevel(nextScene);
 				}	
 				playerCollide.Play();	
-				Time.timeScale = 0;
+				paused = true;
 			}			
 			doorSoundStarted = true;
 

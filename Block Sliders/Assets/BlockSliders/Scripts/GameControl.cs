@@ -3,40 +3,23 @@ using System.Collections;
 
 public class GameControl : MonoBehaviour
 {
-	public static AudioSource option1;
-	public static AudioSource option2;
-	public static AudioSource option3;
-	public static AudioSource option4;
-	private static float mobileSpeedTweak;
 
+	//sliders to control player and block speeds
+	public UnityEngine.UI.Slider blockspeedSlider;
+	public UnityEngine.UI.Slider playerspeedSlider;
 
-	static GameControl instance;
-	
-	public static GameControl Instance {
-		get {
-			if (instance == null) {
-				instance = new GameControl ();
-			}
-			return instance;
-		}
-	}
-	//speed tweak for mobile responsiveness
-	public static float MobileSpeedTweak
-	{
-		get { return mobileSpeedTweak; }
-		set { mobileSpeedTweak = value; }
-	}
 
 	// Use this for initialization
 	void Start ()
 	{
-		DontDestroyOnLoad(this);
+		PlayerPrefs.SetInt("MobileSpeed", 5);
+		PlayerPrefs.SetInt("PlayerSpeed", 1);
+		PlayerPrefs.Save();
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-
 	//what to do with the screen on mobile devices
 	if (Application.isMobilePlatform)
 		{
@@ -45,4 +28,18 @@ public class GameControl : MonoBehaviour
 		}
 
 	}
+
+	#region Methods to apply slider settings
+	public void changeBlockSpeed()
+	{
+		PlayerPrefs.SetInt("MobileSpeed", (int)blockspeedSlider.value);
+		PlayerPrefs.Save();
+	}
+
+	public void changePlayerSpeed()
+	{
+		PlayerPrefs.SetInt("PlayerSpeed", (int)playerspeedSlider.value);
+		PlayerPrefs.Save();
+	}
+	#endregion
 }
