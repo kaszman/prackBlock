@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameControl : MonoBehaviour
 {
-
+	public Camera mainCamera;
 	//sliders to control player and block speeds
 	public UnityEngine.UI.Slider blockspeedSlider;
 	public UnityEngine.UI.Slider playerspeedSlider;
@@ -12,9 +12,9 @@ public class GameControl : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		PlayerPrefs.SetInt("MobileSpeed", 5);
+		DontDestroyOnLoad (mainCamera);
+		PlayerPrefs.SetInt("BlockSpeed", 5);
 		PlayerPrefs.SetInt("PlayerSpeed", 1);
-		PlayerPrefs.Save();
 	}
 	
 	// Update is called once per frame
@@ -32,7 +32,7 @@ public class GameControl : MonoBehaviour
 	#region Methods to apply slider settings
 	public void changeBlockSpeed()
 	{
-		PlayerPrefs.SetInt("MobileSpeed", (int)blockspeedSlider.value);
+		PlayerPrefs.SetInt("BlockSpeed", (int)blockspeedSlider.value);
 		PlayerPrefs.Save();
 	}
 
