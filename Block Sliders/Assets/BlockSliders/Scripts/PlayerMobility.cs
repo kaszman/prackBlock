@@ -95,7 +95,7 @@ public class PlayerMobility : MonoBehaviour {
 	private void doAnimation()
 	{
 		//walking right
-		if (velocity.x == 1)
+		if (velocity.x >= 0.8f)
 		{
 			anim.SetTrigger("WalkingRight");
 		}
@@ -104,7 +104,7 @@ public class PlayerMobility : MonoBehaviour {
 			anim.ResetTrigger("WalkingRight");
 		}
 		//walking left
-		if (velocity.x == -1)
+		if (velocity.x <= -0.8f)
 		{
 			anim.SetTrigger("WalkingLeft");
 		}
