@@ -27,12 +27,11 @@ public class PlayerMobility : MonoBehaviour {
 		{
 			doKeyboardMovement();
 		}
-
+		
 		velocity.Normalize();
 		velocity *= speed * PlayerPrefs.GetInt("PlayerSpeed");
-		GetComponent<Rigidbody2D>().AddForce(velocity);		
+		GetComponent<Rigidbody2D>().AddForce(velocity);
 		doAnimation();
-
 	}
 
 	#region Movement methods
@@ -95,7 +94,7 @@ public class PlayerMobility : MonoBehaviour {
 	private void doAnimation()
 	{
 		//walking right
-		if (velocity.x >= 0.8f)
+		if (velocity.normalized.x == 1)
 		{
 			anim.SetTrigger("WalkingRight");
 		}
@@ -104,7 +103,7 @@ public class PlayerMobility : MonoBehaviour {
 			anim.ResetTrigger("WalkingRight");
 		}
 		//walking left
-		if (velocity.x <= -0.8f)
+		if (velocity.normalized.x == -1)
 		{
 			anim.SetTrigger("WalkingLeft");
 		}
@@ -113,7 +112,7 @@ public class PlayerMobility : MonoBehaviour {
 			anim.ResetTrigger("WalkingLeft");
 		}
 		//walking up
-		if (velocity.y >= .1f)
+		if (velocity.normalized.y >= .1f)
 		{
 			anim.SetTrigger("WalkingUp");
 		}
@@ -122,7 +121,7 @@ public class PlayerMobility : MonoBehaviour {
 			anim.ResetTrigger("WalkingUp");
 		}
 		//walking down
-		if (velocity.y <= -.1f)
+		if (velocity.normalized.y <= -.1f)
 		{
 			anim.SetTrigger("WalkingDown");
 		}
