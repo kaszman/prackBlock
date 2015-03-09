@@ -10,6 +10,7 @@ public class QuitGame : MonoBehaviour {
 			UnityEngine.Resources.UnloadUnusedAssets();
 			System.GC.Collect();
 			System.GC.WaitForPendingFinalizers();
+			GameControl.control.saveData();
 			Application.Quit();
 		}
 	}

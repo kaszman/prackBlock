@@ -6,12 +6,17 @@ using System.IO;
 
 public class GameControl : MonoBehaviour
 {
+	//variables
 	public static GameControl control;
 
-	//sliders to control player and block speeds
-	public UnityEngine.UI.Slider blockspeedSlider;
-	public UnityEngine.UI.Slider playerspeedSlider;
+	//options variables
+	private int blockSpeedPref;
+	private int playerSpeedPref;
 
+	/// <summary>
+	/// necessary. just do this. always. don't edit.
+	/// if you really must know, it makes this a singleton
+	/// </summary>
 	void Awake()
 	{
 		if (control == null)
@@ -28,7 +33,7 @@ public class GameControl : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		loadOptions();
+		loadData();
 		//what to do with the screen on mobile devices
 		if (Application.isMobilePlatform)
 		{
@@ -41,53 +46,83 @@ public class GameControl : MonoBehaviour
 	void FixedUpdate ()
 	{
 
-
 	}
 
+
+	#region player preference changes
+	public int BlockSpeedPref
+	{
+		get { return blockSpeedPref; }
+		set 
+		{ 
+			blockSpeedPref = value;
+			ApplyChanges("BlockSpeedPref", value);
+		}
+	}
+
+	public int PlayerSpeedPref
+	{
+		get { return playerSpeedPref; }
+		set 
+		{ 
+			playerSpeedPref = value; 
+			ApplyChanges("PlayerSpeedPref", value);
+		}
+	}
+
+	private void ApplyChanges(String variableName, int intValue)
+	{
+		PlayerPrefs.SetInt(variableName, intValue);
+	}
+
+	private void ApplyChanges(String variableName, float floatValue)
+	{
+		PlayerPrefs.SetFloat(variableName, floatValue);
+	}
+
+	private void ApplyChanges(String variableName, String stringValue)
+	{
+		PlayerPrefs.SetString(variableName, stringValue);
+	}
+	#endregion
+
+
+	#region game data save
 	/// <summary>
-	/// Saves the game data.
+	/// game data save
 	/// </summary>
-	public void saveOptions()
+	public void saveData()
 	{
 		BinaryFormatter bf = new BinaryFormatter();
-		FileStream file = File.Create(Application.persistentDataPath + "options.bin");
+		FileStream file = File.Create(Application.persistentDataPath + "/GameData.bin");
+
+		//create save data holder and set its data
 		SaveData data = new SaveData();
-		data.blockSpeed = PlayerPrefs.GetInt("BlockSpeed");
-		data.playerSpeed = PlayerPrefs.GetInt("PlayerSpeed");
+		data.blockSpeedPref = blockSpeedPref;
+		data.playerSpeedPref = playerSpeedPref;
 
 		bf.Serialize(file, data);
 		file.Close();
 	}
 
 	/// <summary>
-	/// Loads the game data.
+	/// game data load
 	/// </summary>
-	public void loadOptions()
+	public void loadData()
 	{
-		if(File.Exists(Application.persistentDataPath))
+		if(File.Exists(Application.persistentDataPath + "/GameData.bin"))
 		{
 			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath + "options.bin", FileMode.Open);
+			FileStream file = File.Open(Application.persistentDataPath + "/GameData.bin", FileMode.Open);
 			SaveData data = (SaveData)bf.Deserialize(file);
 			file.Close();
 
-			PlayerPrefs.SetInt("BlockSpeed", data.blockSpeed);
-			PlayerPrefs.SetInt("PlayerSpeed", data.playerSpeed);
-			blockspeedSlider.value = PlayerPrefs.GetInt("BlockSpeed");
-			playerspeedSlider.value = PlayerPrefs.GetInt("PlayerSpeed");
+			//change current data to imported save data
+			BlockSpeedPref = data.blockSpeedPref;
+			PlayerSpeedPref = data.playerSpeedPref;
 		}
 	}
 
-	#region Methods to apply slider settings
-	public void changeBlockSpeed()
-	{
-		PlayerPrefs.SetInt("BlockSpeed", (int)blockspeedSlider.value);
-	}
-
-	public void changePlayerSpeed()
-	{
-		PlayerPrefs.SetInt("PlayerSpeed", (int)playerspeedSlider.value);
-	}
 	#endregion
 }
 
@@ -95,6 +130,6 @@ public class GameControl : MonoBehaviour
 [Serializable]
 class SaveData
 {
-	public int blockSpeed;
-	public int playerSpeed;
+	public int blockSpeedPref;
+	public int playerSpeedPref;
 }

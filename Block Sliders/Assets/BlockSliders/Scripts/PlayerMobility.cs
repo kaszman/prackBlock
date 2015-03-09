@@ -28,10 +28,11 @@ public class PlayerMobility : MonoBehaviour {
 			doKeyboardMovement();
 		}
 		
-		velocity.Normalize();
-		velocity *= speed * PlayerPrefs.GetInt("PlayerSpeed");
-		GetComponent<Rigidbody2D>().AddForce(velocity);
+		velocity.Normalize();	
 		doAnimation();
+
+		velocity *= speed * PlayerPrefs.GetInt("PlayerSpeedPref");
+		GetComponent<Rigidbody2D>().AddForce(velocity);
 	}
 
 	#region Movement methods
@@ -84,7 +85,7 @@ public class PlayerMobility : MonoBehaviour {
 	{
 		Vector2 tempDest = Input.GetTouch(0).deltaPosition;
 		velocity = tempDest;
-		velocity *= 3;
+		velocity *= PlayerPrefs.GetInt("PlayerSpeedPref");
 	}
 	#endregion
 
@@ -94,7 +95,7 @@ public class PlayerMobility : MonoBehaviour {
 	private void doAnimation()
 	{
 		//walking right
-		if (velocity.normalized.x == 1)
+		if (velocity.x >= .7f || velocity.normalized.x >= .7f)
 		{
 			anim.SetTrigger("WalkingRight");
 		}
@@ -103,7 +104,7 @@ public class PlayerMobility : MonoBehaviour {
 			anim.ResetTrigger("WalkingRight");
 		}
 		//walking left
-		if (velocity.normalized.x == -1)
+		if (velocity.x <= -.7f|| velocity.normalized.x <= -.7f)
 		{
 			anim.SetTrigger("WalkingLeft");
 		}
@@ -112,7 +113,7 @@ public class PlayerMobility : MonoBehaviour {
 			anim.ResetTrigger("WalkingLeft");
 		}
 		//walking up
-		if (velocity.normalized.y >= .1f)
+		if (velocity.y >= .2f || velocity.normalized.y >= .2f)
 		{
 			anim.SetTrigger("WalkingUp");
 		}
@@ -121,7 +122,7 @@ public class PlayerMobility : MonoBehaviour {
 			anim.ResetTrigger("WalkingUp");
 		}
 		//walking down
-		if (velocity.normalized.y <= -.1f)
+		if (velocity.y <= -.2f || velocity.normalized.y >= -.2f)
 		{
 			anim.SetTrigger("WalkingDown");
 		}
