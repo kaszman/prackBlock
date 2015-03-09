@@ -6,11 +6,24 @@ using System.IO;
 
 public class GameControl : MonoBehaviour
 {
+	public static GameControl control;
 
 	//sliders to control player and block speeds
 	public UnityEngine.UI.Slider blockspeedSlider;
 	public UnityEngine.UI.Slider playerspeedSlider;
 
+	void Awake()
+	{
+		if (control == null)
+		{
+			DontDestroyOnLoad(gameObject);
+			control = this;
+		}
+		else if(control != this)
+		{
+			Destroy(gameObject);
+		}
+	}
 
 	// Use this for initialization
 	void Start ()
