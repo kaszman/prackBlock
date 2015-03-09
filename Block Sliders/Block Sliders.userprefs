@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../untitled folder/New Unity Project/Assets/WorldBuilder/Editor/WorldGen.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/SlideBlocks.cs">
     <Files>
-      <File FileName="../../../untitled folder/New Unity Project/Assets/WorldBuilder/Editor/WorldGen.cs" Line="125" Column="42" />
+      <File FileName="Assets/BlockSliders/Scripts/GameControl.cs" Line="1" Column="1" />
+      <File FileName="Assets/BlockSliders/Scripts/PlayerMobility.cs" Line="1" Column="1" />
+      <File FileName="Assets/BlockSliders/Scripts/SlideBlocks.cs" Line="23" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
