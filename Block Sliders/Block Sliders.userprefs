@@ -1,10 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PlayerBehavior.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PlayerCode.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/GameControl.cs" Line="135" Column="31" />
-      <File FileName="Assets/BlockSliders/Scripts/PauseMenu.cs" Line="22" Column="1" />
-      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="35" Column="30" />
+      <File FileName="Assets/BlockSliders/Scripts/PlayerCode.cs" Line="148" Column="60" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

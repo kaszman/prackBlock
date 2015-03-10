@@ -20,6 +20,13 @@ public class GameControl : MonoBehaviour
 	/// </summary>
 	void Awake()
 	{
+		//do this if the came has never been saved
+		if (!File.Exists(Application.persistentDataPath + "/GameData.bin"))
+		{
+			PlayerPrefs.SetInt("PlayerSpeedPref", 1);
+			PlayerPrefs.SetInt("BlockSpeedPref", 5);
+		}
+
 		if (control == null)
 		{
 			DontDestroyOnLoad(gameObject);
@@ -114,8 +121,8 @@ public class GameControl : MonoBehaviour
 
 		//create save data holder and set its data
 		SaveData data = new SaveData();
-		data.blockSpeedPref = blockSpeedPref;
-		data.playerSpeedPref = playerSpeedPref;
+		data.blockSpeedPref = PlayerPrefs.GetInt("BlockSpeedPref");
+		data.playerSpeedPref = PlayerPrefs.GetInt("PlayerSpeedPref");
 		data.ramAmount = ramAmount;
 
 		bf.Serialize(file, data);

@@ -46,17 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BlockSliders\Scripts\Door.cs" />
-     <Compile Include="Assets\BlockSliders\Scripts\FollowPlayer.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\BlockCode.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\CameraCode.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\DoorCode.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\GameControl.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\HoleCode.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\LevelSelect.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\PlayerBehavior.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\PlayerMobility.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\QuitGame.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\Reset.cs" />
-     <Compile Include="Assets\BlockSliders\Scripts\SlideBlocks.cs" />
-     <Compile Include="Assets\BlockSliders\Scripts\holeBehavior.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\SliderCode.cs" />
      <None Include="Assets\Plugins\Android\unityads\proguard-project.txt" />
      <None Include="Assets\Plugins\Android\unityads\build.xml" />
      <None Include="Assets\link.xml" />

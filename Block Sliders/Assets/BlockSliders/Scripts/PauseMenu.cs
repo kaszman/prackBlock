@@ -46,15 +46,15 @@ public class PauseMenu : MonoBehaviour
 	}
 
 	#region Methods to apply slider settings
-	public void changeBlockSpeed()
-	{
-		GameControl.control.BlockSpeedPref = (int)blockspeedSlider.value;
-	}
-	
-	public void changePlayerSpeed()
-	{
-		GameControl.control.PlayerSpeedPref = (int)playerspeedSlider.value;
-	}
+//	public void changeBlockSpeed()
+//	{
+//	//	GameControl.control.BlockSpeedPref = (int)blockspeedSlider.value;
+//	}
+//	
+//	public void changePlayerSpeed()
+//	{
+//	//	GameControl.control.PlayerSpeedPref = (int)playerspeedSlider.value;
+//	}
 	#endregion
 
 	/// <summary>
@@ -75,15 +75,21 @@ public class PauseMenu : MonoBehaviour
 		displayCanvas.enabled = false;
 		if (canvas == 1)
 		{
+			blockspeedSlider.enabled = false;
+			playerspeedSlider.enabled = false;
 			displayCanvas = menuCanvas;
 		}
 		if (canvas == 2)
 		{
+			blockspeedSlider.enabled = false;
+			playerspeedSlider.enabled = false;
 			displayCanvas = helpCanvas;
 		}
 		if (canvas == 3)
 		{
 			//if we change to the options menu, make sure sliders are at proper values
+			blockspeedSlider.enabled = true;
+			playerspeedSlider.enabled = true;
 			blockspeedSlider.value = PlayerPrefs.GetInt("BlockSpeedPref");
 			playerspeedSlider.value = PlayerPrefs.GetInt("PlayerSpeedPref");
 			displayCanvas = optionsCanvas;

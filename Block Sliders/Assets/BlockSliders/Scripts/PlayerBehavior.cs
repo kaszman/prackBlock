@@ -7,7 +7,7 @@ public class PlayerBehavior : MonoBehaviour
 
 	public SpriteRenderer player;
 	public string tagCanCollide;
-	public int timerLength;
+	public int timerLengthSec;
 	public Text ramDisplay;
 
 	protected bool ramming = false;
@@ -15,7 +15,6 @@ public class PlayerBehavior : MonoBehaviour
 	private GameObject coco;
 	private LevelSelect selector;
 	private float timerRam;
-	private float timerRamDec;
 	private int ramAmount;
 
 	void Start()
@@ -39,7 +38,7 @@ public class PlayerBehavior : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.E) && timerRam <= 0)
 		{	
 			ramming = true;
-			timerRam = timerLength;
+			timerRam = timerLengthSec;
 			ramAmount -= 1;
 		}
 
