@@ -29,10 +29,9 @@ public class PlayerMobility : MonoBehaviour {
 		}
 		
 		velocity.Normalize();	
-		doAnimation();
-
 		velocity *= speed * PlayerPrefs.GetInt("PlayerSpeedPref");
-		GetComponent<Rigidbody2D>().AddForce(velocity);
+		GetComponent<Rigidbody2D>().AddForce(velocity);		
+		doAnimation();
 	}
 
 	#region Movement methods
@@ -94,8 +93,15 @@ public class PlayerMobility : MonoBehaviour {
 	/// </summary>
 	private void doAnimation()
 	{
+		if (velocity.magnitude <= .05f)
+		{
+			anim.ResetTrigger("WalkingUp");
+			anim.ResetTrigger("WalkingDown");
+			anim.ResetTrigger("WalkingLeft");
+			anim.ResetTrigger("walkingRight");
+		}
 		//walking right
-		if (velocity.x >= .7f || velocity.normalized.x >= .7f)
+		if (velocity.x >= .9f)// || velocity.normalized.x >= .7f)
 		{
 			anim.SetTrigger("WalkingRight");
 		}
@@ -104,7 +110,7 @@ public class PlayerMobility : MonoBehaviour {
 			anim.ResetTrigger("WalkingRight");
 		}
 		//walking left
-		if (velocity.x <= -.7f|| velocity.normalized.x <= -.7f)
+		if (velocity.x <= -.9f)// || velocity.normalized.x <= -.7f)
 		{
 			anim.SetTrigger("WalkingLeft");
 		}
@@ -113,7 +119,7 @@ public class PlayerMobility : MonoBehaviour {
 			anim.ResetTrigger("WalkingLeft");
 		}
 		//walking up
-		if (velocity.y >= .2f || velocity.normalized.y >= .2f)
+		if (velocity.y >= .1f)// || velocity.normalized.y >= .2f)
 		{
 			anim.SetTrigger("WalkingUp");
 		}
@@ -122,7 +128,7 @@ public class PlayerMobility : MonoBehaviour {
 			anim.ResetTrigger("WalkingUp");
 		}
 		//walking down
-		if (velocity.y <= -.2f || velocity.normalized.y >= -.2f)
+		if (velocity.y <= -.1f)// || velocity.normalized.y >= -.2f)
 		{
 			anim.SetTrigger("WalkingDown");
 		}
@@ -130,5 +136,6 @@ public class PlayerMobility : MonoBehaviour {
 		{
 			anim.ResetTrigger("WalkingDown");
 		}
+
 	}
 }

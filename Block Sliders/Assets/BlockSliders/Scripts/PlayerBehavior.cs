@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -7,18 +8,26 @@ public class PlayerBehavior : MonoBehaviour
 	public SpriteRenderer player;
 	public string tagCanCollide;
 	public int timerLength;
+	public Text ramDisplay;
 
 	protected bool ramming = false;
 
 	private GameObject coco;
 	private LevelSelect selector;
-	private float timerLeft;
+	private float timerRam;
+	private float timerRamDec;
+	private int ramAmount;
+
+	void Start()
+	{
+		ramAmount = 5;
+	}
 
 	void FixedUpdate()
 	{		
-		timerLeft -= Time.deltaTime;
+		timerRam -= Time.deltaTime;
 
-		if (timerLeft <= 0)
+		if (timerRam <= 0)
 		{
 			ramming = false;
 			player.color = Color.white;
@@ -27,12 +36,12 @@ public class PlayerBehavior : MonoBehaviour
 		player.color = Color.white;
 
 		//start ramming
-		if (Input.GetKey(KeyCode.E))
+		if (Input.GetKeyDown(KeyCode.E) && timerRam <= 0)
 		{	
 			ramming = true;
-			timerLeft = timerLength;
+			timerRam = timerLength;
+			ramAmount -= 1;
 		}
-
 
 		if (ramming == true)
 		{
@@ -40,6 +49,7 @@ public class PlayerBehavior : MonoBehaviour
 		}
 
 		handleCollisionEvents();
+		ramDisplay.text = "Rams: " + ramAmount;
 	}
 
 void OnCollisionEnter2D(Collision2D col) 

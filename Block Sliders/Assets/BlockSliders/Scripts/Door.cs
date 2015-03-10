@@ -6,7 +6,6 @@ public class Door : MonoBehaviour {
 	//parameters recieved from the game
 	public string nextScene;
 	public AudioSource playerCollide;
-	public GameControl controlObject;
 
 	//collision object
 	private GameObject collisionObject;

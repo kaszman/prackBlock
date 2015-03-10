@@ -12,6 +12,7 @@ public class GameControl : MonoBehaviour
 	//options variables
 	private int blockSpeedPref;
 	private int playerSpeedPref;
+	private int ramAmount;
 
 	/// <summary>
 	/// necessary. just do this. always. don't edit.
@@ -34,6 +35,7 @@ public class GameControl : MonoBehaviour
 	void Start ()
 	{
 		loadData();
+		GameControl.control.RamAmount = 5;
 		//what to do with the screen on mobile devices
 		if (Application.isMobilePlatform)
 		{
@@ -70,6 +72,20 @@ public class GameControl : MonoBehaviour
 		}
 	}
 
+	public int RamAmount
+	{
+		get
+		{ 
+			loadData();
+			return ramAmount; 
+		}
+		set
+		{
+			ramAmount = value;
+			saveData();
+		}
+	}
+
 	private void ApplyChanges(String variableName, int intValue)
 	{
 		PlayerPrefs.SetInt(variableName, intValue);
@@ -100,6 +116,7 @@ public class GameControl : MonoBehaviour
 		SaveData data = new SaveData();
 		data.blockSpeedPref = blockSpeedPref;
 		data.playerSpeedPref = playerSpeedPref;
+		data.ramAmount = ramAmount;
 
 		bf.Serialize(file, data);
 		file.Close();
@@ -120,6 +137,7 @@ public class GameControl : MonoBehaviour
 			//change current data to imported save data
 			BlockSpeedPref = data.blockSpeedPref;
 			PlayerSpeedPref = data.playerSpeedPref;
+			ramAmount = data.ramAmount;
 		}
 	}
 
@@ -132,4 +150,5 @@ class SaveData
 {
 	public int blockSpeedPref;
 	public int playerSpeedPref;
+	public int ramAmount;
 }
