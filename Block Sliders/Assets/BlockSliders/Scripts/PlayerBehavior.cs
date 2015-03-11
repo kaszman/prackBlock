@@ -20,6 +20,10 @@ public class PlayerBehavior : MonoBehaviour
 	void Start()
 	{
 		ramAmount = 5;
+		if (Application.isMobilePlatform)
+		{
+			ramDisplay.canvas.scaleFactor = 3f;
+		}
 	}
 
 	void FixedUpdate()
@@ -35,7 +39,7 @@ public class PlayerBehavior : MonoBehaviour
 		player.color = Color.white;
 
 		//start ramming
-		if (Input.GetKeyDown(KeyCode.E) && timerRam <= 0)
+		if (Input.GetKeyDown(KeyCode.E) && timerRam <= 0 && ramAmount > 0)
 		{	
 			ramming = true;
 			timerRam = timerLengthSec;
