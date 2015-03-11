@@ -52,7 +52,7 @@
      <Compile Include="Assets\BlockSliders\Scripts\GameControl.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\HoleCode.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\LevelSelect.cs" />
-     <Compile Include="Assets\BlockSliders\Scripts\MakeImageFullScreen.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\MainMenu.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\PlayerBehavior.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\PlayerMobility.cs" />

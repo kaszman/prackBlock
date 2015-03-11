@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class PauseMenu : MonoBehaviour
 	private Canvas displayCanvas;
 
 	//options sliders
-	public UnityEngine.UI.Slider blockspeedSlider;
-	public UnityEngine.UI.Slider playerspeedSlider;
+	public Slider blockspeedSlider;
+	public Slider playerspeedSlider;
 
 	
 	void Start()
