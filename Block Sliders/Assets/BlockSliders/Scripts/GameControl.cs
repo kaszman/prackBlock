@@ -8,6 +8,7 @@ public class GameControl : MonoBehaviour
 {
 	//variables
 	public static GameControl control;
+	public AudioSource gameMusic;
 
 	//options variables
 	private int blockSpeedPref;
@@ -36,6 +37,8 @@ public class GameControl : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+		gameMusic.Play();
+		gameMusic.loop = true;
 	}
 
 	// Use this for initialization
