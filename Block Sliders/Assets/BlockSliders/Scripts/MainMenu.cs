@@ -21,9 +21,9 @@ public class MainMenu : MonoBehaviour {
 	public Slider playerspeedSlider;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		displayCanvas = mainCanvas;
-		displayCanvas.enabled = true;
+		//displayCanvas.enabled = true;
 		if (Application.isMobilePlatform)
 		{
 			displayCanvas.scaleFactor = 3f;
@@ -32,63 +32,74 @@ public class MainMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		displayCanvas.enabled = true;
+
 	}
 
-	public void changeCanvas(string canvas)
-	{			
+	public void changeCanvas(int canvas)
+	{
 		displayCanvas.enabled = false;
-		if (canvas == "main")
+		if (canvas == 0)
 		{
 			blockspeedSlider.enabled = false;
 			playerspeedSlider.enabled = false;
 			displayCanvas = mainCanvas;
 			displayCanvas.enabled = true;
 		}
-		if (canvas == "help")
+		if (canvas == 1)
 		{
 			blockspeedSlider.enabled = false;
 			playerspeedSlider.enabled = false;
 			displayCanvas = helpCanvas;
 			displayCanvas.enabled = true;
 		}
-		if (canvas == "options")
+		if (canvas == 2)
 		{
+			displayCanvas.enabled = false;
+
 			//if we change to the options menu, make sure sliders are at proper values
 			blockspeedSlider.enabled = true;
 			playerspeedSlider.enabled = true;
 			blockspeedSlider.value = PlayerPrefs.GetInt("BlockSpeedPref");
 			playerspeedSlider.value = PlayerPrefs.GetInt("PlayerSpeedPref");
 			displayCanvas = optionsCanvas;
-			displayCanvas.enabled = true;
+		//	displayCanvas.enabled = true;
 		}
-		if (canvas == "level")
+		if (canvas == 3)
 		{
+			displayCanvas.enabled = false;
+
 			blockspeedSlider.enabled = false;
 			playerspeedSlider.enabled = false;
 			displayCanvas = levelcanvas;
-			displayCanvas.enabled = true;
+		//	displayCanvas.enabled = true;
 		}
-		if (canvas == "play")
+		if (canvas == 4)
 		{
+			displayCanvas.enabled = false;
+
 			blockspeedSlider.enabled = false;
 			playerspeedSlider.enabled = false;
 			displayCanvas = playcanvas;
 			displayCanvas.enabled = true;
 		}
-		if (canvas == "credits")
+		if (canvas == 5)
 		{
+			displayCanvas.enabled = false;
+
 			blockspeedSlider.enabled = false;
 			playerspeedSlider.enabled = false;
 			displayCanvas = creditscanvas;
-			displayCanvas.enabled = true;
+		//	displayCanvas.enabled = true;
 		}
-		if (canvas == "leader")
+		if (canvas == 6)
 		{
+			displayCanvas.enabled = false;
+
 			blockspeedSlider.enabled = false;
 			playerspeedSlider.enabled = false;
 			displayCanvas = leaderboardcanvas;
-			displayCanvas.enabled = true;
+			//displayCanvas.enabled = true;
 		}
 	}
 }
