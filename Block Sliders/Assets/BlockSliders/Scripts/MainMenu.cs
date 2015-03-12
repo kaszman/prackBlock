@@ -23,11 +23,6 @@ public class MainMenu : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		displayCanvas = mainCanvas;
-		//displayCanvas.enabled = true;
-		if (Application.isMobilePlatform)
-		{
-			displayCanvas.scaleFactor = 3f;
-		}
 	}
 	
 	// Update is called once per frame
