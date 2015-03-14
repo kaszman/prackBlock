@@ -20,15 +20,14 @@ public class PauseMenu : MonoBehaviour
 	void Start()
 	{
 		displayCanvas = menuCanvas;
-	}
-	
-	void Update()
-	{
 		if (Application.isMobilePlatform)
 		{
 			displayCanvas.scaleFactor = 3f;
 		}
-
+	}
+	
+	void Update()
+	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			paused = true;
