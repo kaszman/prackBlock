@@ -4,22 +4,23 @@ using System.Collections;
 public class LevelSelect : MonoBehaviour
 {
 
-		public void ChangeLevel (string toLevel)
+		public void ChangeLevel (int toLevel)
 		{
 				if (isLevelUnlocked (toLevel)) {
-						Application.LoadLevel (toLevel);
+						if (toLevel == 0) {
+								Application.LoadLevel ("Menu");
+						} else {
+								Application.LoadLevel ("Lvl" + toLevel.ToString ());
+						}
 				}
 		}
 
-		public bool isLevelUnlocked (string level)
+		private bool isLevelUnlocked (int level)
 		{
-//				GameControl.control.Load ();
-//				LevelData[] temp = GameControl.control.GetLevelData ();
-//				foreach (LevelData lvlData in temp) {
-//						if (lvlData.name == level) {
-//								return lvlData.lockSetting;
-//						}
-//				}
-				return false;
+				if (level <= GameControl.control.HighestUnlock) {
+						return true;
+				} else {
+						return false;
+				}
 		}
 }

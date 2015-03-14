@@ -50,9 +50,9 @@
      <Compile Include="Assets\BlockSliders\Scripts\ButtonScale.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\CameraCode.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\DoorCode.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\EasySerializer.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\GameControl.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\HoleCode.cs" />
-     <Compile Include="Assets\BlockSliders\Scripts\LevelData.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\LevelSelect.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\MainMenu.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\PauseMenu.cs" />

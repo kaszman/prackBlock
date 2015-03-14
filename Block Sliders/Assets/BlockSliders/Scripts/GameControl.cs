@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Reflection;
 
 public class GameControl : MonoBehaviour
 {
@@ -14,17 +16,15 @@ public class GameControl : MonoBehaviour
 		private int blockSpeedPref;
 		private int playerSpeedPref;
 		private int ramAmount;
-//		private LevelData[] thisLevelData;
-
+		private int highestUnlock;
+		private SaveData data = new SaveData ();
 
 		//runs on game start
 		void Awake ()
 		{
-				Environment.SetEnvironmentVariable ("MONO_REFLECTION_SERIALIZER", "yes");
 				//do this if the game has never been saved
 				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
-						Save ();
-						//		NewGame ();
+						NewGame ();
 				}
 				
 				//singleton
@@ -76,7 +76,7 @@ public class GameControl : MonoBehaviour
 
 		public int RamAmount {
 				get { 
-						Load ();
+						//	Load ();
 						return ramAmount; 
 				}
 				set {
@@ -103,54 +103,88 @@ public class GameControl : MonoBehaviour
 
 	#region game data change
 
-//		public void UnlockLevel (int level)
-//		{
-//				Load ();
-//				thisLevelData [level].lockSetting = false;
-//				Save ();
-//		}
+		public void UnlockLevel (int level)
+		{
+				Load ();
+				highestUnlock = level;
+				Save ();
+		}
 
 	#endregion
 
 	#region game data read
 
-//		public LevelData[] GetLevelData ()
-//		{
-//				return thisLevelData;
-//		}
-//
-//		public string highestUnlock ()
-//		{
-//				int highestIndex = 0;
-//				foreach (LevelData data in thisLevelData) {
-//						if (data.lockSetting == true) {
-//								highestIndex++;
-//						}
-//				}
-//				return thisLevelData [highestIndex].name;
-//		}
+		public int HighestUnlock {
+				get { return highestUnlock;}
+		}
 
 	#endregion
 
+	#region methods
 
-	#region game data save
+		public void ResumeGame ()
+		{
+				Load ();
+				ChangeLevel (highestUnlock);
+		}
+
+		/// <summary>
+		/// Changes the level.
+		/// </summary>
+		/// <param name="toLevel">To level.</param>
+		public void ChangeLevel (int toLevel)
+		{
+				if (isLevelUnlocked (toLevel)) {
+						if (toLevel == 0) {
+								Application.LoadLevel ("Menu");
+						} else {
+								Application.LoadLevel ("Lvl" + toLevel.ToString ());
+						}
+				}
+		}
+
+		/// <summary>
+		/// Checks if level is unlocked
+		/// </summary>
+		/// <returns><c>true</c>, if level unlocked was ised, <c>false</c> otherwise.</returns>
+		/// <param name="level">Level.</param>
+		private bool isLevelUnlocked (int level)
+		{
+				if (level <= GameControl.control.HighestUnlock) {
+						return true;
+				} else {
+						return false;
+				}
+		}
+	
+	#endregion
+	
+	#region game data save/load/new
 		/// <summary>
 		/// game data save
 		/// </summary>
 		public void Save ()
 		{
-				BinaryFormatter bf = new BinaryFormatter ();
-				FileStream file = File.Create (Application.persistentDataPath + "/GameData.bin");
+				GameControl.SetEnvironmentVariables ();
+		
+				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Create);
+		
+				BinaryFormatter formatter = new BinaryFormatter ();
+				formatter.Binder = new VersionDeserializationBinder ();
+				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, HighestUnlock);
 
-				//create save data holder and set its data
-				SaveData data = new SaveData ();
-				data.blockSpeedPref = PlayerPrefs.GetInt ("BlockSpeedPref");
-				data.playerSpeedPref = PlayerPrefs.GetInt ("PlayerSpeedPref");
-				data.ramAmount = ramAmount;
-//				data.data = thisLevelData;
-
-				bf.Serialize (file, data);
-				file.Close ();
+				formatter.Serialize (stream, data);
+		
+				stream.Close ();
+//				BinaryFormatter bf = new BinaryFormatter ();
+//				FileStream file = File.Create (Application.persistentDataPath + "/GameData.bin");
+//
+//				//create save data holder and set its data
+//				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, thisLevelData);
+//			
+//				EasySerializer.SerializeObjectToFile (data, Application.persistentDataPath + "/GameData.bin");
+//				bf.Serialize (file, data);
+//				file.Close ();
 		}
 
 		/// <summary>
@@ -158,18 +192,39 @@ public class GameControl : MonoBehaviour
 		/// </summary>
 		public void Load ()
 		{
-				if (File.Exists (Application.persistentDataPath + "/GameData.bin")) {
-						BinaryFormatter bf = new BinaryFormatter ();
-						FileStream file = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
-						SaveData data = (SaveData)bf.Deserialize (file);
-						file.Close ();
-
-						//change current data to imported save data
-						BlockSpeedPref = data.blockSpeedPref;
-						PlayerSpeedPref = data.playerSpeedPref;
-						ramAmount = data.ramAmount;
-//						thisLevelData = data.GetLevelData;
+				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
+						//break;
 				}
+		
+		
+				GameControl.SetEnvironmentVariables ();
+		
+				Stream stream = null;
+		
+				try {
+						stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
+				} catch (FileNotFoundException e) {
+						//	break;
+				}
+		
+				BinaryFormatter formatter = new BinaryFormatter ();
+				formatter.Binder = new VersionDeserializationBinder ();
+				this.data = (SaveData)formatter.Deserialize (stream);
+		
+				stream.Close ();
+//				if (File.Exists (Application.persistentDataPath + "/GameData.bin")) {
+//						BinaryFormatter bf = new BinaryFormatter ();
+//						FileStream file = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
+//				SaveData data = new SaveData ();
+//				data = (SaveData)EasySerializer.DeserializeObjectFromFile (Application.persistentDataPath + "/GameData.bim");
+//						file.Close ();
+//
+//				//change current data to imported save data
+				BlockSpeedPref = data.blockSpeedPref;
+				PlayerSpeedPref = data.playerSpeedPref;
+				ramAmount = data.ramAmount;
+				highestUnlock = data.highestUnlock;
+//				}
 		}
 
 		/// <summary>
@@ -177,58 +232,62 @@ public class GameControl : MonoBehaviour
 		/// </summary>
 		public void NewGame ()
 		{
-				//path and formatter
-				BinaryFormatter bf = new BinaryFormatter ();
-				FileStream file = File.Create (Application.persistentDataPath + "/GameData.bin");
+				GameControl.SetEnvironmentVariables ();
 		
-				//save data object
-				SaveData data = new SaveData ();
+				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Create);
+		
+				BinaryFormatter formatter = new BinaryFormatter ();
+				formatter.Binder = new VersionDeserializationBinder ();
+				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, 1);
 
-				//set save data to default values
-				data.blockSpeedPref = 5;
-				data.playerSpeedPref = 1;
-				data.ramAmount = ramAmount;
+				formatter.Serialize (stream, data);
+		
+				stream.Close ();
+//				//path and formatter
+//				BinaryFormatter bf = new BinaryFormatter ();
+//				FileStream file = File.Create (Application.persistentDataPath + "/GameData.bin");					
+//				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, thisLevelData);
 //				data.NewLevelData ();
-
-				//save 
-				bf.Serialize (file, data);
-				file.Close ();
+//				EasySerializer.SerializeObjectToFile (data, Application.persistentDataPath + "/GameData.bin");
+//
+//				//save data object
+//				SaveData data = new SaveData (5, 1, ramAmount, thisLevelData);
+//				data.NewLevelData ();
+//
+//				//save 
+//				bf.Serialize (file, data);
+//				file.Close ();
 		}
 
 	#endregion
+		/* SetEnvironmentVariables required to avoid run-time code generation that will break iOS compatibility
+ 	 * Suggested by Nico de Poel:
+	 * http://answers.unity3d.com/questions/30930/why-did-my-binaryserialzer-stop-working.html?sort=oldest
+ 	 */
+		private static void SetEnvironmentVariables ()
+		{
+				Environment.SetEnvironmentVariable ("MONO_REFLECTION_SERIALIZER", "yes");
+		}
 }
 
 //class to hold save data.
 [Serializable]
-class SaveData : MonoBehaviour
+class SaveData
 {
 		public int blockSpeedPref;
 		public int playerSpeedPref;
 		public int ramAmount;
-		//public LevelData[] data;
+		public int highestUnlock;
 
-
-//		public LevelData[] GetLevelData {
-//				get { return data; }
-//		}
-
-//		public void SetLevelData (LevelData[] currentLevelData)
-//		{
-//				int index = 0;
-//				foreach (LevelData lvlData in data) {
-//						lvlData.name = currentLevelData [index].name;
-//						lvlData.changeLockValue (currentLevelData [index].lockSetting);
-//				}
-//
-//		}
-
-//		public void NewLevelData ()
-//		{
-//				data = new LevelData[100];
-//				for (int i = 0; i > data.Length; i++) {
-//						string level = "Lvl" + i.ToString ();
-//						data [i] = new LevelData (level);
-//				}
-//		}
+		public SaveData ()
+		{
+		}
+		public SaveData (int bsp, int psp, int ra, int hu)
+		{
+				this.blockSpeedPref = bsp;
+				this.playerSpeedPref = psp;
+				this.ramAmount = ra;
+				this.highestUnlock = hu;
+		}
 
 }
