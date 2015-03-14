@@ -28,7 +28,6 @@ public class MainMenu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		displayCanvas.enabled = true;
-
 	}
 
 	public void changeCanvas(int canvas)
