@@ -25,8 +25,6 @@ public class GameControl : MonoBehaviour
 				//do this if the game has never been saved
 				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
 						NewGame ();
-				} else {
-						Load ();
 				}
 				
 				//singleton
@@ -108,9 +106,7 @@ public class GameControl : MonoBehaviour
 		public void UnlockLevel (int level)
 		{
 				Load ();
-				if (level > HighestUnlock) {
-						highestUnlock = level;
-				}
+				highestUnlock = level;
 				Save ();
 		}
 
@@ -180,6 +176,15 @@ public class GameControl : MonoBehaviour
 				formatter.Serialize (stream, data);
 		
 				stream.Close ();
+//				BinaryFormatter bf = new BinaryFormatter ();
+//				FileStream file = File.Create (Application.persistentDataPath + "/GameData.bin");
+//
+//				//create save data holder and set its data
+//				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, thisLevelData);
+//			
+//				EasySerializer.SerializeObjectToFile (data, Application.persistentDataPath + "/GameData.bin");
+//				bf.Serialize (file, data);
+//				file.Close ();
 		}
 
 		/// <summary>
@@ -207,12 +212,19 @@ public class GameControl : MonoBehaviour
 				this.data = (SaveData)formatter.Deserialize (stream);
 		
 				stream.Close ();
-
-				//change current data to imported save data
+//				if (File.Exists (Application.persistentDataPath + "/GameData.bin")) {
+//						BinaryFormatter bf = new BinaryFormatter ();
+//						FileStream file = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
+//				SaveData data = new SaveData ();
+//				data = (SaveData)EasySerializer.DeserializeObjectFromFile (Application.persistentDataPath + "/GameData.bim");
+//						file.Close ();
+//
+//				//change current data to imported save data
 				BlockSpeedPref = data.blockSpeedPref;
 				PlayerSpeedPref = data.playerSpeedPref;
 				ramAmount = data.ramAmount;
 				highestUnlock = data.highestUnlock;
+//				}
 		}
 
 		/// <summary>
@@ -231,6 +243,20 @@ public class GameControl : MonoBehaviour
 				formatter.Serialize (stream, data);
 		
 				stream.Close ();
+//				//path and formatter
+//				BinaryFormatter bf = new BinaryFormatter ();
+//				FileStream file = File.Create (Application.persistentDataPath + "/GameData.bin");					
+//				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, thisLevelData);
+//				data.NewLevelData ();
+//				EasySerializer.SerializeObjectToFile (data, Application.persistentDataPath + "/GameData.bin");
+//
+//				//save data object
+//				SaveData data = new SaveData (5, 1, ramAmount, thisLevelData);
+//				data.NewLevelData ();
+//
+//				//save 
+//				bf.Serialize (file, data);
+//				file.Close ();
 		}
 
 	#endregion
