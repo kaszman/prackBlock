@@ -108,7 +108,9 @@ public class GameControl : MonoBehaviour
 		public void UnlockLevel (int level)
 		{
 				Load ();
-				highestUnlock = level;
+				if (level > HighestUnlock) {
+						highestUnlock = level;
+				}
 				Save ();
 		}
 
