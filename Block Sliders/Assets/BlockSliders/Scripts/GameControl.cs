@@ -22,12 +22,12 @@ public class GameControl : MonoBehaviour
 		//runs on game start
 		void Awake ()
 		{
-				//do this if the game has never been saved
-				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
-						NewGame ();
-				} else {
-						Load ();
-				}
+//				//do this if the game has never been saved
+//				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
+//						NewGame ();
+//				} else {
+				Load ();
+//				}
 				
 				//singleton
 				if (control == null) {
@@ -43,7 +43,7 @@ public class GameControl : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				Load ();
+				//Load ();
 				GameControl.control.RamAmount = 5;
 				//what to do with the screen on mobile devices
 				if (Application.isMobilePlatform) {
@@ -78,7 +78,7 @@ public class GameControl : MonoBehaviour
 
 		public int RamAmount {
 				get { 
-						//	Load ();
+						Load ();
 						return ramAmount; 
 				}
 				set {
@@ -129,7 +129,8 @@ public class GameControl : MonoBehaviour
 		public void ResumeGame ()
 		{
 				Load ();
-				ChangeLevel (highestUnlock);
+				ChangeLevel (data.highestUnlock);
+				Save ();
 		}
 
 		/// <summary>
@@ -138,13 +139,16 @@ public class GameControl : MonoBehaviour
 		/// <param name="toLevel">To level.</param>
 		public void ChangeLevel (int toLevel)
 		{
-				if (isLevelUnlocked (toLevel)) {
-						if (toLevel == 0) {
-								Application.LoadLevel ("Menu");
-						} else {
-								Application.LoadLevel ("Lvl" + toLevel.ToString ());
-						}
+				//if (isLevelUnlocked (toLevel)) {
+				if (toLevel == 0) {
+						Application.LoadLevel ("Menu");
+				} else {
+						Application.LoadLevel ("Lvl" + toLevel.ToString ());
 				}
+				//} else {
+				Application.LoadLevel ("Lvl1");
+				//}
+				Load ();
 		}
 
 		/// <summary>
@@ -154,11 +158,11 @@ public class GameControl : MonoBehaviour
 		/// <param name="level">Level.</param>
 		private bool isLevelUnlocked (int level)
 		{
-				if (level <= GameControl.control.HighestUnlock) {
-						return true;
-				} else {
-						return false;
-				}
+				//if (level <= GameControl.control.HighestUnlock) {
+				return true;
+				//} else {
+				return false;
+				//}
 		}
 	
 	#endregion
@@ -188,7 +192,7 @@ public class GameControl : MonoBehaviour
 		public void Load ()
 		{
 				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
-						//break;
+						NewGame ();
 				}
 		
 		
