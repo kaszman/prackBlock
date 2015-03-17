@@ -18,6 +18,7 @@ public class GameControl : MonoBehaviour
 		private int ramAmount;
 		private int highestUnlock;
 		private SaveData data = new SaveData ();
+		private bool paused;
 
 		//runs on game start
 		void Awake ()
@@ -37,6 +38,7 @@ public class GameControl : MonoBehaviour
 						Destroy (gameObject);
 				}
 				gameMusic.Play ();
+				paused = false;
 		}
 
 
@@ -103,8 +105,12 @@ public class GameControl : MonoBehaviour
 		}
 	#endregion
 
-	#region game data change
+	#region game data access
 
+		/// <summary>
+		/// Unlocks the level.
+		/// </summary>
+		/// <param name="level">Level.</param>
 		public void UnlockLevel (int level)
 		{
 				Load ();
@@ -114,12 +120,17 @@ public class GameControl : MonoBehaviour
 				Save ();
 		}
 
-	#endregion
-
-	#region game data read
-
+		/// <summary>
+		/// Gets the highest unlock.
+		/// </summary>
+		/// <value>The highest unlock.</value>
 		public int HighestUnlock {
 				get { return highestUnlock;}
+		}
+
+		public bool Paused {
+				get { return paused; }
+				set { paused = value; }
 		}
 
 
