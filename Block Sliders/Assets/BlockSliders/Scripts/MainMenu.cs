@@ -37,7 +37,7 @@ public class MainMenu : MonoBehaviour
 
 		public void changeCanvas (int canvas)
 		{
-				displayCanvas.enabled = false;
+				//displayCanvas.enabled = false;
 				if (canvas == 0) {
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
