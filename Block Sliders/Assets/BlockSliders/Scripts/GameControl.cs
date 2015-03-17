@@ -213,7 +213,7 @@ public class GameControl : MonoBehaviour
 		
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
-				SaveData data = new SaveData (PlayerPrefs.GetInt ("2"), PlayerPrefs.GetInt ("3"), ramAmount, 1);
+				SaveData data = new SaveData (2, 3, ramAmount, 1);
 
 				formatter.Serialize (stream, data);
 		

@@ -25,19 +25,20 @@ public class MainMenu : MonoBehaviour
 		void Awake ()
 		{
 				displayCanvas = mainCanvas;
+				displayCanvas.enabled = true;
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-				if (Application.isLoadingLevel) {
-						displayCanvas = mainCanvas;
-				}
+//				if (Application.isLoadingLevel) {
+//						displayCanvas = mainCanvas;
+//				}
 		}
 
 		public void changeCanvas (int canvas)
 		{
-				//displayCanvas.enabled = false;
+				displayCanvas.enabled = false;
 				if (canvas == 0) {
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
@@ -59,7 +60,7 @@ public class MainMenu : MonoBehaviour
 						blockspeedSlider.value = PlayerPrefs.GetInt ("BlockSpeedPref");
 						playerspeedSlider.value = PlayerPrefs.GetInt ("PlayerSpeedPref");
 						displayCanvas = optionsCanvas;
-						//	displayCanvas.enabled = true;
+						displayCanvas.enabled = true;
 				}
 				if (canvas == 3) {
 						displayCanvas.enabled = false;
@@ -67,7 +68,7 @@ public class MainMenu : MonoBehaviour
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
 						displayCanvas = levelcanvas;
-						//	displayCanvas.enabled = true;
+						displayCanvas.enabled = true;
 				}
 				if (canvas == 4) {
 						displayCanvas.enabled = false;
@@ -83,7 +84,7 @@ public class MainMenu : MonoBehaviour
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
 						displayCanvas = creditscanvas;
-						//	displayCanvas.enabled = true;
+						displayCanvas.enabled = true;
 				}
 				if (canvas == 6) {
 						displayCanvas.enabled = false;
@@ -91,7 +92,7 @@ public class MainMenu : MonoBehaviour
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
 						displayCanvas = leaderboardcanvas;
-						//displayCanvas.enabled = true;
+						displayCanvas.enabled = true;
 				}
 		}
 }

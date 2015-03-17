@@ -7,7 +7,7 @@ public class PauseMenu : MonoBehaviour
 		public Canvas menuCanvas;
 		public Canvas helpCanvas;
 		public Canvas optionsCanvas;
-		public string currentLevel;
+		//	public string currentLevel;
 		public bool paused;
 
 		private Canvas displayCanvas;
