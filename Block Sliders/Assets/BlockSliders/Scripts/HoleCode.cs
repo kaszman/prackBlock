@@ -28,12 +28,6 @@ public class HoleCode : MonoBehaviour
 				if (!filled) {
 						handleCollisionEvents ();
 				}
-
-//what to do if the hole is filled
-				if (filled) {
-						//make hole walkable
-						ownerObject.GetComponent<Collider2D> ().enabled = false;
-				}
 		}
 	
 		/// <summary>
@@ -41,26 +35,29 @@ public class HoleCode : MonoBehaviour
 		/// </summary>
 		void handleCollisionEvents ()
 		{
-				//if the object is a moveable block
-				if (collisionObject.tag == "Enemy") {	
-						//destroy the offencing object
-						Destroy (collisionObject);
-
-						//set filled to true
-						filled = true;
-
-						//change the sprite to a filled hole
-						ownerRenderer.sprite = filledHoleSprite;
-
-
-
-				}
-		
-		//if the object is a player, (restart? move back before hole?)
-		else if (collisionObject.tag == "Player") {
-						//Reset the level
-						Application.LoadLevel (currentSceneName);
-				}
+//				//if the object is a moveable block
+//				if (collisionObject.tag == "Enemy") {	
+//						//destroy the offencing object
+//						Destroy (collisionObject);
+//
+//						//set filled to true
+//						filled = true;
+//
+//						//change the sprite to a filled hole
+//						ownerRenderer.sprite = filledHoleSprite;
+//
+//						if (filled) {
+//								//make hole walkable
+//								ownerObject.GetComponent<Collider2D> ().enabled = false;
+//						}
+//
+//				}
+//		
+//		//if the object is a player, (restart? move back before hole?)
+//		else if (collisionObject.tag == "Player") {
+//						//Reset the level
+//						Application.LoadLevel (currentSceneName);
+//				}
 		}
 
 		/// <summary>
@@ -69,7 +66,28 @@ public class HoleCode : MonoBehaviour
 		/// <param name="col">Col.</param>
 		void OnCollisionEnter2D (Collision2D col)
 		{			
-				//collisionObject = new GameObject();
-				collisionObject = col.gameObject;
+				//if the object is a moveable block
+				if (col.gameObject.tag == "Enemy") {	
+						//destroy the offencing object
+						Destroy (col.gameObject);
+			
+						//set filled to true
+						filled = true;
+			
+						//change the sprite to a filled hole
+						ownerRenderer.sprite = filledHoleSprite;
+			
+						if (filled) {
+								//make hole walkable
+								ownerObject.GetComponent<Collider2D> ().enabled = false;
+						}
+			
+				}
+		
+		//if the object is a player, (restart? move back before hole?)
+		else if (col.gameObject.tag == "Player") {
+						//Reset the level
+						Application.LoadLevel (currentSceneName);
+				}
 		}
 }

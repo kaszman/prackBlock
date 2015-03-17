@@ -19,6 +19,7 @@ public class GameControl : MonoBehaviour
 		private int highestUnlock;
 		private SaveData data = new SaveData ();
 		private bool paused;
+		private bool pausedMenu;
 
 		//runs on game start
 		void Awake ()
@@ -80,7 +81,6 @@ public class GameControl : MonoBehaviour
 
 		public int RamAmount {
 				get { 
-						//	Load ();
 						return ramAmount; 
 				}
 				set {
@@ -92,16 +92,19 @@ public class GameControl : MonoBehaviour
 		private void ApplyChanges (String variableName, int intValue)
 		{
 				PlayerPrefs.SetInt (variableName, intValue);
+				Save ();
 		}
 
 		private void ApplyChanges (String variableName, float floatValue)
 		{
 				PlayerPrefs.SetFloat (variableName, floatValue);
+				Save ();
 		}
 
 		private void ApplyChanges (String variableName, String stringValue)
 		{
 				PlayerPrefs.SetString (variableName, stringValue);
+				Save ();
 		}
 	#endregion
 
@@ -128,11 +131,19 @@ public class GameControl : MonoBehaviour
 				get { return highestUnlock;}
 		}
 
+		/// <summary>
+		/// Gets or sets the game paused state.
+		/// </summary>
+		/// <value><c>true</c> if paused; otherwise, <c>false</c>.</value>
 		public bool Paused {
 				get { return paused; }
 				set { paused = value; }
 		}
 
+		public bool PausedMenu {
+				get { return pausedMenu; }
+				set { pausedMenu = value; }
+		}
 
 		/// <summary>
 		/// Checks if level is unlocked

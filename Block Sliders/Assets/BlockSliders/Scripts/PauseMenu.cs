@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
 	
 		void Update ()
 		{
-				if (GameControl.control.Paused) {
+				if (GameControl.control.PausedMenu) {
 						displayCanvas.enabled = true;
 				} else {
 						displayCanvas.enabled = false;
@@ -35,6 +35,7 @@ public class PauseMenu : MonoBehaviour
 
 				if (Input.GetKeyDown (KeyCode.Escape)) {
 						GameControl.control.Paused = true;
+						GameControl.control.PausedMenu = true;
 				}
 		}
 
@@ -57,6 +58,7 @@ public class PauseMenu : MonoBehaviour
 		public void pauseState (bool pausedOrNot)
 		{
 				GameControl.control.Paused = pausedOrNot;
+				GameControl.control.PausedMenu = pausedOrNot;
 		}
 
 		/// <summary>
