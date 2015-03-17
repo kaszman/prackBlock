@@ -4,76 +4,75 @@ using UnityEngine.UI;
 
 public class PlayerBehavior : MonoBehaviour
 {
-		public SpriteRenderer player;
-		public string tagCanCollide;
-		public int timerLengthSec;
-		public Text ramDisplay;
 
-		protected bool ramming = false;
+	public SpriteRenderer player;
+	public string tagCanCollide;
+	public int timerLengthSec;
+	public Text ramDisplay;
 
-		private GameObject coco;
-		private LevelSelect selector;
-		private float timerRam;
-		private int ramAmount;
+	protected bool ramming = false;
 
-		void Start ()
+	private GameObject coco;
+	private LevelSelect selector;
+	private float timerRam;
+	private int ramAmount;
+
+	void Start()
+	{
+		ramAmount = 5;
+		if (Application.isMobilePlatform)
 		{
-				GameControl.control.Paused = false;
-				ramAmount = 5;
-				if (Application.isMobilePlatform) {
-						ramDisplay.canvas.scaleFactor = 3f;
-				}
+			ramDisplay.canvas.scaleFactor = 3f;
 		}
+	}
 
-		//pause control
-		void Update ()
+	void FixedUpdate()
+	{		
+		timerRam -= Time.deltaTime;
+
+		if (timerRam <= 0)
 		{
-				if (GameControl.control.Paused == true) {
-						Time.timeScale = .00001f;
-				} else {
-						Time.timeScale = 1f;
-				}
-		}
-		void FixedUpdate ()
-		{		
-				timerRam -= Time.deltaTime;
-
-				if (timerRam <= 0) {
-						ramming = false;
-						player.color = Color.white;
-				}
-
-				player.color = Color.white;
-
-				//start ramming
-				if (Input.GetKeyDown (KeyCode.E) && timerRam <= 0 && ramAmount > 0) {	
-						ramming = true;
-						timerRam = timerLengthSec;
-						ramAmount -= 1;
-				}
-
-				if (ramming == true) {
-						player.color = Color.blue;
-				}
-
-				handleCollisionEvents ();
-				ramDisplay.text = "Rams: " + ramAmount;
+			ramming = false;
+			player.color = Color.white;
 		}
 
-		void OnCollisionEnter2D (Collision2D col)
-		{			
-				if (ramming) {
-						coco = col.gameObject;
-				}
+		player.color = Color.white;
+
+		//start ramming
+		if (Input.GetKeyDown(KeyCode.E) && timerRam <= 0 && ramAmount > 0)
+		{	
+			ramming = true;
+			timerRam = timerLengthSec;
+			ramAmount -= 1;
 		}
 
-		void handleCollisionEvents ()
+		if (ramming == true)
 		{
-				if (ramming) {
-						if (coco.tag == tagCanCollide) {
-								Destroy (coco);
-								ramming = false;
-						}
-				}
+			player.color = Color.blue;
 		}
+
+		handleCollisionEvents();
+		ramDisplay.text = "Rams: " + ramAmount;
+	}
+
+void OnCollisionEnter2D(Collision2D col) 
+	{			
+		if (ramming)
+		{
+			coco = col.gameObject;
+		}
+		//Destroy(col.gameObject);
+	}
+
+void handleCollisionEvents()
+	{
+		if (ramming)
+		{
+			if (coco.tag == tagCanCollide)
+			{
+			Destroy(coco);
+			ramming = false;
+			}
+		}
+	}
 }

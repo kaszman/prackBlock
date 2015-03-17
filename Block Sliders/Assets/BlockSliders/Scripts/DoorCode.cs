@@ -11,16 +11,23 @@ public class DoorCode : MonoBehaviour
 		//collision object
 		private GameObject collisionObject;
 		protected bool doorSoundStarted;
+		private bool paused;
 
 		void Start ()
 		{	
 				doorSoundStarted = false;
+				paused = false;
 		}
 
 		//update method only used for sound cause it's stupid
 		void Update ()
 		{
 				handleCollisionEvents ();
+
+				//control game speed
+				if (paused) { 
+						Time.timeScale = 0;
+				}
 		}
 
 		// Update is called once per frame
@@ -35,18 +42,15 @@ public class DoorCode : MonoBehaviour
 		void handleCollisionEvents ()
 		{
 				//if the object is a player, move to the next level and play sound
-				if (collisionObject.tag == "Player") {
+				if (collisionObject.tag == "Player") {			
+						paused = true;
 						if (!playerCollide.isPlaying) {
 								if (doorSoundStarted == true) {
 										GameControl.control.UnlockLevel (nextScene);
-										if (nextScene == 0) {
-												Application.LoadLevel ("Menu");
-										} else {
-												Application.LoadLevel ("Lvl" + nextScene.ToString ());
-										}
+										Application.LoadLevel ("Lvl" + nextScene.ToString ());
 										GameControl.control.Save ();
 								}	
-								playerCollide.Play ();
+								playerCollide.Play ();	
 						}			
 						doorSoundStarted = true;
 
