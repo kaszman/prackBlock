@@ -5,12 +5,12 @@ using UnityEngine.UI;
 public class ButtonScale : MonoBehaviour
 {
 		public Text drawText;
-		private int counter;
+//		private int counter;
 
 		// Use this for initialization
 		void Start ()
 		{
-				counter = GameControl.control.HighestUnlock;
+				//	counter = GameControl.control.HighestUnlock;
 		}
 	
 		// Update is called once per frame

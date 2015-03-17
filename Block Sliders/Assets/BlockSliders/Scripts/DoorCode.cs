@@ -47,7 +47,7 @@ public class DoorCode : MonoBehaviour
 						if (!playerCollide.isPlaying) {
 								if (doorSoundStarted == true) {
 										GameControl.control.UnlockLevel (nextScene);
-										GameControl.control.ChangeLevel (nextScene);
+										Application.LoadLevel ("Lvl" + nextScene.ToString ());
 										GameControl.control.Save ();
 								}	
 								playerCollide.Play ();	

@@ -3,7 +3,12 @@ using System.Collections;
 
 public class LevelSelect : MonoBehaviour
 {
+		public static LevelSelect select;
 
+		/// <summary>
+		/// Changes the level to selected level if it is unlocked.
+		/// </summary>
+		/// <param name="toLevel">To level.</param>
 		public void ChangeLevel (int toLevel)
 		{
 				if (isLevelUnlocked (toLevel)) {
@@ -15,6 +20,24 @@ public class LevelSelect : MonoBehaviour
 				}
 		}
 
+		/// <summary>
+		/// Resumes the game based on farthest unlock
+		/// </summary>
+		public void ResumeGame ()
+		{
+				GameControl.control.Load ();
+				ChangeLevel (GameControl.control.HighestUnlock);
+		}
+
+		/// <summary>
+		/// Starts a new game;
+		/// </summary>
+		public void NewGame ()
+		{
+				GameControl.control.NewGame ();
+				Application.LoadLevel ("Lvl1");
+		}
+
 		private bool isLevelUnlocked (int level)
 		{
 				if (level <= GameControl.control.HighestUnlock) {
@@ -23,4 +46,6 @@ public class LevelSelect : MonoBehaviour
 						return false;
 				}
 		}
+
+
 }

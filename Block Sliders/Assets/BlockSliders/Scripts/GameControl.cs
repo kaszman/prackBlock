@@ -122,30 +122,6 @@ public class GameControl : MonoBehaviour
 				get { return highestUnlock;}
 		}
 
-	#endregion
-
-	#region methods
-
-		public void ResumeGame ()
-		{
-				Load ();
-				ChangeLevel (highestUnlock);
-		}
-
-		/// <summary>
-		/// Changes the level.
-		/// </summary>
-		/// <param name="toLevel">To level.</param>
-		public void ChangeLevel (int toLevel)
-		{
-				if (isLevelUnlocked (toLevel)) {
-						if (toLevel == 0) {
-								Application.LoadLevel ("Menu");
-						} else {
-								Application.LoadLevel ("Lvl" + toLevel.ToString ());
-						}
-				}
-		}
 
 		/// <summary>
 		/// Checks if level is unlocked
@@ -226,7 +202,7 @@ public class GameControl : MonoBehaviour
 		
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
-				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, 1);
+				SaveData data = new SaveData (PlayerPrefs.GetInt ("2"), PlayerPrefs.GetInt ("3"), ramAmount, 1);
 
 				formatter.Serialize (stream, data);
 		
