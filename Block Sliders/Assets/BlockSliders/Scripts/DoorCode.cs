@@ -44,12 +44,11 @@ public class DoorCode : MonoBehaviour
 										} else {
 												Application.LoadLevel ("Lvl" + nextScene.ToString ());
 										}
-										GameControl.control.Save ();
 								}	
 								playerCollide.Play ();
 						}			
 						doorSoundStarted = true;
-
+						GameControl.control.Save ();
 				}
 		}
 	
