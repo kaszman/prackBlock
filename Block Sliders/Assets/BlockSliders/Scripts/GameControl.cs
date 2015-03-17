@@ -10,7 +10,10 @@ public class GameControl : MonoBehaviour
 {
 		//variables
 		public static GameControl control;
-		public AudioSource gameMusic;
+		public AudioSource cupidMusic;
+		public AudioSource frogMusic;
+		public AudioSource eyedMusic;
+		public AudioSource marchMusic;
 
 		//options variables
 		private int blockSpeedPref;
@@ -20,10 +23,12 @@ public class GameControl : MonoBehaviour
 		private SaveData data = new SaveData ();
 		private bool paused;
 		private bool pausedMenu;
+		private AudioSource gameMusic;
 
 		//runs on game start
 		void Awake ()
 		{
+				gameMusic = cupidMusic;
 				//do this if the game has never been saved
 				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
 						NewGame ();
@@ -109,6 +114,11 @@ public class GameControl : MonoBehaviour
 	#endregion
 
 	#region game data access
+
+//	public void GameMusic
+//	{
+//
+//	}
 
 		/// <summary>
 		/// Unlocks the level.
