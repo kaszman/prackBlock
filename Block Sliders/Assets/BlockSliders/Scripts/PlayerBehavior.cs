@@ -46,7 +46,7 @@ public class PlayerBehavior : MonoBehaviour
 				player.color = Color.white;
 
 				//start ramming
-				if (Input.GetKeyDown (KeyCode.E) && timerRam <= 0 && ramAmount > 0) {	
+				if ((Input.GetKeyDown (KeyCode.E) || Input.touchCount == 2) && timerRam <= 0 && ramAmount > 0) {
 						ramming = true;
 						timerRam = timerLengthSec;
 						ramAmount -= 1;
@@ -56,23 +56,16 @@ public class PlayerBehavior : MonoBehaviour
 						player.color = Color.blue;
 				}
 
-				handleCollisionEvents ();
 				ramDisplay.text = "Rams: " + ramAmount;
 		}
 
 		void OnCollisionEnter2D (Collision2D col)
 		{			
 				if (ramming) {
-						coco = col.gameObject;
-				}
-		}
-
-		void handleCollisionEvents ()
-		{
-				if (ramming) {
-						if (coco.tag == tagCanCollide) {
-								Destroy (coco);
+						if (col.gameObject.tag == tagCanCollide) {
+								Destroy (col.gameObject);
 								ramming = false;
+								timerRam = 0;
 						}
 				}
 		}

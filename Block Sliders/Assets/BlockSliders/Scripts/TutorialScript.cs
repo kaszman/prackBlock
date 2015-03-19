@@ -51,9 +51,9 @@ public class TutorialScript : MonoBehaviour
 						break;			
 				case 6:
 						if (Application.isMobilePlatform) {
-								tutorialText.text = "";
+								tutorialText.text = "You may need to ram some blocks, touch the screen with two fingers to initiate ramming";
 						} else {
-								tutorialText.text = "";
+								tutorialText.text = "You may need to ram some blocks, press E to initiate ramming";
 						}
 						break;
 				}
