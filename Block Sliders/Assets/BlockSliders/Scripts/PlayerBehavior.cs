@@ -51,7 +51,6 @@ public class PlayerBehavior : MonoBehaviour
 				if ((Input.GetKeyDown (KeyCode.E) || Input.touchCount == 2) && timerRam <= 0 && GameControl.control.RamAmount > 0) {
 						ramming = true;
 						timerRam = timerLengthSec;
-						GameControl.control.RamAmount -= 1;
 				}
 
 				if (ramming == true) {
@@ -66,6 +65,7 @@ public class PlayerBehavior : MonoBehaviour
 				if (ramming) {
 						if (col.gameObject.tag == tagCanCollide) {
 								Destroy (col.gameObject);
+								GameControl.control.RamAmount -= 1;
 								ramming = false;
 								timerRam = 0;
 						}
