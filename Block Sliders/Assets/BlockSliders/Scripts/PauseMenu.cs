@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
 	
 		void Update ()
 		{
-				if (GameControl.control.PausedMenu) {
+				if (GameControl.control.PausedMenu && GameControl.control.Paused) {
 						displayCanvas.enabled = true;
 				} else {
 						displayCanvas.enabled = false;

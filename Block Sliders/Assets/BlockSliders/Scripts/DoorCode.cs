@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DoorCode : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class DoorCode : MonoBehaviour
 		//parameters recieved from the game
 		public int nextScene;
 		public AudioSource playerCollide;
+		public Slider loadingSlider;
+		public Canvas successCanv;
 
 		//collision object
 		private GameObject collisionObject;
@@ -17,15 +20,24 @@ public class DoorCode : MonoBehaviour
 				doorSoundStarted = false;
 		}
 
+		void FixedUpdate ()
+		{
+
+		}
+
 		//update method only used for sound cause it's stupid
 		void Update ()
 		{
+				if (doorSoundStarted && GameControl.control.paused == true) {
+						loadingSlider.value = loadingSlider.value + .05f;
+						successCanv.enabled = true;
+				} else {
+						loadingSlider.value = 0;
+						successCanv.enabled = false;
+				}
 				if (!playerCollide.isPlaying) {
-						if (doorSoundStarted == true) {					
-								GameControl.control.Save ();
-
+						if (doorSoundStarted == true) {	
 								//Time.timeScale = 1f;
-								GameControl.control.UnlockLevel (nextScene);
 								GameControl.control.Paused = false;
 								if (nextScene == 0) {
 										Application.LoadLevel ("Menu");
@@ -39,13 +51,6 @@ public class DoorCode : MonoBehaviour
 				}
 		}
 
-		// Update is called once per frame
-		void FixedUpdate ()
-		{
-
-
-
-		}
 
 
 		void handleCollisionEvents ()
@@ -92,6 +97,8 @@ public class DoorCode : MonoBehaviour
 //						}		
 						playerCollide.Play ();
 						doorSoundStarted = true;
+						GameControl.control.UnlockLevel (nextScene);
+						GameControl.control.Save ();
 						GameControl.control.Paused = true;
 				}
 		}

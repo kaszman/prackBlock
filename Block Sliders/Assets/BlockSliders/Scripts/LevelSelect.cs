@@ -18,6 +18,7 @@ public class LevelSelect : MonoBehaviour
 								Application.LoadLevel ("Lvl" + toLevel.ToString ());
 						}
 				}
+				GameControl.control.Save ();
 		}
 
 		/// <summary>
@@ -25,7 +26,7 @@ public class LevelSelect : MonoBehaviour
 		/// </summary>
 		public void ResumeGame ()
 		{
-				GameControl.control.Load ();
+				//GameControl.control.Load ();
 				ChangeLevel (GameControl.control.HighestUnlock);
 		}
 
@@ -35,6 +36,8 @@ public class LevelSelect : MonoBehaviour
 		public void NewGame ()
 		{
 				GameControl.control.NewGame ();
+				GameControl.control.Save ();
+				GameControl.control.UnlockLevel (1);
 				Application.LoadLevel ("Lvl1");
 		}
 

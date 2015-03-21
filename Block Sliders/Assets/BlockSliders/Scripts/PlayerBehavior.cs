@@ -14,15 +14,17 @@ public class PlayerBehavior : MonoBehaviour
 		private GameObject coco;
 		private LevelSelect selector;
 		private float timerRam;
-		private int ramAmount;
 
 		void Start ()
 		{
 				GameControl.control.Paused = false;
-				ramAmount = 5;
+				GameControl.control.PausedMenu = false;
+				GameControl.control.RamAmount = 5;
 				if (Application.isMobilePlatform) {
 						ramDisplay.canvas.scaleFactor = 3f;
 				}
+				GameControl.control.Save ();
+				GameControl.control.Load ();
 		}
 
 		//pause control
@@ -46,17 +48,17 @@ public class PlayerBehavior : MonoBehaviour
 				player.color = Color.white;
 
 				//start ramming
-				if ((Input.GetKeyDown (KeyCode.E) || Input.touchCount == 2) && timerRam <= 0 && ramAmount > 0) {
+				if ((Input.GetKeyDown (KeyCode.E) || Input.touchCount == 2) && timerRam <= 0 && GameControl.control.RamAmount > 0) {
 						ramming = true;
 						timerRam = timerLengthSec;
-						ramAmount -= 1;
+						GameControl.control.RamAmount -= 1;
 				}
 
 				if (ramming == true) {
 						player.color = Color.blue;
 				}
 
-				ramDisplay.text = "Rams: " + ramAmount;
+				ramDisplay.text = "Rams: " + GameControl.control.RamAmount;
 		}
 
 		void OnCollisionEnter2D (Collision2D col)

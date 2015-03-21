@@ -38,6 +38,8 @@ public class MainMenu : MonoBehaviour
 
 		public void changeCanvas (int canvas)
 		{
+				GameControl.control.Save ();
+				GameControl.control.Load ();
 				displayCanvas.enabled = false;
 				if (canvas == 0) {
 						blockspeedSlider.enabled = false;
@@ -72,7 +74,6 @@ public class MainMenu : MonoBehaviour
 				}
 				if (canvas == 4) {
 						displayCanvas.enabled = false;
-
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
 						displayCanvas = playcanvas;

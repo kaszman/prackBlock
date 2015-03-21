@@ -16,14 +16,14 @@ public class GameControl : MonoBehaviour
 		public AudioSource marchMusic;
 
 		//options variables
-		private int blockSpeedPref;
-		private int playerSpeedPref;
-		private int ramAmount;
-		private int highestUnlock;
-		private SaveData data = new SaveData ();
-		private bool paused;
-		private bool pausedMenu;
-		private AudioSource gameMusic;
+		public int blockSpeedPref;
+		public int playerSpeedPref;
+		public int ramAmount;
+		public int highestUnlock = 1;
+		public SaveData data = new SaveData ();
+		public bool paused;
+		public bool pausedMenu;
+		public AudioSource gameMusic;
 
 		//runs on game start
 		void Awake ()
@@ -31,7 +31,7 @@ public class GameControl : MonoBehaviour
 				gameMusic = cupidMusic;
 				//do this if the game has never been saved
 				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
-						NewGame ();
+						//	NewGame ();
 				} else {
 						Load ();
 				}
@@ -58,6 +58,7 @@ public class GameControl : MonoBehaviour
 						Screen.orientation = ScreenOrientation.LandscapeLeft;
 						Screen.sleepTimeout = SleepTimeout.NeverSleep;
 				}
+				Save ();
 		}
 	
 		// Update is called once per frame
@@ -126,7 +127,6 @@ public class GameControl : MonoBehaviour
 		/// <param name="level">Level.</param>
 		public void UnlockLevel (int level)
 		{
-				Load ();
 				if (level > HighestUnlock) {
 						highestUnlock = level;
 				}
@@ -183,7 +183,7 @@ public class GameControl : MonoBehaviour
 		
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
-				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, HighestUnlock);
+				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, highestUnlock);
 
 				formatter.Serialize (stream, data);
 		
@@ -254,7 +254,7 @@ public class GameControl : MonoBehaviour
 
 //class to hold save data.
 [Serializable]
-class SaveData
+public class SaveData
 {
 		public int blockSpeedPref;
 		public int playerSpeedPref;
