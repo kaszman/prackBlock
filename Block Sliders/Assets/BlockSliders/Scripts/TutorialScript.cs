@@ -56,6 +56,9 @@ public class TutorialScript : MonoBehaviour
 								tutorialText.text = "You may need to ram some blocks, press E to initiate ramming";
 						}
 						break;
+				case 9:
+						tutorialText.text = "Acid holes will destroy blocks and harm you";
+						break;
 				}
 		}
 

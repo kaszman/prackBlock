@@ -8,12 +8,14 @@ public class PlayerBehavior : MonoBehaviour
 		public string tagCanCollide;
 		public int timerLengthSec;
 		public Text ramDisplay;
+		public Text timerDisplay;
 
 		protected bool ramming = false;
 
 		private GameObject coco;
 		private LevelSelect selector;
 		private float timerRam;
+		private float levelTime;
 
 		void Start ()
 		{
@@ -31,7 +33,7 @@ public class PlayerBehavior : MonoBehaviour
 		void Update ()
 		{
 				if (GameControl.control.Paused == true) {
-						Time.timeScale = .00001f;
+						Time.timeScale = .0000001f;
 				} else {
 						Time.timeScale = 1f;
 				}
@@ -39,6 +41,7 @@ public class PlayerBehavior : MonoBehaviour
 		void FixedUpdate ()
 		{		
 				timerRam -= Time.deltaTime;
+				levelTime += Time.deltaTime;
 
 				if (timerRam <= 0) {
 						ramming = false;
@@ -56,7 +59,7 @@ public class PlayerBehavior : MonoBehaviour
 				if (ramming == true) {
 						player.color = Color.blue;
 				}
-
+				timerDisplay.text = levelTime.ToString ("000.0");
 				ramDisplay.text = "Rams: " + GameControl.control.RamAmount;
 		}
 
@@ -70,5 +73,10 @@ public class PlayerBehavior : MonoBehaviour
 								timerRam = 0;
 						}
 				}
+		}
+
+		public float getTime ()
+		{
+				return levelTime;
 		}
 }

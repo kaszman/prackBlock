@@ -19,19 +19,21 @@ public class GameControl : MonoBehaviour
 		public int blockSpeedPref;
 		public int playerSpeedPref;
 		public int ramAmount;
+
+		//save variables
 		public int highestUnlock = 1;
 		public SaveData data = new SaveData ();
 		public bool paused;
 		public bool pausedMenu;
-		public AudioSource gameMusic;
+		private AudioSource gameMusic;
+		public float[,] scoreData;
 
 		//runs on game start
 		void Awake ()
 		{
-				gameMusic = cupidMusic;
 				//do this if the game has never been saved
 				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
-						//	NewGame ();
+						NewGame ();
 				} else {
 						Load ();
 				}
@@ -43,8 +45,8 @@ public class GameControl : MonoBehaviour
 				} else if (control != this) {
 						Destroy (gameObject);
 				}
-				gameMusic.Play ();
 				paused = false;
+				gameMusic = cupidMusic;
 		}
 
 
@@ -59,14 +61,41 @@ public class GameControl : MonoBehaviour
 						Screen.sleepTimeout = SleepTimeout.NeverSleep;
 				}
 				Save ();
+
 		}
 	
 		// Update is called once per frame
 		void FixedUpdate ()
 		{
+				ControlMusic ();
+		}
+
+	#region Music Method
+		protected void ControlMusic ()
+		{
+				if (!gameMusic.isPlaying) {
+						int whatToPlay = UnityEngine.Random.Range (1, 4);
+						switch (whatToPlay) {
+						case 1:
+								gameMusic = cupidMusic;
+								break;
+						case 2:
+								gameMusic = frogMusic;
+								break;
+						case 3:
+								gameMusic = eyedMusic;
+								break;
+						case 4:
+								gameMusic = marchMusic;
+								break;
+						}
+						gameMusic.Play ();
+				}
 
 		}
 
+
+	#endregion
 
 	#region player preference changes
 		public int BlockSpeedPref {
@@ -155,6 +184,17 @@ public class GameControl : MonoBehaviour
 				set { pausedMenu = value; }
 		}
 
+		public float[] GetScoreData (int level)
+		{
+				float[] temp = new float[5];
+				temp [0] = scoreData [level, 0];
+				temp [1] = scoreData [level, 1];
+				temp [2] = scoreData [level, 2];
+				temp [3] = scoreData [level, 3];
+				temp [4] = scoreData [level, 4];
+				return temp;
+		}
+
 		/// <summary>
 		/// Checks if level is unlocked
 		/// </summary>
@@ -168,7 +208,7 @@ public class GameControl : MonoBehaviour
 						return false;
 				}
 		}
-	
+
 	#endregion
 	
 	#region game data save/load/new
@@ -183,7 +223,7 @@ public class GameControl : MonoBehaviour
 		
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
-				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, highestUnlock);
+				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, highestUnlock, scoreData);
 
 				formatter.Serialize (stream, data);
 		
@@ -221,6 +261,7 @@ public class GameControl : MonoBehaviour
 				PlayerSpeedPref = data.playerSpeedPref;
 				ramAmount = data.ramAmount;
 				highestUnlock = data.highestUnlock;
+				scoreData = data.scoreData;
 		}
 
 		/// <summary>
@@ -234,7 +275,9 @@ public class GameControl : MonoBehaviour
 		
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
-				SaveData data = new SaveData (2, 3, ramAmount, 1);
+				int hold = Application.levelCount - 2;
+
+				SaveData data = new SaveData (2, 3, ramAmount, 1, new float[hold, 5]);
 
 				formatter.Serialize (stream, data);
 		
@@ -260,16 +303,17 @@ public class SaveData
 		public int playerSpeedPref;
 		public int ramAmount;
 		public int highestUnlock;
+		public float[,] scoreData;
 
 		public SaveData ()
 		{
 		}
-		public SaveData (int bsp, int psp, int ra, int hu)
+		public SaveData (int bsp, int psp, int ra, int hu, float[,] ld)
 		{
 				this.blockSpeedPref = bsp;
 				this.playerSpeedPref = psp;
 				this.ramAmount = ra;
 				this.highestUnlock = hu;
+				scoreData = ld;
 		}
-
 }

@@ -6,7 +6,6 @@ public class HoleCode : MonoBehaviour
 
 		//parameters recieved from the game
 		public GameObject ownerObject;
-		public Camera controlObj;
 		public SpriteRenderer ownerRenderer;	
 		public Sprite filledHoleSprite;	
 		public string currentSceneName;

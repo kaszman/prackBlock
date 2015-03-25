@@ -8,7 +8,7 @@ public class DoorCode : MonoBehaviour
 		//parameters recieved from the game
 		public int nextScene;
 		public AudioSource playerCollide;
-		public Slider loadingSlider;
+		//public Slider loadingSlider;
 		public Canvas successCanv;
 
 		//collision object
@@ -29,21 +29,22 @@ public class DoorCode : MonoBehaviour
 		void Update ()
 		{
 				if (doorSoundStarted && GameControl.control.paused == true) {
-						loadingSlider.value = loadingSlider.value + .05f;
+						//loadingSlider.value = loadingSlider.value + .05f;
 						successCanv.enabled = true;
 				} else {
-						loadingSlider.value = 0;
+						//loadingSlider.value = 0;
 						successCanv.enabled = false;
 				}
 				if (!playerCollide.isPlaying) {
 						if (doorSoundStarted == true) {	
 								//Time.timeScale = 1f;
-								GameControl.control.Paused = false;
+								//GameControl.control.Paused = false;
 								if (nextScene == 0) {
 										Application.LoadLevel ("Menu");
-								} else {
-										Application.LoadLevel ("Lvl" + nextScene.ToString ());
 								}
+//				else {
+//										Application.LoadLevel ("Lvl" + nextScene.ToString ());
+//								}
 						}	
 						//what to do when the player hits the door
 						//playerCollide.Play ();			
