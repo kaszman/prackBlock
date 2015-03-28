@@ -26,7 +26,7 @@ public class GameControl : MonoBehaviour
 		public bool paused;
 		public bool pausedMenu;
 		private AudioSource gameMusic;
-		public float[,] scoreData;
+		public float[,] scoreData = new float[12, 5];
 
 		//runs on game start
 		void Awake ()
@@ -62,6 +62,16 @@ public class GameControl : MonoBehaviour
 				}
 				Save ();
 
+				int hold = Application.levelCount - 1;
+		
+//				float[,] temp = new float[hold, 5];
+				for (int i = 0; i < 12; i++) {
+						for (int j = 0; j < 5; j++) {
+								string temp = i.ToString () + " " + j.ToString ();
+								Debug.Log (temp);
+								scoreData [i, j] = i;
+						}
+				}
 		}
 	
 		// Update is called once per frame
@@ -70,11 +80,25 @@ public class GameControl : MonoBehaviour
 				ControlMusic ();
 		}
 
+	#region LeaderBoard methods
+
+		/// <summary>
+		/// A method to sort the leaderboard and insert the given time in the propper place.
+		/// </summary>
+		/// <param name="finalTime">Final time.</param>
+		/// <param name="LevelID">Level.</param>
+		public void addLeaderboardTime (float finalTime, int LevelID)
+		{
+				//float[] levelData = 1;
+		}
+
+	#endregion
+
 	#region Music Method
 		protected void ControlMusic ()
 		{
 				if (!gameMusic.isPlaying) {
-						int whatToPlay = UnityEngine.Random.Range (1, 4);
+						int whatToPlay = UnityEngine.Random.Range (1, 5);
 						switch (whatToPlay) {
 						case 1:
 								gameMusic = cupidMusic;
@@ -184,15 +208,9 @@ public class GameControl : MonoBehaviour
 				set { pausedMenu = value; }
 		}
 
-		public float[] GetScoreData (int level)
+		public float[,] GetScoreData ()
 		{
-				float[] temp = new float[5];
-				temp [0] = scoreData [level, 0];
-				temp [1] = scoreData [level, 1];
-				temp [2] = scoreData [level, 2];
-				temp [3] = scoreData [level, 3];
-				temp [4] = scoreData [level, 4];
-				return temp;
+				return scoreData;
 		}
 
 		/// <summary>
@@ -277,7 +295,14 @@ public class GameControl : MonoBehaviour
 				formatter.Binder = new VersionDeserializationBinder ();
 				int hold = Application.levelCount - 2;
 
-				SaveData data = new SaveData (2, 3, ramAmount, 1, new float[hold, 5]);
+				float[,] temp = new float[hold, 5];
+				for (int i = 0; i < hold; i++) {
+						for (int j = 0; j < 4; j++) {
+								temp [i, j] = j;
+						}
+				}
+
+				SaveData data = new SaveData (2, 3, ramAmount, 1, temp);
 
 				formatter.Serialize (stream, data);
 		
@@ -285,6 +310,8 @@ public class GameControl : MonoBehaviour
 		}
 
 	#endregion
+
+
 		/* SetEnvironmentVariables required to avoid run-time code generation that will break iOS compatibility
  	 * Suggested by Nico de Poel:
 	 * http://answers.unity3d.com/questions/30930/why-did-my-binaryserialzer-stop-working.html?sort=oldest

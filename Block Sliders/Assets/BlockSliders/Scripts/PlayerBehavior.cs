@@ -9,6 +9,9 @@ public class PlayerBehavior : MonoBehaviour
 		public int timerLengthSec;
 		public Text ramDisplay;
 		public Text timerDisplay;
+		public Text finalTimeDisplay;
+		public Text scoreBoard;
+		public int levelNumber;
 
 		protected bool ramming = false;
 
@@ -16,6 +19,7 @@ public class PlayerBehavior : MonoBehaviour
 		private LevelSelect selector;
 		private float timerRam;
 		private float levelTime;
+		private float finalTime;
 
 		void Start ()
 		{
@@ -61,6 +65,10 @@ public class PlayerBehavior : MonoBehaviour
 				}
 				timerDisplay.text = levelTime.ToString ("000.0");
 				ramDisplay.text = "Rams: " + GameControl.control.RamAmount;
+				float[,] temp = GameControl.control.GetScoreData ();
+				scoreBoard.text = temp [levelNumber, 1].ToString () + "\n" + temp [levelNumber, 1].ToString ()
+						+ "\n" + temp [levelNumber, 1].ToString () + "\n" + temp [levelNumber, 1].ToString () 
+						+ "\n" + temp [levelNumber, 1].ToString ();
 		}
 
 		void OnCollisionEnter2D (Collision2D col)
@@ -78,5 +86,11 @@ public class PlayerBehavior : MonoBehaviour
 		public float getTime ()
 		{
 				return levelTime;
+		}
+
+		public void endBehavior ()
+		{
+				finalTime = levelTime;
+				finalTimeDisplay.text = finalTime.ToString ();
 		}
 }
