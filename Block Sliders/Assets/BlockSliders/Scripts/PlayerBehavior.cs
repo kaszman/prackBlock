@@ -11,7 +11,7 @@ public class PlayerBehavior : MonoBehaviour
 		public Text timerDisplay;
 		public Text finalTimeDisplay;
 		public Text scoreBoard;
-		public int levelNumber;
+		private int levelNumber = Application.loadedLevel + 1;
 
 		protected bool ramming = false;
 
@@ -41,6 +41,9 @@ public class PlayerBehavior : MonoBehaviour
 				} else {
 						Time.timeScale = 1f;
 				}
+				if (GameControl.control.Paused && !GameControl.control.PausedMenu) {
+						endBehavior ();
+				}
 		}
 		void FixedUpdate ()
 		{		
@@ -65,10 +68,11 @@ public class PlayerBehavior : MonoBehaviour
 				}
 				timerDisplay.text = levelTime.ToString ("000.0");
 				ramDisplay.text = "Rams: " + GameControl.control.RamAmount;
+				GameControl.control.Load ();
 				float[,] temp = GameControl.control.GetScoreData ();
-				scoreBoard.text = temp [levelNumber, 1].ToString () + "\n" + temp [levelNumber, 1].ToString ()
-						+ "\n" + temp [levelNumber, 1].ToString () + "\n" + temp [levelNumber, 1].ToString () 
-						+ "\n" + temp [levelNumber, 1].ToString ();
+				scoreBoard.text = temp [levelNumber - 1, 0].ToString ("000.0") + "\n" + temp [levelNumber - 1, 1].ToString ("000.0")
+						+ "\n" + temp [levelNumber - 1, 2].ToString ("000.0") + "\n" + temp [levelNumber - 1, 3].ToString ("000.0") 
+						+ "\n" + temp [levelNumber - 1, 4].ToString ("000.0");
 		}
 
 		void OnCollisionEnter2D (Collision2D col)
@@ -91,6 +95,7 @@ public class PlayerBehavior : MonoBehaviour
 		public void endBehavior ()
 		{
 				finalTime = levelTime;
-				finalTimeDisplay.text = finalTime.ToString ();
+				finalTimeDisplay.text = finalTime.ToString ("000.0");
+				GameControl.control.addLeaderboardTime (finalTime, levelNumber);
 		}
 }

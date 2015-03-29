@@ -26,7 +26,8 @@ public class GameControl : MonoBehaviour
 		public bool paused;
 		public bool pausedMenu;
 		private AudioSource gameMusic;
-		public float[,] scoreData = new float[12, 5];
+		public float[,] scoreData = new float[13, 5];
+		private int fn = 13;
 
 		//runs on game start
 		void Awake ()
@@ -65,11 +66,11 @@ public class GameControl : MonoBehaviour
 				int hold = Application.levelCount - 1;
 		
 //				float[,] temp = new float[hold, 5];
-				for (int i = 0; i < 12; i++) {
+				for (int i = 0; i < fn; i++) {
 						for (int j = 0; j < 5; j++) {
 								string temp = i.ToString () + " " + j.ToString ();
 								Debug.Log (temp);
-								scoreData [i, j] = i;
+								scoreData [i, j] = j + 1 * 10;
 						}
 				}
 		}
@@ -78,10 +79,12 @@ public class GameControl : MonoBehaviour
 		void FixedUpdate ()
 		{
 				ControlMusic ();
+				if (Application.isLoadingLevel) {
+						Load ();
+				}
 		}
 
 	#region LeaderBoard methods
-
 		/// <summary>
 		/// A method to sort the leaderboard and insert the given time in the propper place.
 		/// </summary>
@@ -89,7 +92,30 @@ public class GameControl : MonoBehaviour
 		/// <param name="LevelID">Level.</param>
 		public void addLeaderboardTime (float finalTime, int LevelID)
 		{
-				//float[] levelData = 1;
+				//CONTAINS A BUG
+				//populates all scores for that level with highest score
+
+				//load the level's time score data into 5 floats
+				float a = scoreData [(LevelID - 1), 0];
+				float b = scoreData [(LevelID - 1), 1];
+				float c = scoreData [(LevelID - 1), 2];
+				float d = scoreData [(LevelID - 1), 3];
+				float e = scoreData [(LevelID - 1), 4];
+
+				//sort the floats
+				float[] sortArray = new float[6]{a, b, c, d, e, finalTime};
+				//Array.Sort (sortArray, (x, y) => x.CompareTo (y));
+				Array.Sort (sortArray);
+
+				//put the floats back into the score data
+				scoreData [(LevelID - 1), 0] = sortArray [0];
+				scoreData [(LevelID - 1), 1] = sortArray [1];
+				scoreData [(LevelID - 1), 2] = sortArray [2];
+				scoreData [(LevelID - 1), 3] = sortArray [3];
+				scoreData [(LevelID - 1), 4] = sortArray [4];
+
+				//save
+				Save ();
 		}
 
 	#endregion
@@ -241,7 +267,7 @@ public class GameControl : MonoBehaviour
 		
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
-				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, highestUnlock, scoreData);
+				this.data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, highestUnlock, scoreData);
 
 				formatter.Serialize (stream, data);
 		
@@ -302,7 +328,7 @@ public class GameControl : MonoBehaviour
 						}
 				}
 
-				SaveData data = new SaveData (2, 3, ramAmount, 1, temp);
+				this.data = new SaveData (2, 3, ramAmount, 1, temp);
 
 				formatter.Serialize (stream, data);
 		
@@ -341,6 +367,6 @@ public class SaveData
 				this.playerSpeedPref = psp;
 				this.ramAmount = ra;
 				this.highestUnlock = hu;
-				scoreData = ld;
+				this.scoreData = ld;
 		}
 }
