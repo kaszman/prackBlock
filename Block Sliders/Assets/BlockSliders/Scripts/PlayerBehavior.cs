@@ -11,7 +11,7 @@ public class PlayerBehavior : MonoBehaviour
 		public Text timerDisplay;
 		public Text finalTimeDisplay;
 		public Text scoreBoard;
-		private int levelNumber = Application.loadedLevel + 1;
+		public int levelNumber;
 
 		protected bool ramming = false;
 

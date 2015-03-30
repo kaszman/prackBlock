@@ -6,7 +6,7 @@ public class DoorCode : MonoBehaviour
 {
 
 		//parameters recieved from the game
-		private int nextScene = Application.loadedLevel + 1;
+		public int nextScene;
 		public AudioSource playerCollide;
 		public Canvas successCanv;
 
