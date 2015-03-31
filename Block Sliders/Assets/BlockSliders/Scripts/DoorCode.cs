@@ -38,9 +38,9 @@ public class DoorCode : MonoBehaviour
 						if (doorSoundStarted == true) {	
 								//Time.timeScale = 1f;
 								//GameControl.control.Paused = false;
-								if (nextScene == 0) {
-										Application.LoadLevel ("Menu");
-								}
+//								if (nextScene == 0) {
+//										Application.LoadLevel ("Menu");
+//								}
 //				else {
 //										Application.LoadLevel ("Lvl" + nextScene.ToString ());
 //								}

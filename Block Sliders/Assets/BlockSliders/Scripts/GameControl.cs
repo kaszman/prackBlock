@@ -21,8 +21,7 @@ public class GameControl : MonoBehaviour
 		public int ramAmount;
 
 		//save variables
-		public int highestUnlock = 1;
-		public SaveData data = new SaveData ();
+		public int highestUnlock;
 		public bool paused;
 		public bool pausedMenu;
 		private AudioSource gameMusic;
@@ -32,12 +31,12 @@ public class GameControl : MonoBehaviour
 		//runs on game start
 		void Awake ()
 		{
-				//do this if the game has never been saved
-				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
-						NewGame ();
-				} else {
-						Load ();
-				}
+//				//do this if the game has never been saved
+//				if (File.Exists (Application.persistentDataPath + "/GameData.bin")) {
+//						NewGame ();
+//				} else {
+//				Load ();
+//				}
 				
 				//singleton
 				if (control == null) {
@@ -54,34 +53,18 @@ public class GameControl : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				Load ();
-				GameControl.control.RamAmount = 5;
 				//what to do with the screen on mobile devices
 				if (Application.isMobilePlatform) {
 						Screen.orientation = ScreenOrientation.LandscapeLeft;
 						Screen.sleepTimeout = SleepTimeout.NeverSleep;
 				}
-				Save ();
-
-				int hold = Application.levelCount - 1;
-		
-//				float[,] temp = new float[hold, 5];
-				for (int i = 0; i < fn; i++) {
-						for (int j = 0; j < 5; j++) {
-								string temp = i.ToString () + " " + j.ToString ();
-								Debug.Log (temp);
-								scoreData [i, j] = j + 1 * 10;
-						}
-				}
+				//Load ();
 		}
 	
 		// Update is called once per frame
 		void FixedUpdate ()
 		{
 				ControlMusic ();
-				if (Application.isLoadingLevel) {
-						Load ();
-				}
 		}
 
 	#region LeaderBoard methods
@@ -92,6 +75,7 @@ public class GameControl : MonoBehaviour
 		/// <param name="LevelID">Level.</param>
 		public void addLeaderboardTime (float finalTime, int LevelID)
 		{
+
 				//CONTAINS A BUG
 				//populates all scores for that level with highest score
 
@@ -104,8 +88,21 @@ public class GameControl : MonoBehaviour
 
 				//sort the floats
 				float[] sortArray = new float[6]{a, b, c, d, e, finalTime};
+
+				float temp = 0;
+		
+				for (int i = 0; i < sortArray.Length; i++) {
+						for (int sort = 0; sort < sortArray.Length - 1; sort++) {
+								if (sortArray [sort] > sortArray [sort + 1]) {
+										temp = sortArray [sort + 1];
+										sortArray [sort + 1] = sortArray [sort];
+										sortArray [sort] = temp;
+								}       
+						}   
+
+				}
 				//Array.Sort (sortArray, (x, y) => x.CompareTo (y));
-				Array.Sort (sortArray);
+				//Array.Sort (sortArray);
 
 				//put the floats back into the score data
 				scoreData [(LevelID - 1), 0] = sortArray [0];
@@ -170,7 +167,6 @@ public class GameControl : MonoBehaviour
 				}
 				set {
 						ramAmount = value;
-						Save ();
 				}
 		}
 
@@ -208,8 +204,8 @@ public class GameControl : MonoBehaviour
 		{
 				if (level > HighestUnlock) {
 						highestUnlock = level;
+						Save ();
 				}
-				Save ();
 		}
 
 		/// <summary>
@@ -263,15 +259,24 @@ public class GameControl : MonoBehaviour
 		{
 				GameControl.SetEnvironmentVariables ();
 		
-				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Create);
-		
+				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
+
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
-				this.data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, highestUnlock, scoreData);
+				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), ramAmount, highestUnlock, scoreData);
+
 
 				formatter.Serialize (stream, data);
 		
 				stream.Close ();
+
+				var sr = File.CreateText (Application.persistentDataPath + "/Debug.txt");
+				sr.Write ("Block speed:\t" + PlayerPrefs.GetInt ("BlockSpeedPref").ToString () + "\n");
+				sr.Write ("Player speed:\t" + PlayerPrefs.GetInt ("PlayerSpeedPref").ToString () + "\n");
+				sr.Write ("Ram Amount:\t" + ramAmount.ToString () + "\n");
+				sr.Write ("Highest Unlock:\t" + highestUnlock.ToString () + "\n");
+
+				sr.Close ();
 		}
 
 		/// <summary>
@@ -279,33 +284,32 @@ public class GameControl : MonoBehaviour
 		/// </summary>
 		public void Load ()
 		{
-				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
-						//break;
-				}
+				if (File.Exists (Application.persistentDataPath + "/GameData.bin")) {
 		
 		
-				GameControl.SetEnvironmentVariables ();
+						GameControl.SetEnvironmentVariables ();
 		
-				Stream stream = null;
+//						Stream stream = null;
+//		
+//						try {
+//								stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
+//						} catch (FileNotFoundException e) {
+						Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.OpenOrCreate);
+						//	}
 		
-				try {
-						stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
-				} catch (FileNotFoundException e) {
-						//	break;
-				}
+						BinaryFormatter formatter = new BinaryFormatter ();
+						formatter.Binder = new VersionDeserializationBinder ();
+						SaveData data = (SaveData)formatter.Deserialize (stream);
 		
-				BinaryFormatter formatter = new BinaryFormatter ();
-				formatter.Binder = new VersionDeserializationBinder ();
-				this.data = (SaveData)formatter.Deserialize (stream);
-		
-				stream.Close ();
+						stream.Close ();
 
-				//change current data to imported save data
-				BlockSpeedPref = data.blockSpeedPref;
-				PlayerSpeedPref = data.playerSpeedPref;
-				ramAmount = data.ramAmount;
-				highestUnlock = data.highestUnlock;
-				scoreData = data.scoreData;
+						//change current data to imported save data
+						BlockSpeedPref = data.blockSpeedPref;
+						PlayerSpeedPref = data.playerSpeedPref;
+						ramAmount = data.ramAmount;
+						highestUnlock = data.highestUnlock;
+						scoreData = data.scoreData;
+				}
 		}
 
 		/// <summary>
@@ -315,24 +319,25 @@ public class GameControl : MonoBehaviour
 		{
 				GameControl.SetEnvironmentVariables ();
 		
-				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Create);
+				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.OpenOrCreate);
 		
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
-				int hold = Application.levelCount - 2;
 
-				float[,] temp = new float[hold, 5];
-				for (int i = 0; i < hold; i++) {
-						for (int j = 0; j < 4; j++) {
-								temp [i, j] = j;
+				for (int i = 0; i < fn; i++) {
+						for (int j = 0; j < 5; j++) {
+								string temp = i.ToString () + " " + j.ToString ();
+								scoreData [i, j] = j + 1 * 10;
 						}
 				}
 
-				this.data = new SaveData (2, 3, ramAmount, 1, temp);
+				SaveData data = new SaveData (2, 3, ramAmount, 1, scoreData);
 
 				formatter.Serialize (stream, data);
 		
 				stream.Close ();
+				Load ();
+				Save ();
 		}
 
 	#endregion
@@ -363,10 +368,31 @@ public class SaveData
 		}
 		public SaveData (int bsp, int psp, int ra, int hu, float[,] ld)
 		{
-				this.blockSpeedPref = bsp;
-				this.playerSpeedPref = psp;
-				this.ramAmount = ra;
-				this.highestUnlock = hu;
-				this.scoreData = ld;
+				blockSpeedPref = bsp;
+				playerSpeedPref = psp;
+				ramAmount = ra;
+				highestUnlock = hu;
+				scoreData = ld;
 		}
 }
+
+#region sealed class
+public sealed class VersionDeserializationBinder : SerializationBinder
+{ 
+		public override Type BindToType (string assemblyName, string typeName)
+		{ 
+				if (!string.IsNullOrEmpty (assemblyName) && !string.IsNullOrEmpty (typeName)) { 
+						Type typeToDeserialize = null; 
+			
+						assemblyName = Assembly.GetExecutingAssembly ().FullName; 
+			
+						// The following line of code returns the type. 
+						typeToDeserialize = Type.GetType (String.Format ("{0}, {1}", typeName, assemblyName)); 
+			
+						return typeToDeserialize; 
+				} 
+		
+				return null; 
+		} 
+}
+#endregion
