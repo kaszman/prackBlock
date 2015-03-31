@@ -60,6 +60,7 @@
      <Compile Include="Assets\BlockSliders\Scripts\PlayerMobility.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\QuitGame.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\Reset.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\SceneSelect.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\SliderCode.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\SplashScreen.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\TutorialScript.cs" />
