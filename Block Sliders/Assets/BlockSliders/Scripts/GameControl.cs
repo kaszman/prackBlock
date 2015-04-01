@@ -294,7 +294,7 @@ public class GameControl : MonoBehaviour
 //						try {
 //								stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
 //						} catch (FileNotFoundException e) {
-						Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.OpenOrCreate);
+						Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
 						//	}
 		
 						BinaryFormatter formatter = new BinaryFormatter ();
@@ -336,8 +336,6 @@ public class GameControl : MonoBehaviour
 				formatter.Serialize (stream, data);
 		
 				stream.Close ();
-				Load ();
-				Save ();
 		}
 
 	#endregion

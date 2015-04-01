@@ -18,7 +18,7 @@ public class LevelSelect : MonoBehaviour
 								Application.LoadLevel ("Lvl" + toLevel.ToString ());
 						}
 				}
-				GameControl.control.Save ();
+				//GameControl.control.Save ();
 		}
 
 		/// <summary>

@@ -38,7 +38,6 @@ public class MainMenu : MonoBehaviour
 
 		public void changeCanvas (int canvas)
 		{
-				GameControl.control.Load ();
 				displayCanvas.enabled = false;
 				if (canvas == 0) {
 						blockspeedSlider.enabled = false;

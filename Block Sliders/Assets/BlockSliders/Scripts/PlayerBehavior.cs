@@ -29,7 +29,7 @@ public class PlayerBehavior : MonoBehaviour
 				if (Application.isMobilePlatform) {
 						ramDisplay.canvas.scaleFactor = 3f;
 				}
-				GameControl.control.Load ();
+				//GameControl.control.Load ();
 		}
 
 		//pause control
@@ -43,7 +43,7 @@ public class PlayerBehavior : MonoBehaviour
 //				if (GameControl.control.Paused && !GameControl.control.PausedMenu) {
 //						endBehavior ();
 //				}
-				GameControl.control.Load ();
+				//GameControl.control.Load ();
 				float[,] temp = GameControl.control.GetScoreData ();
 				scoreBoard.text = temp [levelNumber - 1, 0].ToString ("000.0") + "\n" + temp [levelNumber - 1, 1].ToString ("000.0")
 						+ "\n" + temp [levelNumber - 1, 2].ToString ("000.0") + "\n" + temp [levelNumber - 1, 3].ToString ("000.0") 
