@@ -294,7 +294,7 @@ public class GameControl : MonoBehaviour
 //						try {
 //								stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
 //						} catch (FileNotFoundException e) {
-						Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
+						Stream stream = File.OpenRead (Application.persistentDataPath + "/GameData.bin");
 						//	}
 		
 						BinaryFormatter formatter = new BinaryFormatter ();
