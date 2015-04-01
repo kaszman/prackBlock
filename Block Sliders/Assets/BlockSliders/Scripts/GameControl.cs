@@ -327,7 +327,7 @@ public class GameControl : MonoBehaviour
 				for (int i = 0; i < fn; i++) {
 						for (int j = 0; j < 5; j++) {
 								string temp = i.ToString () + " " + j.ToString ();
-								scoreData [i, j] = j + 1 * 10;
+								scoreData [i, j] = j + i + 1 * 10;
 						}
 				}
 

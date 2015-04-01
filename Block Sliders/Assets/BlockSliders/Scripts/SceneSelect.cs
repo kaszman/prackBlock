@@ -63,4 +63,9 @@ public class SceneSelect : MonoBehaviour
 				Application.LoadLevel ("Lvl" + selectionNumber.ToString ());
 		}
 
+		//set the level picture to the highest unlock
+		public void adjustLevel ()
+		{
+				selectionNumber = GameControl.control.HighestUnlock;
+		}
 }

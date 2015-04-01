@@ -47,7 +47,7 @@ public class PlayerBehavior : MonoBehaviour
 				float[,] temp = GameControl.control.GetScoreData ();
 				scoreBoard.text = temp [levelNumber - 1, 0].ToString ("000.0") + "\n" + temp [levelNumber - 1, 1].ToString ("000.0")
 						+ "\n" + temp [levelNumber - 1, 2].ToString ("000.0") + "\n" + temp [levelNumber - 1, 3].ToString ("000.0") 
-						+ "\n" + temp [levelNumber - 1, 4].ToString ("000.0") + Application.persistentDataPath;
+						+ "\n" + temp [levelNumber - 1, 4].ToString ("000.0");
 		}
 		void FixedUpdate ()
 		{		
