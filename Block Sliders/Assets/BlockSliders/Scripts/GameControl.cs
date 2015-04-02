@@ -15,6 +15,13 @@ public class GameControl : MonoBehaviour
 		public AudioSource eyedMusic;
 		public AudioSource marchMusic;
 
+		//sound effects
+		public AudioSource blockFall;
+		public AudioSource blockSlide;
+		public AudioSource doorSound;
+		public AudioSource injuredRam;
+		public AudioSource pew;
+
 		//options variables
 		public int blockSpeedPref;
 		public int playerSpeedPref;
@@ -117,7 +124,7 @@ public class GameControl : MonoBehaviour
 
 	#endregion
 
-	#region Music Method
+	#region Sound Methods
 		protected void ControlMusic ()
 		{
 				if (!gameMusic.isPlaying) {
@@ -139,6 +146,47 @@ public class GameControl : MonoBehaviour
 						gameMusic.Play ();
 				}
 
+		}
+
+		/// <summary>
+		/// Plays a sound effect.
+		/// </summary>
+		/// <param name="effectIndex">Effect index.</param>
+		public void playEffect (int effectIndex)
+		{
+				switch (effectIndex) {
+				case 0:
+						//if (!blockFall.isPlaying) {
+						blockFall.Play ();
+						//}
+						Debug.Log ("Played: Block Fall");
+						break;				
+				case 1:
+						if (!blockSlide.isPlaying) {
+								blockSlide.volume = .7f;
+								blockSlide.Play ();
+						}
+						Debug.Log ("Played: Block Slide");
+						break;
+				case 2:
+						//if (!doorSound.isPlaying) {
+						doorSound.Play ();
+						//}
+						Debug.Log ("Played: Door Sound");
+						break;
+				case 3:
+						//if (!injuredRam.isPlaying) {
+						injuredRam.Play ();
+						//}
+						Debug.Log ("Played: Injured Ram");
+						break;
+				case 4:
+						//if (!pew.isPlaying) {
+						pew.Play ();
+						//}
+						Debug.Log ("Played: Pew");
+						break;
+				}
 		}
 
 
@@ -326,7 +374,7 @@ public class GameControl : MonoBehaviour
 
 				for (int i = 0; i < fn; i++) {
 						for (int j = 0; j < 5; j++) {
-								string temp = i.ToString () + " " + j.ToString ();
+								//string temp = i.ToString () + " " + j.ToString ();
 								scoreData [i, j] = j + i + 1 * 10;
 						}
 				}
@@ -336,6 +384,20 @@ public class GameControl : MonoBehaviour
 				formatter.Serialize (stream, data);
 		
 				stream.Close ();
+
+				BlockSpeedPref = data.blockSpeedPref;
+				PlayerSpeedPref = data.playerSpeedPref;
+				ramAmount = data.ramAmount;
+				highestUnlock = data.highestUnlock;
+				scoreData = data.scoreData;
+
+				var sr = File.CreateText (Application.persistentDataPath + "/Debug.txt");
+				sr.Write ("Block speed:\t" + PlayerPrefs.GetInt ("BlockSpeedPref").ToString () + "\n");
+				sr.Write ("Player speed:\t" + PlayerPrefs.GetInt ("PlayerSpeedPref").ToString () + "\n");
+				sr.Write ("Ram Amount:\t" + ramAmount.ToString () + "\n");
+				sr.Write ("Highest Unlock:\t" + highestUnlock.ToString () + "\n");
+		
+				sr.Close ();
 		}
 
 	#endregion

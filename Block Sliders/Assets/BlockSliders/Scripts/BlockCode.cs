@@ -19,6 +19,9 @@ public class BlockCode: MonoBehaviour
 				}
 
 				velocity *= speed * PlayerPrefs.GetInt ("BlockSpeedPref");
+				if (velocity != Vector2.zero) {
+						GameControl.control.playEffect (1);
+				}
 				GetComponent<Rigidbody2D> ().AddForce (velocity);
 		}
 		
