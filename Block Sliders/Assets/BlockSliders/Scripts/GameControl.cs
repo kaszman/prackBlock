@@ -25,8 +25,8 @@ public class GameControl : MonoBehaviour
 		public bool paused;
 		public bool pausedMenu;
 		private AudioSource gameMusic;
-		public float[,] scoreData = new float[16, 5];
-		private int fn = 16;
+		public float[,] scoreData = new float[17, 5];
+		private int fn = 17;
 
 		//runs on game start
 		void Awake ()
