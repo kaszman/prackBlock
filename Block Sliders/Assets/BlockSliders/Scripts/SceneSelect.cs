@@ -31,10 +31,8 @@ public class SceneSelect : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				if (selectionNumber <= 16) {
-						levelNameText.text = "Level " + selectionNumber.ToString ();
-						levelPicture.sprite = levelImages [selectionNumber - 1];
-				}
+				levelNameText.text = "Level " + selectionNumber.ToString ();
+				levelPicture.sprite = levelImages [selectionNumber - 1];
 		}
 
 		//increment level selector, limited to unlocked levels
