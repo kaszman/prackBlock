@@ -25,8 +25,8 @@ public class GameControl : MonoBehaviour
 		public bool paused;
 		public bool pausedMenu;
 		private AudioSource gameMusic;
-		public float[,] scoreData = new float[17, 5];
-		private int fn = 17;
+		public float[,] scoreData = new float[18, 5];
+		private int fn = 18;
 
 		//runs on game start
 		void Awake ()
@@ -259,7 +259,7 @@ public class GameControl : MonoBehaviour
 		{
 				GameControl.SetEnvironmentVariables ();
 		
-				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
+				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.OpenOrCreate);
 
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
@@ -319,14 +319,14 @@ public class GameControl : MonoBehaviour
 		{
 				GameControl.SetEnvironmentVariables ();
 		
-				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
+				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.OpenOrCreate);
 		
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
 
 				for (int i = 0; i < fn; i++) {
 						for (int j = 0; j < 5; j++) {
-								string temp = i.ToString () + " " + j.ToString ();
+								//string temp = i.ToString () + " " + j.ToString ();
 								scoreData [i, j] = j + i + 1 * 10;
 						}
 				}
