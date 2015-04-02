@@ -319,7 +319,7 @@ public class GameControl : MonoBehaviour
 		{
 				GameControl.SetEnvironmentVariables ();
 		
-				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.OpenOrCreate);
+				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
 		
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
@@ -336,6 +336,12 @@ public class GameControl : MonoBehaviour
 				formatter.Serialize (stream, data);
 		
 				stream.Close ();
+
+				BlockSpeedPref = data.blockSpeedPref;
+				PlayerSpeedPref = data.playerSpeedPref;
+				ramAmount = data.ramAmount;
+				highestUnlock = data.highestUnlock;
+				scoreData = data.scoreData;
 		}
 
 	#endregion
