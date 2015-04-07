@@ -44,12 +44,8 @@ public class TutorialScript : MonoBehaviour
 						tutorialText.text = "Fill in the hole with the block to pass over safely";
 						break;				
 				case 4:
-						if (Application.isMobilePlatform) {
-								tutorialText.text = "Press escape to bring up the pause menu";
-						} else {
-								tutorialText.text = "Press the back arrow to bring up the pause menu";
-						}
-						break;	
+						tutorialText.text = "Use what you've learned to navigate this maze";
+						break;				
 				case 5:
 						tutorialText.text = "Keep in mind that you may need to use blocks from different places";
 						break;			
