@@ -19,14 +19,14 @@ public class GameControl : MonoBehaviour
 		public int blockSpeedPref;
 		public int playerSpeedPref;
 		public int ramAmount;
+		public bool displayTimer;
 
 		//save variables
 		public int highestUnlock;
 		public bool paused;
 		public bool pausedMenu;
 		private AudioSource gameMusic;
-		public float[,] scoreData = new float[18, 5];
-		private int fn = 18;
+		public float[,] scoreData = new float[19, 5];
 
 		//runs on game start
 		void Awake ()
@@ -53,6 +53,8 @@ public class GameControl : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
+				displayTimer = false;
+
 				//what to do with the screen on mobile devices
 				if (Application.isMobilePlatform) {
 						Screen.orientation = ScreenOrientation.LandscapeLeft;
@@ -309,7 +311,10 @@ public class GameControl : MonoBehaviour
 						ramAmount = data.ramAmount;
 						highestUnlock = data.highestUnlock;
 						scoreData = data.scoreData;
+						stream.Close ();
+
 				}
+
 		}
 
 		/// <summary>
@@ -318,13 +323,17 @@ public class GameControl : MonoBehaviour
 		public void NewGame ()
 		{
 				GameControl.SetEnvironmentVariables ();
-		
+
+//				if (File.Exists (Application.persistentDataPath + "/GameData.bin")) {
+//						File.Delete (Application.persistentDataPath + "/GameData.bin");
+//				}
+
 				Stream stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.OpenOrCreate);
 		
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
 
-				for (int i = 0; i < fn; i++) {
+				for (int i = 0; i < scoreData.Length - 1; i++) {
 						for (int j = 0; j < 5; j++) {
 								//string temp = i.ToString () + " " + j.ToString ();
 								scoreData [i, j] = j + i + 1 * 10;
@@ -342,8 +351,9 @@ public class GameControl : MonoBehaviour
 				ramAmount = data.ramAmount;
 				highestUnlock = data.highestUnlock;
 				scoreData = data.scoreData;
+				stream.Close ();
 		}
-
+	
 	#endregion
 
 

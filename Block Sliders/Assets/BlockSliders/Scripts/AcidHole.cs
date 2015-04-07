@@ -5,16 +5,18 @@ public class AcidHole : MonoBehaviour
 {
 
 		//parameters recieved from the game	
-		public string currentSceneName;
-	
+		public int sceneNumber;
+
 		//private use variables
 		private GameObject collisionObject;
+		private string currentSceneName;
+
 
 //		// Use this for initialization
-//		void Start ()
-//		{
-//	
-//		}
+		void Start ()
+		{
+				currentSceneName = "Lvl" + sceneNumber.ToString ();
+		}
 //	
 //		// Update is called once per frame
 //		void Update ()

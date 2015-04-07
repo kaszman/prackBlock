@@ -51,6 +51,12 @@ public class PlayerBehavior : MonoBehaviour
 		}
 		void FixedUpdate ()
 		{		
+				//start ramming
+				if ((Input.GetKey (KeyCode.E) || Input.touchCount == 2) && timerRam <= 0 && GameControl.control.RamAmount > 0) {
+						ramming = true;
+						timerRam = timerLengthSec;
+				}
+
 				timerRam -= Time.deltaTime;
 				levelTime += Time.deltaTime;
 
@@ -61,15 +67,16 @@ public class PlayerBehavior : MonoBehaviour
 
 				player.color = Color.white;
 
-				//start ramming
-				if ((Input.GetKeyDown (KeyCode.E) || Input.touchCount == 2) && timerRam <= 0 && GameControl.control.RamAmount > 0) {
-						ramming = true;
-						timerRam = timerLengthSec;
-				}
-
 				if (ramming == true) {
 						player.color = Color.blue;
 				}
+				if (GameControl.control.displayTimer == true) {
+						timerDisplay.enabled = true;
+				} else {
+						timerDisplay.enabled = false;
+
+				}
+
 				timerDisplay.text = levelTime.ToString ("000.0");
 				ramDisplay.text = "Rams: " + GameControl.control.RamAmount;
 		}
