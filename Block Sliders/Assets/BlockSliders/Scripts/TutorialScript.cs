@@ -10,7 +10,7 @@ public class TutorialScript : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-	
+				level = GameControl.control.CurrentLevel;
 		}
 	
 		// Update is called once per frame

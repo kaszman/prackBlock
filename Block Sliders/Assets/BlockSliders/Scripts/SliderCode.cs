@@ -21,5 +21,6 @@ public class SliderCode : MonoBehaviour
 		{
 				PlayerPrefs.SetInt (SettingName, (int)subjectSlider.value);
 				GameControl.control.Save ();
+				GameControl.control.Load ();
 		}
 }

@@ -8,17 +8,17 @@ public class HoleCode : MonoBehaviour
 		public GameObject ownerObject;
 		public SpriteRenderer ownerRenderer;	
 		public Sprite filledHoleSprite;	
-		public string currentSceneName;
+		private string currentSceneName;
 
 		//private use variables
 		private GameObject collisionObject;
 		private bool filled = false;
 
 		// Use this for initialization
-		//void Start ()
-		//{
-		//	filled = false;
-		//}
+		void Start ()
+		{
+				currentSceneName = "Lvl" + GameControl.control.CurrentLevel.ToString ();
+		}
 	
 		// Update is called once per frame
 		void FixedUpdate ()

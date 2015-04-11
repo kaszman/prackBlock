@@ -7,7 +7,7 @@ public class PauseMenu : MonoBehaviour
 		public Canvas menuCanvas;
 		public Canvas helpCanvas;
 		public Canvas optionsCanvas;
-		//	public string currentLevel;
+		public Text levelNameDisplay;
 		public bool paused;
 
 		private Canvas displayCanvas;
@@ -15,11 +15,13 @@ public class PauseMenu : MonoBehaviour
 		//options sliders
 		public Slider blockspeedSlider;
 		public Slider playerspeedSlider;
+		public Slider fxvolumeSlider;
 
 	
 		void Start ()
 		{
 				displayCanvas = menuCanvas;
+				levelNameDisplay.text = "Level" + GameControl.control.CurrentLevel.ToString ();
 		}
 	
 		void Update ()
@@ -84,6 +86,7 @@ public class PauseMenu : MonoBehaviour
 						playerspeedSlider.enabled = true;
 						blockspeedSlider.value = PlayerPrefs.GetInt ("BlockSpeedPref");
 						playerspeedSlider.value = PlayerPrefs.GetInt ("PlayerSpeedPref");
+						fxvolumeSlider.value = PlayerPrefs.GetInt ("FxVolumePref");
 						displayCanvas = optionsCanvas;
 				}
 		}

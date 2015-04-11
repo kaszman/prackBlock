@@ -3,10 +3,6 @@ using System.Collections;
 
 public class AcidHole : MonoBehaviour
 {
-
-		//parameters recieved from the game	
-		public string currentSceneName;
-	
 		//private use variables
 		private GameObject collisionObject;
 
@@ -39,7 +35,7 @@ public class AcidHole : MonoBehaviour
 		//if the object is a player
 		else if (col.gameObject.tag == "Player") {
 						//Reset the level
-						Application.LoadLevel (currentSceneName);
+						Application.LoadLevel ("Lvl" + GameControl.control.CurrentLevel.ToString ());
 				}
 		}
 }

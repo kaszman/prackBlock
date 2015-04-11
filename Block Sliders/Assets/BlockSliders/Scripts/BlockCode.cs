@@ -6,6 +6,11 @@ public class BlockCode: MonoBehaviour
 
 		public float speed;
 		private Vector2 velocity;
+
+		void Start ()
+		{
+				gameObject.transform.Rotate (0, Random.Range (-1, 2) * 180, Random.Range (0, 5) * 90);
+		}
 	
 		void FixedUpdate ()
 		{	
@@ -20,6 +25,12 @@ public class BlockCode: MonoBehaviour
 
 				velocity *= speed * PlayerPrefs.GetInt ("BlockSpeedPref");
 				GetComponent<Rigidbody2D> ().AddForce (velocity);
+
+				if (velocity.magnitude > .3f) {
+						GameControl.control.PlayBlockSlide (true);
+				} else {
+						GameControl.control.PlayBlockSlide (false);
+				}
 		}
 		
 		#region Movement methods
@@ -54,7 +65,6 @@ public class BlockCode: MonoBehaviour
 		private void doMobileMovement ()
 		{
 				velocity = Input.acceleration.normalized;
-				velocity *= PlayerPrefs.GetInt ("BlockSpeedPref");
 		}
 		#endregion
 }

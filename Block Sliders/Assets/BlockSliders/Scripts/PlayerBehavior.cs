@@ -11,15 +11,14 @@ public class PlayerBehavior : MonoBehaviour
 		public Text timerDisplay;
 		public Text finalTimeDisplay;
 		public Text scoreBoard;
-		public int levelNumber;
 
 		protected bool ramming = false;
 
-		private GameObject coco;
 		private LevelSelect selector;
 		private float timerRam;
 		private float levelTime;
 		private float finalTime;
+		private int levelNumber;
 
 		void Start ()
 		{
@@ -29,7 +28,7 @@ public class PlayerBehavior : MonoBehaviour
 				if (Application.isMobilePlatform) {
 						ramDisplay.canvas.scaleFactor = 3f;
 				}
-				//GameControl.control.Load ();
+				levelNumber = GameControl.control.CurrentLevel;
 		}
 
 		//pause control
@@ -75,7 +74,8 @@ public class PlayerBehavior : MonoBehaviour
 		}
 
 		void OnCollisionEnter2D (Collision2D col)
-		{			
+		{						
+
 				if (ramming) {
 						if (col.gameObject.tag == tagCanCollide) {
 								Destroy (col.gameObject);
@@ -87,6 +87,8 @@ public class PlayerBehavior : MonoBehaviour
 				if (col.gameObject.tag == "Door") {
 						endBehavior ();
 				}
+
+
 		}
 
 		public float getTime ()

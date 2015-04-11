@@ -16,6 +16,10 @@ public class PlayerMobility : MonoBehaviour
 				polygon.enabled = true;
 		}
 
+		float Speed {
+				set { speed = value;}
+		}
+
 		void FixedUpdate ()
 		{
 				velocity = Vector2.zero;
