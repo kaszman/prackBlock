@@ -46,12 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BlockSliders\Cutscene\CutsceneCamera.cs" />
-     <Compile Include="Assets\BlockSliders\Cutscene\CutsceneMotion.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\AcidHole.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\BlockCode.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\ButtonScale.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\CameraCode.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\CutScene.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\DoorCode.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\GameControl.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\HoleCode.cs" />
@@ -64,7 +63,6 @@
      <Compile Include="Assets\BlockSliders\Scripts\Reset.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\SceneSelect.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\SliderCode.cs" />
-     <Compile Include="Assets\BlockSliders\Scripts\SplashScreen.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\Timer.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\TutorialScript.cs" />
      <None Include="Assets\Plugins\Android\unityads\proguard-project.txt" />

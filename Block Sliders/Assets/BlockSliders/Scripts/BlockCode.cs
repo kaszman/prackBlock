@@ -25,12 +25,6 @@ public class BlockCode: MonoBehaviour
 
 				velocity *= speed * PlayerPrefs.GetInt ("BlockSpeedPref");
 				GetComponent<Rigidbody2D> ().AddForce (velocity);
-
-				if (velocity.magnitude > .3f) {
-						GameControl.control.PlayBlockSlide (true);
-				} else {
-						GameControl.control.PlayBlockSlide (false);
-				}
 		}
 		
 		#region Movement methods
@@ -58,13 +52,24 @@ public class BlockCode: MonoBehaviour
 				if (Input.GetKey (KeyCode.DownArrow)) {
 						velocity.y -= 1;
 				}
-		
+				if (velocity.magnitude > .3f) {
+						GameControl.control.PlayBlockSlide (true);
+				} else {
+						GameControl.control.PlayBlockSlide (false);
+				}
 				velocity.Normalize ();
 		}
 		
 		private void doMobileMovement ()
 		{
-				velocity = Input.acceleration.normalized;
+
+				velocity = Input.acceleration;	
+				if (velocity.magnitude > .3f) {
+						GameControl.control.PlayBlockSlide (true);
+				} else {
+						GameControl.control.PlayBlockSlide (false);
+				}
+				velocity.Normalize ();
 		}
 		#endregion
 }

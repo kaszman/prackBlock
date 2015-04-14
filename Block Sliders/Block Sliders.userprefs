@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PlayerMobility.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/CutScene.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="92" Column="4" />
-      <File FileName="Assets/BlockSliders/Scripts/PlayerMobility.cs" Line="125" Column="4" />
+      <File FileName="Assets/BlockSliders/Scripts/CutScene.cs" Line="74" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
