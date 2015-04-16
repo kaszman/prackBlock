@@ -16,7 +16,7 @@ public class SceneSelect : MonoBehaviour
 		public Button Select;
 		public Image levelPicture;
 		public int numOfLevels;
-		public Sprite[] levelImages = new Sprite[18];
+		public Sprite[] levelImages = new Sprite[19];
 
 		//int to select the level
 		private int selectionNumber = 1;
