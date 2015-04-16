@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../Engine/SolarSystem/SolarSystem/Assets/Scripts/OrbitalScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/SceneSelect.cs">
     <Files>
-      <File FileName="../../../Engine/SolarSystem/SolarSystem/Assets/Scripts/OrbitalScript.cs" Line="34" Column="68" />
+      <File FileName="Assets/BlockSliders/Scripts/SceneSelect.cs" Line="19" Column="46" />
+      <File FileName="Assets/BlockSliders/Scripts/GameControl.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
