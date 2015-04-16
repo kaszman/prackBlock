@@ -12,7 +12,8 @@ public class SliderCode : MonoBehaviour
 
 		void Update ()
 		{
-				dataText.text = ((int)subjectSlider.value - 1).ToString ();
+				dataText.text = ((int)subjectSlider.value).ToString ();
+				ChangeValueBySlider ();
 		}
 
 

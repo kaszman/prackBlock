@@ -17,6 +17,8 @@ public class MainMenu : MonoBehaviour
 		//options sliders
 		public Slider blockspeedSlider;
 		public Slider playerspeedSlider;
+		public Slider fxvolumeSlider;
+		public Slider musicvolumeSlider;
 	
 		//private variables
 		private Canvas displayCanvas;
@@ -42,12 +44,16 @@ public class MainMenu : MonoBehaviour
 				if (canvas == 0) {
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
+						fxvolumeSlider.enabled = false;
+						musicvolumeSlider.enabled = false;
 						displayCanvas = mainCanvas;
 						displayCanvas.enabled = true;
 				}
 				if (canvas == 1) {
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
+						fxvolumeSlider.enabled = false;
+						musicvolumeSlider.enabled = false;
 						displayCanvas = helpCanvas;
 						displayCanvas.enabled = true;
 				}
@@ -57,16 +63,21 @@ public class MainMenu : MonoBehaviour
 						//if we change to the options menu, make sure sliders are at proper values
 						blockspeedSlider.enabled = true;
 						playerspeedSlider.enabled = true;
+						fxvolumeSlider.enabled = true;
+						musicvolumeSlider.enabled = true;
 						blockspeedSlider.value = PlayerPrefs.GetInt ("BlockSpeedPref");
 						playerspeedSlider.value = PlayerPrefs.GetInt ("PlayerSpeedPref");
+						fxvolumeSlider.value = PlayerPrefs.GetInt ("FxVolumePref");
+						musicvolumeSlider.value = PlayerPrefs.GetInt ("MusicVolumePref");
 						displayCanvas = optionsCanvas;
 						displayCanvas.enabled = true;
 				}
 				if (canvas == 3) {
 						displayCanvas.enabled = false;
-
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
+						fxvolumeSlider.enabled = false;
+						musicvolumeSlider.enabled = false;
 						displayCanvas = levelcanvas;
 						displayCanvas.enabled = true;
 				}
@@ -74,22 +85,26 @@ public class MainMenu : MonoBehaviour
 						displayCanvas.enabled = false;
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
+						fxvolumeSlider.enabled = false;
+						musicvolumeSlider.enabled = false;
 						displayCanvas = playcanvas;
 						displayCanvas.enabled = true;
 				}
 				if (canvas == 5) {
 						displayCanvas.enabled = false;
-
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
+						fxvolumeSlider.enabled = false;
+						musicvolumeSlider.enabled = false;
 						displayCanvas = creditscanvas;
 						displayCanvas.enabled = true;
 				}
 				if (canvas == 6) {
 						displayCanvas.enabled = false;
-
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
+						fxvolumeSlider.enabled = false;
+						musicvolumeSlider.enabled = false;
 						displayCanvas = leaderboardcanvas;
 						displayCanvas.enabled = true;
 				}

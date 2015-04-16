@@ -16,6 +16,7 @@ public class PauseMenu : MonoBehaviour
 		public Slider blockspeedSlider;
 		public Slider playerspeedSlider;
 		public Slider fxvolumeSlider;
+		public Slider musicvolumeSlider;
 
 	
 		void Start ()
@@ -73,20 +74,27 @@ public class PauseMenu : MonoBehaviour
 				if (canvas == 1) {
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
+						fxvolumeSlider.enabled = false;
+						musicvolumeSlider.enabled = false;
 						displayCanvas = menuCanvas;
 				}
 				if (canvas == 2) {
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;
+						fxvolumeSlider.enabled = false;
+						musicvolumeSlider.enabled = false;
 						displayCanvas = helpCanvas;
 				}
 				if (canvas == 3) {
 						//if we change to the options menu, make sure sliders are at proper values
 						blockspeedSlider.enabled = true;
 						playerspeedSlider.enabled = true;
+						fxvolumeSlider.enabled = true;
+						musicvolumeSlider.enabled = true;
 						blockspeedSlider.value = PlayerPrefs.GetInt ("BlockSpeedPref");
 						playerspeedSlider.value = PlayerPrefs.GetInt ("PlayerSpeedPref");
 						fxvolumeSlider.value = PlayerPrefs.GetInt ("FxVolumePref");
+						musicvolumeSlider.value = PlayerPrefs.GetInt ("MusicVolumePref");
 						displayCanvas = optionsCanvas;
 				}
 		}

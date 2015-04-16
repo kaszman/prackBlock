@@ -23,6 +23,7 @@ public class GameControl : MonoBehaviour
 		public int blockSpeedPref;
 		public int playerSpeedPref;
 		public int fxVolumePref;
+		public int musicVolumePref;
 		public int ramAmount;
 
 		//save variables
@@ -60,7 +61,6 @@ public class GameControl : MonoBehaviour
 		{
 				//what to do with the screen on mobile devices
 				if (Application.isMobilePlatform) {
-						Screen.orientation = ScreenOrientation.LandscapeLeft;
 						Screen.sleepTimeout = SleepTimeout.NeverSleep;
 				}
 				//Load ();
@@ -148,11 +148,11 @@ public class GameControl : MonoBehaviour
 
 		protected void SetVolumes ()
 		{
-				gameMusic.volume = 1f;
+				gameMusic.volume = (float)musicVolumePref / 10;
 
-				BlockSlideFX.volume = (float)((FxVolumePref - 1) / 10);
-				DoorSoundFX.volume = (float)((FxVolumePref - 1) / 10);
-				PewFX.volume = (float)((FxVolumePref - 1) / 10);
+				BlockSlideFX.volume = (float)FxVolumePref / 10;
+				DoorSoundFX.volume = (float)FxVolumePref / 10;
+				PewFX.volume = (float)FxVolumePref / 10;
 
 		}
 
@@ -179,6 +179,14 @@ public class GameControl : MonoBehaviour
 				set { 
 						fxVolumePref = value; 
 						ApplyChanges ("FxVolumePref", value);
+				}
+		}
+
+		public int MusicVolumePref {
+				get { return musicVolumePref;}
+				set {
+						musicVolumePref = value;
+						ApplyChanges ("MusicVolumePref", value);
 				}
 		}
 
@@ -264,13 +272,14 @@ public class GameControl : MonoBehaviour
 		public void PlayBlockSlide (bool playing)
 		{
 				if (!BlockSlideFX.isPlaying && playing) {
-						//BlockSlideFX.volume = (float)FxVolumePref / 10;
+						BlockSlideFX.volume = (float)FxVolumePref / 10;
 						BlockSlideFX.Play ();
 						BlockSlideFX.loop = true;
 				}
 
 				if (!playing) {
 						BlockSlideFX.Stop ();
+						BlockSlideFX.loop = false;
 				}
 
 		}
@@ -278,7 +287,7 @@ public class GameControl : MonoBehaviour
 		public void PlayDoorSound ()
 		{
 				if (!DoorSoundFX.isPlaying) {
-						//DoorSoundFX.volume = (float)FxVolumePref / 10;
+						DoorSoundFX.volume = (float)FxVolumePref / 10;
 						DoorSoundFX.Play ();
 				}
 		}
@@ -286,7 +295,7 @@ public class GameControl : MonoBehaviour
 		public void PlayPew ()
 		{
 				if (!PewFX.isPlaying) {
-						//	PewFX.volume = (float)FxVolumePref / 10;
+						PewFX.volume = (float)FxVolumePref / 10;
 						PewFX.Play ();
 				}
 		}
@@ -319,7 +328,7 @@ public class GameControl : MonoBehaviour
 
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
-				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), PlayerPrefs.GetInt ("FxVolumePref"), ramAmount, highestUnlock, scoreData);
+				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), PlayerPrefs.GetInt ("FxVolumePref"), PlayerPrefs.GetInt ("MusicVolumePref"), ramAmount, highestUnlock, scoreData);
 
 
 				formatter.Serialize (stream, data);
@@ -364,6 +373,7 @@ public class GameControl : MonoBehaviour
 						BlockSpeedPref = data.blockSpeedPref;
 						PlayerSpeedPref = data.playerSpeedPref;
 						FxVolumePref = data.fxVolumePref;
+						MusicVolumePref = data.musicVolumePref;
 						ramAmount = data.ramAmount;
 						highestUnlock = data.highestUnlock;
 						scoreData = data.scoreData;
@@ -389,7 +399,7 @@ public class GameControl : MonoBehaviour
 						}
 				}
 
-				SaveData data = new SaveData (2, 3, 10, ramAmount, 1, scoreData);
+				SaveData data = new SaveData (4, 4, 10, 10, ramAmount, 1, scoreData);
 
 				formatter.Serialize (stream, data);
 		
@@ -397,6 +407,7 @@ public class GameControl : MonoBehaviour
 
 				BlockSpeedPref = data.blockSpeedPref;
 				PlayerSpeedPref = data.playerSpeedPref;
+				FxVolumePref = data.fxVolumePref;
 				ramAmount = data.ramAmount;
 				highestUnlock = data.highestUnlock;
 				scoreData = data.scoreData;
@@ -422,6 +433,7 @@ public class SaveData
 		public int blockSpeedPref;
 		public int playerSpeedPref;
 		public int fxVolumePref;
+		public int musicVolumePref;
 		public int ramAmount;
 		public int highestUnlock;
 		public float[,] scoreData;
@@ -429,11 +441,12 @@ public class SaveData
 		public SaveData ()
 		{
 		}
-		public SaveData (int bsp, int psp, int fxv, int ra, int hu, float[,] ld)
+		public SaveData (int bsp, int psp, int fxv, int mv, int ra, int hu, float[,] ld)
 		{
 				blockSpeedPref = bsp;
 				playerSpeedPref = psp;
 				fxVolumePref = fxv;
+				musicVolumePref = mv;
 				ramAmount = ra;
 				highestUnlock = hu;
 				scoreData = ld;
