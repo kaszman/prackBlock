@@ -13,7 +13,6 @@ public class SliderCode : MonoBehaviour
 		void Update ()
 		{
 				dataText.text = ((int)subjectSlider.value).ToString ();
-				ChangeValueBySlider ();
 		}
 
 

@@ -67,7 +67,7 @@ public class GameControl : MonoBehaviour
 		}
 	
 		// Update is called once per frame
-		void FixedUpdate ()
+		void Update ()
 		{
 				ControlMusic ();
 				SetVolumes ();
