@@ -71,5 +71,10 @@ public class BlockCode: MonoBehaviour
 				}
 				velocity.Normalize ();
 		}
+
+		void OnDestroy ()
+		{
+				GameControl.control.PlayBlockSlide (false);
+		}
 		#endregion
 }

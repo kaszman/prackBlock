@@ -71,6 +71,10 @@ public class GameControl : MonoBehaviour
 		{
 				ControlMusic ();
 				SetVolumes ();
+
+				if (paused) {
+						PlayBlockSlide (false);
+				}
 		}
 
 	#region LeaderBoard methods

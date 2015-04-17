@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
 		public Canvas menuCanvas;
 		public Canvas helpCanvas;
+		public Text helpText;
 		public Canvas optionsCanvas;
 		public Text levelNameDisplay;
 		public bool paused;
@@ -22,7 +23,22 @@ public class PauseMenu : MonoBehaviour
 		void Start ()
 		{
 				displayCanvas = menuCanvas;
-				levelNameDisplay.text = "Level" + GameControl.control.CurrentLevel.ToString ();
+				if (Application.isMobilePlatform) {
+						helpText.text = "Touch the screen with two fingers to activate ramming" +
+								"\nRamming needs a running start!" +
+								"\nSwipe the screen to move the ram" +
+								"\nTilt the device to move the blocks " +
+								"\nHole traps can be plugged by blocks" +
+								"\nAcid traps can not be plugged";
+				} else {
+						helpText.text = "Press E to activate ramming" +
+								"\nRamming needs a running start!" +
+								"\nUse WASD to move the ram" +
+								"\nUse the ARROW keys to move the blocks " +
+								"\nHole traps can be plugged by blocks" +
+								"\nAcid traps can not be plugged";
+				}
+				levelNameDisplay.text = "Level " + GameControl.control.CurrentLevel.ToString ();
 		}
 	
 		void Update ()
