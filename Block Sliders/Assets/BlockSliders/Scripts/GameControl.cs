@@ -31,8 +31,8 @@ public class GameControl : MonoBehaviour
 		public bool paused;
 		public bool pausedMenu;
 		private AudioSource gameMusic;
-		public float[,] scoreData = new float[19, 5];
-		private int fn = 19;
+		public float[,] scoreData = new float[20, 5];
+		private int fn = 20;
 
 		//runs on game start
 		void Awake ()
@@ -43,7 +43,6 @@ public class GameControl : MonoBehaviour
 //				} else {
 //				Load ();
 //				}
-				
 				//singleton
 				if (control == null) {
 						DontDestroyOnLoad (gameObject);
@@ -244,6 +243,15 @@ public class GameControl : MonoBehaviour
 		public int CurrentLevel {
 				get { return Application.loadedLevel - 1;}
 		}
+
+		/// <summary>
+		/// Gets the level count.
+		/// </summary>
+		/// <value>The level count.</value>
+		public int LevelCount {
+				get { return fn;}
+		}
+
 
 		/// <summary>
 		/// Gets the highest unlock.

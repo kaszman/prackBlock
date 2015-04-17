@@ -48,9 +48,9 @@ public class PauseMenu : MonoBehaviour
 				} else {
 						displayCanvas.enabled = false;
 				}
-				if (Application.isMobilePlatform) {
-						displayCanvas.scaleFactor = 3f;
-				}
+//				if (Application.isMobilePlatform) {
+//						displayCanvas.scaleFactor = 3f;
+//				}
 
 				if (Input.GetKeyDown (KeyCode.Escape)) {
 						GameControl.control.Paused = true;

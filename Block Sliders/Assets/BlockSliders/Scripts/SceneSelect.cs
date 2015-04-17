@@ -16,7 +16,7 @@ public class SceneSelect : MonoBehaviour
 		public Button Select;
 		public Image levelPicture;
 		public int numOfLevels;
-		public Sprite[] levelImages = new Sprite[19];
+		public Sprite[] levelImages = new Sprite[20];
 
 		//int to select the level
 		private int selectionNumber = 1;
@@ -25,7 +25,6 @@ public class SceneSelect : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				//GameControl.control.Load ();
 		}
 	
 		// Update is called once per frame

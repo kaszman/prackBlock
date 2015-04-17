@@ -23,7 +23,7 @@ public class ButtonScale : MonoBehaviour
 		public void doTheStuff ()
 		{
 				GameControl.control.Load ();
-				if (counter < 18) {
+				if (counter < GameControl.control.LevelCount) {
 						counter++;
 				}
 				GameControl.control.UnlockLevel (counter);
