@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+		//text fileds
+		public Text helpText;
 
 		//variavles to hold canvas'
 		public Canvas mainCanvas;
@@ -29,7 +31,26 @@ public class MainMenu : MonoBehaviour
 				displayCanvas = mainCanvas;
 				displayCanvas.enabled = true;
 		}
-	
+
+		void Start ()
+		{
+				if (Application.isMobilePlatform) {
+						helpText.text = "Touch the screen with two fingers to activate ramming" +
+								"\nRamming needs a running start!" +
+								"\nSwipe the screen to move the ram" +
+								"\nTilt the device to move the blocks " +
+								"\nHole traps can be plugged by blocks" +
+								"\nAcid traps can not be plugged";
+				} else {
+						helpText.text = "Press E to activate ramming" +
+								"\nRamming needs a running start!" +
+								"\nUse WASD to move the ram" +
+								"\nUse the ARROW keys to move the blocks " +
+								"\nHole traps can be plugged by blocks" +
+								"\nAcid traps can not be plugged";
+				}
+		}
+
 		// Update is called once per frame
 		void Update ()
 		{

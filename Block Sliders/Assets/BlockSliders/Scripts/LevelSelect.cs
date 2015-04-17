@@ -11,6 +11,7 @@ public class LevelSelect : MonoBehaviour
 		/// <param name="toLevel">To level.</param>
 		public void ChangeLevel (int toLevel)
 		{
+				System.GC.Collect ();
 				if (isLevelUnlocked (toLevel)) {
 						if (toLevel == 0) {
 								Application.LoadLevel ("Menu");
@@ -18,7 +19,6 @@ public class LevelSelect : MonoBehaviour
 								Application.LoadLevel ("Lvl" + toLevel.ToString ());
 						}
 				}
-				//GameControl.control.Save ();
 		}
 
 		/// <summary>
@@ -35,6 +35,7 @@ public class LevelSelect : MonoBehaviour
 		/// </summary>
 		public void NewGame ()
 		{
+				System.GC.Collect ();
 				GameControl.control.NewGame ();
 				GameControl.control.Save ();
 				GameControl.control.UnlockLevel (1);

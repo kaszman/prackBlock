@@ -73,6 +73,7 @@ public class GameControl : MonoBehaviour
 
 				if (paused) {
 						PlayBlockSlide (false);
+						System.GC.Collect (System.GC.MaxGeneration, GCCollectionMode.Forced);
 				}
 		}
 
