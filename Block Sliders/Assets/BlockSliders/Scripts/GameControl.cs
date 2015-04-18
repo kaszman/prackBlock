@@ -60,7 +60,7 @@ public class GameControl : MonoBehaviour
 		{
 				//what to do with the screen on mobile devices
 				if (Application.isMobilePlatform) {
-						Screen.sleepTimeout = SleepTimeout.NeverSleep;
+						Screen.sleepTimeout = 0;
 				}
 				//Load ();
 		}
