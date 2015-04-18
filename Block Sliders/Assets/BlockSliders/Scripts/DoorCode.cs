@@ -18,11 +18,6 @@ public class DoorCode : MonoBehaviour
 				doorSoundStarted = false;
 		}
 
-		void FixedUpdate ()
-		{
-
-		}
-
 		//update method only used for sound cause it's stupid
 		void Update ()
 		{
@@ -36,30 +31,6 @@ public class DoorCode : MonoBehaviour
 
 		}
 
-
-
-		void handleCollisionEvents ()
-		{
-//				//if the object is a player, move to the next level and play sound
-//				if (collisionObject.tag == "Player") {
-//						if (!playerCollide.isPlaying) {
-//								if (doorSoundStarted == true) {
-//										GameControl.control.UnlockLevel (nextScene);
-//										if (nextScene == 0) {
-//												Application.LoadLevel ("Menu");
-//										} else {
-//												Application.LoadLevel ("Lvl" + nextScene.ToString ());
-//										}
-//								}	
-//								//what to do when the player hits the door
-//								playerCollide.Play ();			
-//								GameControl.control.Save ();
-//								GameControl.control.Paused = true;
-//						}			
-//						doorSoundStarted = true;
-//				}
-		}
-	
 		/// <summary>
 		/// Sets collisionObject to the offending collision object
 		/// </summary>

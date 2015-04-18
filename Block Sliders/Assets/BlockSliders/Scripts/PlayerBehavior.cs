@@ -39,14 +39,14 @@ public class PlayerBehavior : MonoBehaviour
 				} else {
 						Time.timeScale = 1f;
 				}
-//				if (GameControl.control.Paused && !GameControl.control.PausedMenu) {
-//						endBehavior ();
-//				}
-				//GameControl.control.Load ();
-				float[,] temp = GameControl.control.GetScoreData ();
-				scoreBoard.text = temp [levelNumber - 1, 0].ToString ("000.0") + "\n" + temp [levelNumber - 1, 1].ToString ("000.0")
-						+ "\n" + temp [levelNumber - 1, 2].ToString ("000.0") + "\n" + temp [levelNumber - 1, 3].ToString ("000.0") 
-						+ "\n" + temp [levelNumber - 1, 4].ToString ("000.0");
+
+				//update scoreboard only when it is showing
+				if (scoreBoard.enabled) {
+						float[,] temp = GameControl.control.GetScoreData ();
+						scoreBoard.text = temp [levelNumber - 1, 0].ToString ("000.0") + "\n" + temp [levelNumber - 1, 1].ToString ("000.0")
+								+ "\n" + temp [levelNumber - 1, 2].ToString ("000.0") + "\n" + temp [levelNumber - 1, 3].ToString ("000.0") 
+								+ "\n" + temp [levelNumber - 1, 4].ToString ("000.0");
+				}
 		}
 		void FixedUpdate ()
 		{		

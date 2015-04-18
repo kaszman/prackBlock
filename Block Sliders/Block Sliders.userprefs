@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../Engine/SolarSystem/SolarSystem/Assets/Scripts/OrbitalScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/GameControl.cs">
     <Files>
-      <File FileName="../../../Engine/SolarSystem/SolarSystem/Assets/Scripts/OrbitalScript.cs" Line="52" Column="4" />
+      <File FileName="Assets/BlockSliders/Scripts/GameControl.cs" Line="32" Column="26" />
+      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="36" Column="4" />
+      <File FileName="Assets/BlockSliders/Scripts/SceneSelect.cs" Line="19" Column="46" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

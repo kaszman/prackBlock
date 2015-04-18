@@ -31,8 +31,8 @@ public class GameControl : MonoBehaviour
 		public bool paused;
 		public bool pausedMenu;
 		private AudioSource gameMusic;
-		public float[,] scoreData = new float[20, 5];
-		private int fn = 20;
+		public float[,] scoreData = new float[25, 5];
+		private int fn = 25;
 
 		//runs on game start
 		void Awake ()
@@ -101,7 +101,7 @@ public class GameControl : MonoBehaviour
 
 				float temp = 0;
 		
-				for (int i = 0; i < sortArray.Length; i++) {
+				for (int i = 0; i < fn; i++) {
 						for (int sort = 0; sort < sortArray.Length - 1; sort++) {
 								if (sortArray [sort] > sortArray [sort + 1]) {
 										temp = sortArray [sort + 1];
@@ -284,32 +284,38 @@ public class GameControl : MonoBehaviour
 		//methods to play sound effects
 		public void PlayBlockSlide (bool playing)
 		{
-				if (!BlockSlideFX.isPlaying && playing) {
-						BlockSlideFX.volume = (float)FxVolumePref / 10;
-						BlockSlideFX.Play ();
-						BlockSlideFX.loop = true;
-				}
+				if (BlockSlideFX != null) {
+						if (!BlockSlideFX.isPlaying && playing) {
+								BlockSlideFX.volume = (float)FxVolumePref / 10;
+								BlockSlideFX.Play ();
+								BlockSlideFX.loop = true;
+						}
 
-				if (!playing) {
-						BlockSlideFX.Stop ();
-						BlockSlideFX.loop = false;
+						if (!playing) {
+								BlockSlideFX.Stop ();
+								BlockSlideFX.loop = false;
+						}
 				}
 
 		}
 
 		public void PlayDoorSound ()
 		{
-				if (!DoorSoundFX.isPlaying) {
-						DoorSoundFX.volume = (float)FxVolumePref / 10;
-						DoorSoundFX.Play ();
+				if (DoorSoundFX != null) {
+						if (!DoorSoundFX.isPlaying) {
+								DoorSoundFX.volume = (float)FxVolumePref / 10;
+								DoorSoundFX.Play ();
+						}
 				}
 		}
 
 		public void PlayPew ()
 		{
-				if (!PewFX.isPlaying) {
-						PewFX.volume = (float)FxVolumePref / 10;
-						PewFX.Play ();
+				if (PewFX != null) {
+						if (!PewFX.isPlaying) {
+								PewFX.volume = (float)FxVolumePref / 10;
+								PewFX.Play ();
+						}
 				}
 		}
 
