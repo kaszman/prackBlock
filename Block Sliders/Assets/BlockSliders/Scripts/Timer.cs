@@ -42,13 +42,11 @@ public class Timer : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				Debug.ClearDeveloperConsole ();
 				if (timeRemaining > 0 && control) {
 						ringing = false;
 						timeRemaining -= Time.deltaTime;
 				} else if (timeRemaining <= 0 && control) {
 						ringing = true;
 				}
-				Debug.Log (ringing.ToString () + "\n" + timeRemaining.ToString ("0.00"));
 		}
 }

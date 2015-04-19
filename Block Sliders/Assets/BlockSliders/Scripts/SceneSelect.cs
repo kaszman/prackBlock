@@ -42,10 +42,7 @@ public class SceneSelect : MonoBehaviour
 		{
 				if (selectionNumber + 1 <= GameControl.control.HighestUnlock) {
 						selectionNumber++;
-				} else {
-						Debug.Log (selectionNumber + 1 <= GameControl.control.HighestUnlock);
 				}
-				Debug.Log (selectionNumber.ToString () + GameControl.control.HighestUnlock.ToString ());
 		}
 
 		//decriment level selector, not below 1
@@ -53,10 +50,7 @@ public class SceneSelect : MonoBehaviour
 		{
 				if (selectionNumber - 1 >= 1) {
 						selectionNumber--;
-				} else {
-						Debug.Log (selectionNumber - 1 >= 1);
 				}
-				Debug.Log (selectionNumber);
 		}
 
 		//load the selected level

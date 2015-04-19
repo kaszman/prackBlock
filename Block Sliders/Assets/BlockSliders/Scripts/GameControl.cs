@@ -354,14 +354,14 @@ public class GameControl : MonoBehaviour
 		
 				stream.Close ();
 
-				var sr = File.CreateText (Application.persistentDataPath + "/Debug.txt");
-				sr.Write ("Block speed:\t" + PlayerPrefs.GetInt ("BlockSpeedPref").ToString () + "\n");
-				sr.Write ("FX Volume:\t" + PlayerPrefs.GetInt ("FxVolumePref").ToString () + "\n");
-				sr.Write ("Player speed:\t" + PlayerPrefs.GetInt ("PlayerSpeedPref").ToString () + "\n");
-				sr.Write ("Ram Amount:\t" + ramAmount.ToString () + "\n");
-				sr.Write ("Highest Unlock:\t" + highestUnlock.ToString () + "\n");
-
-				sr.Close ();
+//				var sr = File.CreateText (Application.persistentDataPath + "/Debug.txt");
+//				sr.Write ("Block speed:\t" + PlayerPrefs.GetInt ("BlockSpeedPref").ToString () + "\n");
+//				sr.Write ("FX Volume:\t" + PlayerPrefs.GetInt ("FxVolumePref").ToString () + "\n");
+//				sr.Write ("Player speed:\t" + PlayerPrefs.GetInt ("PlayerSpeedPref").ToString () + "\n");
+//				sr.Write ("Ram Amount:\t" + ramAmount.ToString () + "\n");
+//				sr.Write ("Highest Unlock:\t" + highestUnlock.ToString () + "\n");
+//
+//				sr.Close ();
 		}
 
 		/// <summary>
