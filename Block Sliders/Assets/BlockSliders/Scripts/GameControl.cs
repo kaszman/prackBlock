@@ -62,7 +62,7 @@ public class GameControl : MonoBehaviour
 				if (Application.isMobilePlatform) {
 						Screen.sleepTimeout = 0;
 				}
-				//Load ();
+				Load ();
 		}
 	
 		// Update is called once per frame
@@ -418,7 +418,7 @@ public class GameControl : MonoBehaviour
 						}
 				}
 
-				SaveData data = new SaveData (4, 4, 10, 10, ramAmount, 1, scoreData);
+				SaveData data = new SaveData (3, 3, 10, 10, ramAmount, 1, scoreData);
 
 				formatter.Serialize (stream, data);
 		

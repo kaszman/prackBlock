@@ -14,7 +14,8 @@ public class MainMenu : MonoBehaviour
 		public Canvas levelcanvas;
 		public Canvas playcanvas;
 		public Canvas creditscanvas;
-		public Canvas leaderboardcanvas;
+		public Button resumeButton;
+		public Button levelSelectButton;
 
 		//options sliders
 		public Slider blockspeedSlider;
@@ -49,14 +50,21 @@ public class MainMenu : MonoBehaviour
 								"\nHole traps can be plugged by blocks" +
 								"\nAcid traps can not be plugged";
 				}
+				if (GameControl.control.HighestUnlock <= 1) {
+						GameControl.control.NewGame ();
+				}
 		}
 
 		// Update is called once per frame
 		void Update ()
 		{
-//				if (Application.isLoadingLevel) {
-//						displayCanvas = mainCanvas;
-//				}
+				if (GameControl.control.HighestUnlock == 1) {
+						resumeButton.interactable = false;
+						levelSelectButton.interactable = false;
+				} else {
+						resumeButton.interactable = true;
+						levelSelectButton.interactable = true;
+				}
 		}
 
 		public void changeCanvas (int canvas)
@@ -118,15 +126,6 @@ public class MainMenu : MonoBehaviour
 						fxvolumeSlider.enabled = false;
 						musicvolumeSlider.enabled = false;
 						displayCanvas = creditscanvas;
-						displayCanvas.enabled = true;
-				}
-				if (canvas == 6) {
-						displayCanvas.enabled = false;
-						blockspeedSlider.enabled = false;
-						playerspeedSlider.enabled = false;
-						fxvolumeSlider.enabled = false;
-						musicvolumeSlider.enabled = false;
-						displayCanvas = leaderboardcanvas;
 						displayCanvas.enabled = true;
 				}
 		}
