@@ -26,6 +26,7 @@ public class AcidHole : MonoBehaviour
 		
 		//if the object is a player
 		else if (col.gameObject.tag == "Player") {
+						GameControl.control.PlayFall ();
 						//Reset the level
 						Application.LoadLevel (currentSceneName);
 				}

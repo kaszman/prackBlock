@@ -18,6 +18,7 @@ public class GameControl : MonoBehaviour
 		public AudioSource BlockSlideFX;
 		public AudioSource DoorSoundFX;
 		public AudioSource PewFX;
+		public AudioSource FallFX;
 
 		//options variables
 		public int blockSpeedPref;
@@ -157,7 +158,7 @@ public class GameControl : MonoBehaviour
 				BlockSlideFX.volume = (float)FxVolumePref / 10;
 				DoorSoundFX.volume = (float)FxVolumePref / 10;
 				PewFX.volume = (float)FxVolumePref / 10;
-
+				FallFX.volume = (float)FxVolumePref / 10;
 		}
 
 	
@@ -319,6 +320,15 @@ public class GameControl : MonoBehaviour
 				}
 		}
 
+		public void PlayFall ()
+		{
+				if (FallFX != null) {
+						if (!FallFX.isPlaying) {
+								FallFX.volume = (float)FxVolumePref / 10;
+								FallFX.Play ();
+						}
+				}
+		}
 		/// <summary>
 		/// Checks if level is unlocked
 		/// </summary>

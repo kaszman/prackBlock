@@ -46,6 +46,7 @@ public class HoleCode : MonoBehaviour
 		
 		//if the object is a player, restart level
 		else if (col.gameObject.tag == "Player") {
+						GameControl.control.PlayFall ();
 						//Reset the level
 						Application.LoadLevel (currentSceneName);
 				}
