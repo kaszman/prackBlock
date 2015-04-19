@@ -407,7 +407,7 @@ public class GameControl : MonoBehaviour
 
 				for (int i = 0; i < fn; i++) {
 						for (int j = 0; j < 5; j++) {
-								scoreData [i, j] = (j + i + 2 * 10) + UnityEngine.Random.Range (1, 10);
+								scoreData [i, j] = (j + i + 2 * 10) + (UnityEngine.Random.Range (1.1f, 11.1f) / 10);
 						}
 				}
 
