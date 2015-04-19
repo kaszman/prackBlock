@@ -19,48 +19,9 @@ public class HoleCode : MonoBehaviour
 		{
 				currentSceneName = "Lvl" + GameControl.control.CurrentLevel.ToString ();
 		}
-	
-		// Update is called once per frame
-		void FixedUpdate ()
-		{
-//what to do while the hole is empty
-				if (!filled) {
-						handleCollisionEvents ();
-				}
-		}
-	
-		/// <summary>
-		/// Determine what to do when the hole is collided with
-		/// </summary>
-		void handleCollisionEvents ()
-		{
-//				//if the object is a moveable block
-//				if (collisionObject.tag == "Enemy") {	
-//						//destroy the offencing object
-//						Destroy (collisionObject);
-//
-//						//set filled to true
-//						filled = true;
-//
-//						//change the sprite to a filled hole
-//						ownerRenderer.sprite = filledHoleSprite;
-//
-//						if (filled) {
-//								//make hole walkable
-//								ownerObject.GetComponent<Collider2D> ().enabled = false;
-//						}
-//
-//				}
-//		
-//		//if the object is a player, (restart? move back before hole?)
-//		else if (collisionObject.tag == "Player") {
-//						//Reset the level
-//						Application.LoadLevel (currentSceneName);
-//				}
-		}
 
 		/// <summary>
-		/// Sets collisionObject to the offending collision object
+		/// Handle collision event
 		/// </summary>
 		/// <param name="col">Col.</param>
 		void OnCollisionEnter2D (Collision2D col)
@@ -83,7 +44,7 @@ public class HoleCode : MonoBehaviour
 			
 				}
 		
-		//if the object is a player, (restart? move back before hole?)
+		//if the object is a player, restart level
 		else if (col.gameObject.tag == "Player") {
 						//Reset the level
 						Application.LoadLevel (currentSceneName);

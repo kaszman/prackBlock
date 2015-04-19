@@ -48,27 +48,16 @@ public class PauseMenu : MonoBehaviour
 				} else {
 						displayCanvas.enabled = false;
 				}
-//				if (Application.isMobilePlatform) {
-//						displayCanvas.scaleFactor = 3f;
-//				}
+
+				if (Application.isMobilePlatform) {
+						displayCanvas.scaleFactor = 3f;
+				}
 
 				if (Input.GetKeyDown (KeyCode.Escape)) {
 						GameControl.control.Paused = true;
 						GameControl.control.PausedMenu = true;
 				}
 		}
-
-	#region Methods to apply slider settings
-//	public void changeBlockSpeed()
-//	{
-//	//	GameControl.control.BlockSpeedPref = (int)blockspeedSlider.value;
-//	}
-//	
-//	public void changePlayerSpeed()
-//	{
-//	//	GameControl.control.PlayerSpeedPref = (int)playerspeedSlider.value;
-//	}
-	#endregion
 
 		/// <summary>
 		/// Changes the pause state

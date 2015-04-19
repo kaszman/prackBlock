@@ -22,35 +22,21 @@ public class DoorCode : MonoBehaviour
 		void Update ()
 		{
 				if (doorSoundStarted && GameControl.control.paused == true) {
-						//loadingSlider.value = loadingSlider.value + .05f;
 						successCanv.enabled = true;
 				} else {
-						//loadingSlider.value = 0;
 						successCanv.enabled = false;
 				}
 
 		}
 
 		/// <summary>
-		/// Sets collisionObject to the offending collision object
+		/// Handle collision events
 		/// </summary>
 		/// <param name="col">Col.</param>
 		void OnCollisionEnter2D (Collision2D col)
 		{			
 				//if the object is a player, move to the next level and play sound
-				if (col.gameObject.tag == "Player") {
-//						if (!playerCollide.isPlaying) {
-//								if (doorSoundStarted == true) {
-//										//Time.timeScale = 1f;
-//										GameControl.control.UnlockLevel (nextScene);
-//										//	GameControl.control.Paused = false;
-//										LevelSelect.select.ChangeLevel (nextScene);
-//								}	
-//								//what to do when the player hits the door
-//								playerCollide.Play ();			
-//								GameControl.control.Save ();
-//								//GameControl.control.Paused = true;
-//						}		
+				if (col.gameObject.tag == "Player") {	
 						GameControl.control.PlayDoorSound ();
 						doorSoundStarted = true;
 						GameControl.control.UnlockLevel (nextScene);

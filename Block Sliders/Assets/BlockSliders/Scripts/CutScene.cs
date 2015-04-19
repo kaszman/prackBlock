@@ -164,8 +164,6 @@ public class CutScene : MonoBehaviour
 				
 								laz3.enabled = false;
 								laz3.GetComponentInChildren<Text> ().enabled = false;
-						}
-						if (timerTime > 33) {
 								next3.interactable = true;
 						}
 				}

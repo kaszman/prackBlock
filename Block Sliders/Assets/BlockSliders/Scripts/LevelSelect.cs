@@ -26,7 +26,6 @@ public class LevelSelect : MonoBehaviour
 		/// </summary>
 		public void ResumeGame ()
 		{
-				//GameControl.control.Load ();
 				ChangeLevel (GameControl.control.HighestUnlock);
 		}
 
@@ -38,7 +37,6 @@ public class LevelSelect : MonoBehaviour
 				System.GC.Collect ();
 				GameControl.control.NewGame ();
 				GameControl.control.Save ();
-				GameControl.control.UnlockLevel (1);
 				Application.LoadLevel ("Lvl1");
 		}
 
@@ -50,6 +48,4 @@ public class LevelSelect : MonoBehaviour
 						return false;
 				}
 		}
-
-
 }

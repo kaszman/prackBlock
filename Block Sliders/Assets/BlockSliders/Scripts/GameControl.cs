@@ -373,14 +373,8 @@ public class GameControl : MonoBehaviour
 		
 		
 						GameControl.SetEnvironmentVariables ();
-		
-//						Stream stream = null;
-//		
-//						try {
-//								stream = File.Open (Application.persistentDataPath + "/GameData.bin", FileMode.Open);
-//						} catch (FileNotFoundException e) {
+
 						Stream stream = File.OpenRead (Application.persistentDataPath + "/GameData.bin");
-						//	}
 		
 						BinaryFormatter formatter = new BinaryFormatter ();
 						formatter.Binder = new VersionDeserializationBinder ();
@@ -413,8 +407,7 @@ public class GameControl : MonoBehaviour
 
 				for (int i = 0; i < fn; i++) {
 						for (int j = 0; j < 5; j++) {
-								//string temp = i.ToString () + " " + j.ToString ();
-								scoreData [i, j] = j + i + 1 * 10;
+								scoreData [i, j] = (j + i + 2 * 10) + UnityEngine.Random.Range (1, 10);
 						}
 				}
 

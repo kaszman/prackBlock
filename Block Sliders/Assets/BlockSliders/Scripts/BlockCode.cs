@@ -52,7 +52,7 @@ public class BlockCode: MonoBehaviour
 				if (Input.GetKey (KeyCode.DownArrow)) {
 						velocity.y -= 1;
 				}
-				if (velocity.magnitude > .3f) {
+				if (velocity.magnitude > .2f) {
 						GameControl.control.PlayBlockSlide (true);
 				} else {
 						GameControl.control.PlayBlockSlide (false);
@@ -64,7 +64,7 @@ public class BlockCode: MonoBehaviour
 		{
 
 				velocity = Input.acceleration;	
-				if (velocity.magnitude > .3f) {
+				if (velocity.magnitude > .2f) {
 						GameControl.control.PlayBlockSlide (true);
 				} else {
 						GameControl.control.PlayBlockSlide (false);

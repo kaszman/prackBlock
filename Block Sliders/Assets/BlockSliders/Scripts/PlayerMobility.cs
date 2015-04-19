@@ -45,7 +45,6 @@ public class PlayerMobility : MonoBehaviour
 				//up
 				if (Input.GetKey ("w")) {
 						velocity.y += 1;
-						//anim.SetTrigger("WalkingUp");
 						circle.enabled = false;
 						polygon.enabled = true;
 				}
@@ -53,7 +52,6 @@ public class PlayerMobility : MonoBehaviour
 				//down
 				if (Input.GetKey ("s")) {
 						velocity.y -= 1;
-						//anim.SetTrigger("WalkingDown");
 						circle.enabled = false;
 						polygon.enabled = true;
 				}
@@ -61,7 +59,6 @@ public class PlayerMobility : MonoBehaviour
 				//left
 				if (Input.GetKey ("a")) {
 						velocity.x -= 1;
-						//anim.SetTrigger("WalkingLeft");
 						polygon.enabled = false;
 						circle.enabled = true;
 				}
@@ -69,7 +66,6 @@ public class PlayerMobility : MonoBehaviour
 				//right
 				if (Input.GetKey ("d")) {
 						velocity.x += 1;
-						//anim.SetTrigger("WalkingRight");
 						polygon.enabled = false;
 						circle.enabled = true;
 				}
@@ -98,25 +94,25 @@ public class PlayerMobility : MonoBehaviour
 						anim.ResetTrigger ("WalkingRight");
 				}
 				//walking right
-				if (velocity.x >= .9f) {// || velocity.normalized.x >= .7f)
+				if (velocity.x >= .9f) {
 						anim.SetTrigger ("WalkingRight");
 				} else {
 						anim.ResetTrigger ("WalkingRight");
 				}
 				//walking left
-				if (velocity.x <= -.9f) {// || velocity.normalized.x <= -.7f)
+				if (velocity.x <= -.9f) {
 						anim.SetTrigger ("WalkingLeft");
 				} else {
 						anim.ResetTrigger ("WalkingLeft");
 				}
 				//walking up
-				if (velocity.y >= .1f) {// || velocity.normalized.y >= .2f)
+				if (velocity.y >= .1f) {
 						anim.SetTrigger ("WalkingUp");
 				} else {
 						anim.ResetTrigger ("WalkingUp");
 				}
 				//walking down
-				if (velocity.y <= -.1f) {// || velocity.normalized.y >= -.2f)
+				if (velocity.y <= -.1f) {
 						anim.SetTrigger ("WalkingDown");
 				} else {
 						anim.ResetTrigger ("WalkingDown");

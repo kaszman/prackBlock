@@ -5,23 +5,15 @@ public class AcidHole : MonoBehaviour
 {
 		//private use variables
 		private GameObject collisionObject;
+		private string currentSceneName;
 
-//		// Use this for initialization
-//		void Start ()
-//		{
-//	
-//		}
-//	
-//		// Update is called once per frame
-//		void Update ()
-//		{
-//	
-//		}
 
-		/// <summary>
-		/// Sets collisionObject to the offending collision object
-		/// </summary>
-		/// <param name="col">Col.</param>
+		// Use this for initialization
+		void Start ()
+		{
+				currentSceneName = "Lvl" + GameControl.control.CurrentLevel.ToString ();
+		}
+
 		void OnCollisionEnter2D (Collision2D col)
 		{			
 				//if the object is a moveable block
@@ -35,7 +27,7 @@ public class AcidHole : MonoBehaviour
 		//if the object is a player
 		else if (col.gameObject.tag == "Player") {
 						//Reset the level
-						Application.LoadLevel ("Lvl" + GameControl.control.CurrentLevel.ToString ());
+						Application.LoadLevel (currentSceneName);
 				}
 		}
 }
