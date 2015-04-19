@@ -13,12 +13,14 @@ public class GameControl : MonoBehaviour
 		public AudioSource cupidMusic;
 		public AudioSource frogMusic;
 		public AudioSource marchMusic;
+		public AudioSource lizardMusic;
 
 		//sound effect
 		public AudioSource BlockSlideFX;
 		public AudioSource DoorSoundFX;
 		public AudioSource PewFX;
 		public AudioSource FallFX;
+		public AudioSource BreakFX;
 
 		//options variables
 		public int blockSpeedPref;
@@ -134,7 +136,7 @@ public class GameControl : MonoBehaviour
 		protected void ControlMusic ()
 		{
 				if (!gameMusic.isPlaying) {
-						int whatToPlay = UnityEngine.Random.Range (1, 4);
+						int whatToPlay = UnityEngine.Random.Range (1, 5);
 						switch (whatToPlay) {
 						case 1:
 								gameMusic = cupidMusic;
@@ -144,6 +146,9 @@ public class GameControl : MonoBehaviour
 								break;
 						case 3:
 								gameMusic = marchMusic;
+								break;
+						case 4:
+								gameMusic = lizardMusic;
 								break;
 						}
 						gameMusic.Play ();
@@ -159,6 +164,7 @@ public class GameControl : MonoBehaviour
 				DoorSoundFX.volume = (float)FxVolumePref / 10;
 				PewFX.volume = (float)FxVolumePref / 10;
 				FallFX.volume = (float)FxVolumePref / 10;
+				BreakFX.volume = (float)FxVolumePref / 10;
 		}
 
 	
@@ -326,6 +332,16 @@ public class GameControl : MonoBehaviour
 						if (!FallFX.isPlaying) {
 								FallFX.volume = (float)FxVolumePref / 10;
 								FallFX.Play ();
+						}
+				}
+		}
+
+		public void PlayBreak ()
+		{
+				if (BreakFX != null) {
+						if (!BreakFX.isPlaying) {
+								BreakFX.volume = (float)FxVolumePref / 10;
+								BreakFX.Play ();
 						}
 				}
 		}

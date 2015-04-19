@@ -78,6 +78,7 @@ public class PlayerBehavior : MonoBehaviour
 
 				if (ramming) {
 						if (col.gameObject.tag == tagCanCollide) {
+								GameControl.control.PlayBreak ();
 								Destroy (col.gameObject);
 								GameControl.control.RamAmount -= 1;
 								ramming = false;
