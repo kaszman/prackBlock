@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Advertisements;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -32,8 +31,6 @@ public class MainMenu : MonoBehaviour
 		{
 				displayCanvas = mainCanvas;
 				displayCanvas.enabled = true;
-				Advertisement.Initialize ("33195", false);
-
 		}
 
 		void Start ()
@@ -114,9 +111,6 @@ public class MainMenu : MonoBehaviour
 						displayCanvas.enabled = true;
 				}
 				if (canvas == 4) {
-						if (Advertisement.isReady () && Application.isMobilePlatform) {
-								Advertisement.Show ();
-						}
 						displayCanvas.enabled = false;
 						blockspeedSlider.enabled = false;
 						playerspeedSlider.enabled = false;

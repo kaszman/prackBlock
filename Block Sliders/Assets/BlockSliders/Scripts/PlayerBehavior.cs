@@ -42,10 +42,14 @@ public class PlayerBehavior : MonoBehaviour
 
 				//update scoreboard only when it is showing
 				if (scoreBoard.enabled) {
+						//	GoogleMobileAdsDemoScript.googleAd.ShowAd (true);
+			
 						float[,] temp = GameControl.control.GetScoreData ();
 						scoreBoard.text = temp [levelNumber - 1, 0].ToString ("000.0") + "\n" + temp [levelNumber - 1, 1].ToString ("000.0")
 								+ "\n" + temp [levelNumber - 1, 2].ToString ("000.0") + "\n" + temp [levelNumber - 1, 3].ToString ("000.0") 
 								+ "\n" + temp [levelNumber - 1, 4].ToString ("000.0");
+				} else {
+						//		GoogleMobileAdsDemoScript.googleAd.ShowAd (false);
 				}
 		}
 		void FixedUpdate ()

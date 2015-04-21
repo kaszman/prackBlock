@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Advertisements;
 using System.Collections;
 using System;
 using System.IO;

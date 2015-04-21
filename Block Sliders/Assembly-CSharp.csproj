@@ -53,6 +53,7 @@
      <Compile Include="Assets\BlockSliders\Scripts\CutScene.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\DoorCode.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\GameControl.cs" />
+     <Compile Include="Assets\BlockSliders\Scripts\GoogleMobileAdsDemoScript.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\HoleCode.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\LevelSelect.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\MainMenu.cs" />
@@ -64,10 +65,31 @@
      <Compile Include="Assets\BlockSliders\Scripts\SliderCode.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\Timer.cs" />
      <Compile Include="Assets\BlockSliders\Scripts\TutorialScript.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\AdFailedToLoadEventArgs.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\AdPosition.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\AdRequest.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\AdSize.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\BannerView.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\Gender.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\InterstitialAd.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Common\DummyClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Common\IAdListener.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Common\IGoogleMobileAdsBannerClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Common\IGoogleMobileAdsInterstitialClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\AdListener.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\AndroidBannerClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\AndroidInterstitialClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\Utils.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\GoogleMobileAdsClientFactory.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\Externs.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\IOSBannerClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\IOSInterstitialClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\MonoPInvokeCallbackAttribute.cs" />
      <None Include="Assets\Plugins\Android\unityads\proguard-project.txt" />
      <None Include="Assets\Plugins\Android\unityads\build.xml" />
      <None Include="Assets\link.xml" />
      <None Include="Assets\Plugins\Android\unityads\res\values\strings.xml" />
+     <None Include="Assets\Plugins\Android\GoogleMobileAdsPlugin\AndroidManifest.xml" />
      <None Include="Assets\Plugins\Android\unityads\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -75,10 +97,6 @@
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{41115586-0977-BAA7-42D3-5C923B17D2BA}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
