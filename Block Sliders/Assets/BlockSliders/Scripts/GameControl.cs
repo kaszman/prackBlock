@@ -161,7 +161,7 @@ public class GameControl : MonoBehaviour
 		{
 				gameMusic.volume = (float)musicVolumePref / 10;
 
-				BlockSlideFX.volume = (float)FxVolumePref / 10;
+				BlockSlideFX.volume = (float)FxVolumePref / 50;
 				DoorSoundFX.volume = (float)FxVolumePref / 10;
 				PewFX.volume = (float)FxVolumePref / 10;
 				FallFX.volume = (float)FxVolumePref / 10;
@@ -317,7 +317,7 @@ public class GameControl : MonoBehaviour
 		{
 				if (BlockSlideFX != null) {
 						if (!BlockSlideFX.isPlaying && playing) {
-								BlockSlideFX.volume = (float)FxVolumePref / 10;
+								BlockSlideFX.volume = (float)FxVolumePref / 50;
 								BlockSlideFX.Play ();
 								BlockSlideFX.loop = true;
 						}
