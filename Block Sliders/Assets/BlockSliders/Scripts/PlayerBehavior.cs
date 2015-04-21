@@ -99,8 +99,13 @@ public class PlayerBehavior : MonoBehaviour
 
 		public void endBehavior ()
 		{
+				float adjustedTime = levelTime - GameControl.control.RamAmount;
+		
+				if (adjustedTime < 0) {
+						adjustedTime = 0;
+				}
 				finalTime = levelTime;
-				finalTimeDisplay.text = finalTime.ToString ("000.0");
-				GameControl.control.addLeaderboardTime (finalTime, levelNumber);
+				finalTimeDisplay.text = finalTime.ToString ("000.0") + " - " + GameControl.control.RamAmount.ToString () + " rams = " + adjustedTime.ToString ("000.0");
+				GameControl.control.addLeaderboardTime (adjustedTime, levelNumber);
 		}
 }
