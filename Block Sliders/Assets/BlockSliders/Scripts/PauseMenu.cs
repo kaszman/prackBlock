@@ -18,6 +18,7 @@ public class PauseMenu : MonoBehaviour
 		public Slider playerspeedSlider;
 		public Slider fxvolumeSlider;
 		public Slider musicvolumeSlider;
+		public Button calibrate;
 
 	
 		void Start ()
@@ -53,9 +54,8 @@ public class PauseMenu : MonoBehaviour
 						displayCanvas.scaleFactor = 3f;
 				}
 
-				if (Input.GetKeyDown (KeyCode.Escape)) {
-						GameControl.control.Paused = true;
-						GameControl.control.PausedMenu = true;
+				if (Input.GetKeyDown (KeyCode.Escape) && !GameControl.control.Paused) {
+						PauseEngage ();
 				}
 		}
 
@@ -102,6 +102,17 @@ public class PauseMenu : MonoBehaviour
 						musicvolumeSlider.value = PlayerPrefs.GetInt ("MusicVolumePref");
 						displayCanvas = optionsCanvas;
 				}
+		}
+
+		public void calibration ()
+		{
+				GameControl.control.Offset = Input.acceleration;
+		}
+
+		public void PauseEngage ()
+		{
+				GameControl.control.Paused = true;
+				GameControl.control.PausedMenu = true;
 		}
 	
 }

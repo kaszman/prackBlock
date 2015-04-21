@@ -28,6 +28,9 @@ public class HoleCode : MonoBehaviour
 		{			
 				//if the object is a moveable block
 				if (col.gameObject.tag == "Enemy") {	
+
+						GameControl.control.PlayLockIn ();
+
 						//destroy the offencing object
 						Destroy (col.gameObject);
 			

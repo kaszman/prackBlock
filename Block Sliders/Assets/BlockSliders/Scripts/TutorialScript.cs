@@ -35,7 +35,7 @@ public class TutorialScript : MonoBehaviour
 						break;				
 				case 2:
 						if (Application.isMobilePlatform) {
-								tutorialText.text = "Tilt your phone to move the blocks";
+								tutorialText.text = "Tilt your phone to move the blocks. Calibration can be found in the options menu";
 						} else {
 								tutorialText.text = "Use the arrow keys to move the blocks";
 						}
@@ -58,11 +58,7 @@ public class TutorialScript : MonoBehaviour
 						break;
 
 				case 7:
-						if (Application.isMobilePlatform) {
-								tutorialText.text = "Press the back arrow to bring up the pause menu";
-						} else {
-								tutorialText.text = "Press the escape key to bring up the pause menu";
-						}
+						tutorialText.text = "Press the Pause button to bring up the pause menu";
 						break;
 				case 9:
 						tutorialText.text = "Acid holes will destroy blocks and harm you";

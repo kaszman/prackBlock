@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Advertisements;
 using System.Collections;
 using System;
 using System.IO;
@@ -13,7 +14,6 @@ public class GameControl : MonoBehaviour
 		public AudioSource cupidMusic;
 		public AudioSource frogMusic;
 		public AudioSource marchMusic;
-		public AudioSource lizardMusic;
 
 		//sound effect
 		public AudioSource BlockSlideFX;
@@ -21,6 +21,8 @@ public class GameControl : MonoBehaviour
 		public AudioSource PewFX;
 		public AudioSource FallFX;
 		public AudioSource BreakFX;
+		public AudioSource LockInFX;
+		public AudioSource SplashFX;
 
 		//options variables
 		public int blockSpeedPref;
@@ -36,17 +38,12 @@ public class GameControl : MonoBehaviour
 		private AudioSource gameMusic;
 		public float[,] scoreData = new float[100, 5];
 		private int fn = 100;
+		private Vector3 offSet;
 
 		//runs on game start
 		void Awake ()
 		{
-//				//do this if the game has never been saved
-//				if (File.Exists (Application.persistentDataPath + "/GameData.bin")) {
-//						NewGame ();
-//				} else {
-//				Load ();
-//				}
-				//singleton
+				offSet = Vector3.zero;
 				if (control == null) {
 						DontDestroyOnLoad (gameObject);
 						control = this;
@@ -71,6 +68,7 @@ public class GameControl : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
+
 				ControlMusic ();
 				SetVolumes ();
 
@@ -136,7 +134,7 @@ public class GameControl : MonoBehaviour
 		protected void ControlMusic ()
 		{
 				if (!gameMusic.isPlaying) {
-						int whatToPlay = UnityEngine.Random.Range (1, 5);
+						int whatToPlay = UnityEngine.Random.Range (1, 4);
 						switch (whatToPlay) {
 						case 1:
 								gameMusic = cupidMusic;
@@ -146,9 +144,6 @@ public class GameControl : MonoBehaviour
 								break;
 						case 3:
 								gameMusic = marchMusic;
-								break;
-						case 4:
-								gameMusic = lizardMusic;
 								break;
 						}
 						gameMusic.Play ();
@@ -165,6 +160,8 @@ public class GameControl : MonoBehaviour
 				PewFX.volume = (float)FxVolumePref / 10;
 				FallFX.volume = (float)FxVolumePref / 10;
 				BreakFX.volume = (float)FxVolumePref / 10;
+				LockInFX.volume = (float)FxVolumePref / 10;
+				SplashFX.volume = (float)FxVolumePref / 10;
 		}
 
 	
@@ -231,11 +228,6 @@ public class GameControl : MonoBehaviour
 
 	#region game data access
 
-//	public void GameMusic
-//	{
-//
-//	}
-
 		/// <summary>
 		/// Unlocks the level.
 		/// </summary>
@@ -288,6 +280,28 @@ public class GameControl : MonoBehaviour
 				return scoreData;
 		}
 
+		public Vector3 Offset {
+				get { return offSet;}
+				set { offSet = value;}
+		}
+
+		/// <summary>
+		/// Checks if level is unlocked
+		/// </summary>
+		/// <returns><c>true</c>, if level unlocked was ised, <c>false</c> otherwise.</returns>
+		/// <param name="level">Level.</param>
+		private bool isLevelUnlocked (int level)
+		{
+				if (level <= GameControl.control.HighestUnlock) {
+						return true;
+				} else {
+						return false;
+				}
+		}
+	
+	#endregion
+
+	#region Play Audio FX
 		//methods to play sound effects
 		public void PlayBlockSlide (bool playing)
 		{
@@ -345,21 +359,28 @@ public class GameControl : MonoBehaviour
 						}
 				}
 		}
-		/// <summary>
-		/// Checks if level is unlocked
-		/// </summary>
-		/// <returns><c>true</c>, if level unlocked was ised, <c>false</c> otherwise.</returns>
-		/// <param name="level">Level.</param>
-		private bool isLevelUnlocked (int level)
+
+		public void PlayLockIn ()
 		{
-				if (level <= GameControl.control.HighestUnlock) {
-						return true;
-				} else {
-						return false;
+				if (LockInFX != null) {
+						if (!LockInFX.isPlaying) {
+								LockInFX.volume = (float)FxVolumePref / 10;
+								LockInFX.Play ();
+						}
 				}
 		}
 
+		public void PlaySplash ()
+		{
+				if (SplashFX != null) {
+						if (!SplashFX.isPlaying) {
+								SplashFX.volume = (float)FxVolumePref / 10;
+								SplashFX.Play ();
+						}
+				}
+		}
 	#endregion
+
 	
 	#region game data save/load/new
 		/// <summary>

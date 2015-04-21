@@ -63,7 +63,10 @@ public class BlockCode: MonoBehaviour
 		private void doMobileMovement ()
 		{
 
-				velocity = Input.acceleration;	
+				//test code
+				velocity = Input.acceleration - GameControl.control.Offset;	
+				//test code
+
 				if (velocity.magnitude > .2f) {
 						GameControl.control.PlayBlockSlide (true);
 				} else {

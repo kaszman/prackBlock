@@ -1,12 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/GameControl.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/ButtonScale.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/DoorCode.cs" Line="33" Column="30" />
-      <File FileName="Assets/BlockSliders/Scripts/GameControl.cs" Line="140" Column="29" />
-      <File FileName="Assets/BlockSliders/Scripts/AcidHole.cs" Line="29" Column="39" />
-      <File FileName="Assets/BlockSliders/Scripts/HoleCode.cs" Line="49" Column="39" />
-      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="81" Column="42" />
+      <File FileName="Assets/BlockSliders/Scripts/ButtonScale.cs" Line="16" Column="6" />
+      <File FileName="Assets/BlockSliders/Scripts/GameControl.cs" Line="62" Column="1" />
+      <File FileName="Assets/BlockSliders/Scripts/MainMenu.cs" Line="118" Column="29" />
+      <File FileName="Assets/BlockSliders/Scripts/PauseMenu.cs" Line="58" Column="22" />
+      <File FileName="Assets/BlockSliders/Scripts/TutorialScript.cs" Line="38" Column="110" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

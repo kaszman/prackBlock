@@ -16,6 +16,8 @@ public class AcidHole : MonoBehaviour
 
 		void OnCollisionEnter2D (Collision2D col)
 		{			
+				GameControl.control.PlaySplash ();
+
 				//if the object is a moveable block
 				if (col.gameObject.tag == "Enemy") {	
 						//destroy the offencing object
@@ -23,9 +25,8 @@ public class AcidHole : MonoBehaviour
 
 			
 				}
-		
 		//if the object is a player
-		else if (col.gameObject.tag == "Player") {
+				else if (col.gameObject.tag == "Player") {
 						GameControl.control.PlayFall ();
 						//Reset the level
 						Application.LoadLevel (currentSceneName);

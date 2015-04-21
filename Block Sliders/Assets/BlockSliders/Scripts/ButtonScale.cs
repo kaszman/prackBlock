@@ -11,12 +11,15 @@ public class ButtonScale : MonoBehaviour
 		void Start ()
 		{
 				counter = GameControl.control.HighestUnlock;
+				if (drawText != null) {
+						drawText.text = GameControl.control.HighestUnlock.ToString ();
+				}
+
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-				drawText.text = GameControl.control.HighestUnlock.ToString ();
 
 		}
 	
@@ -26,7 +29,14 @@ public class ButtonScale : MonoBehaviour
 				if (counter < GameControl.control.LevelCount) {
 						counter++;
 				}
+				drawText.text = GameControl.control.HighestUnlock.ToString ();
+
 				GameControl.control.UnlockLevel (counter);
 				GameControl.control.Save ();
+		}
+
+		public void calibration ()
+		{
+				GameControl.control.Offset = Input.acceleration;
 		}
 }
