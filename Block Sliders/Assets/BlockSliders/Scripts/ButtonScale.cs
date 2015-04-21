@@ -14,13 +14,14 @@ public class ButtonScale : MonoBehaviour
 				if (drawText != null) {
 						drawText.text = GameControl.control.HighestUnlock.ToString ();
 				}
-
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-
+				if (drawText != null) {
+						drawText.text = GameControl.control.HighestUnlock.ToString ();
+				}
 		}
 	
 		public void doTheStuff ()
