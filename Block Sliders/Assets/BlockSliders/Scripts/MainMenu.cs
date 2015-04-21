@@ -116,14 +116,14 @@ public class MainMenu : MonoBehaviour
 				if (canvas == 4) {
 						if (Advertisement.isReady () && Application.isMobilePlatform) {
 								Advertisement.Show ();
-								displayCanvas.enabled = false;
-								blockspeedSlider.enabled = false;
-								playerspeedSlider.enabled = false;
-								fxvolumeSlider.enabled = false;
-								musicvolumeSlider.enabled = false;
-								displayCanvas = playcanvas;
-								displayCanvas.enabled = true;
 						}
+						displayCanvas.enabled = false;
+						blockspeedSlider.enabled = false;
+						playerspeedSlider.enabled = false;
+						fxvolumeSlider.enabled = false;
+						musicvolumeSlider.enabled = false;
+						displayCanvas = playcanvas;
+						displayCanvas.enabled = true;
 				}
 				if (canvas == 5) {
 						displayCanvas.enabled = false;
