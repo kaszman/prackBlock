@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour
 		{
 				displayCanvas = mainCanvas;
 				displayCanvas.enabled = true;
-				Advertisement.Initialize ("33151", false);
+				Advertisement.Initialize ("33195", false);
 
 		}
 
