@@ -76,6 +76,9 @@ public class GameControl : MonoBehaviour
 						PlayBlockSlide (false);
 						System.GC.Collect (System.GC.MaxGeneration, GCCollectionMode.Forced);
 				}
+				if (highestUnlock > fn) {
+						highestUnlock = fn;
+				}
 		}
 
 	#region LeaderBoard methods
@@ -250,6 +253,10 @@ public class GameControl : MonoBehaviour
 		/// <value>The level count.</value>
 		public int LevelCount {
 				get { return fn;}
+		}
+
+		public int CurrentCount {
+				get { return Application.levelCount - 2;}
 		}
 
 

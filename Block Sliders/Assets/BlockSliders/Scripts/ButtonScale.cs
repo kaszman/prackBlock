@@ -26,7 +26,7 @@ public class ButtonScale : MonoBehaviour
 		public void doTheStuff ()
 		{
 				GameControl.control.Load ();
-				if (counter < GameControl.control.LevelCount) {
+				if (counter < GameControl.control.CurrentCount) {
 						counter++;
 				}
 				drawText.text = GameControl.control.HighestUnlock.ToString ();
