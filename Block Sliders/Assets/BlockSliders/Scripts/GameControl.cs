@@ -43,6 +43,9 @@ public class GameControl : MonoBehaviour
 		//runs on game start
 		void Awake ()
 		{
+				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
+						NewGame ();
+				}
 				offSet = Vector3.zero;
 				if (control == null) {
 						DontDestroyOnLoad (gameObject);
