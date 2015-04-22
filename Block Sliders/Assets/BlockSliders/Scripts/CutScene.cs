@@ -160,7 +160,7 @@ public class CutScene : MonoBehaviour
 								human.GetComponentInChildren<Text> ().enabled = true;
 				
 								//change what to say
-								human.GetComponentInChildren<Text> ().text = "If we work together, I think we can beat this. Maybe even do better than some of the previous test takers!";
+								human.GetComponentInChildren<Text> ().text = "If we work together, I think we can beat this. Maybe even do better than some of the previous testers!";
 				
 								laz3.enabled = false;
 								laz3.GetComponentInChildren<Text> ().enabled = false;

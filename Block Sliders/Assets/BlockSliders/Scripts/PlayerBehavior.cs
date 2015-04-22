@@ -107,7 +107,7 @@ public class PlayerBehavior : MonoBehaviour
 						adjustedTime = 0;
 				}
 				finalTime = levelTime;
-				finalTimeDisplay.text = finalTime.ToString ("000.0") + " - " + GameControl.control.RamAmount.ToString () + " rams = " + adjustedTime.ToString ("000.0");
+				finalTimeDisplay.text = finalTime.ToString ("000.0") + "s - " + GameControl.control.RamAmount.ToString () + " rams = " + adjustedTime.ToString ("000.0");
 				GameControl.control.addLeaderboardTime (adjustedTime, levelNumber);
 		}
 }

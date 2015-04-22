@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PlayerBehavior.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/GoogleMobileAdsDemoScript.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/GoogleMobileAdsDemoScript.cs" Line="27" Column="24" />
-      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="52" Column="9" />
+      <File FileName="Assets/BlockSliders/Scripts/GoogleMobileAdsDemoScript.cs" Line="40" Column="6" />
+      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="51" Column="6" />
       <File FileName="Assets/BlockSliders/Scripts/GameControl.cs" Line="15" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
