@@ -10,22 +10,14 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 
 		private BannerView bannerView;
 		private InterstitialAd interstitial;
-		private String adUnitId;
+		
+		private bool showing;
 	
 		void Start ()
 		{
-				adUnitId = "ca-app-pub-2255839828586145/5498178517";
-				
-				bannerView = new BannerView (adUnitId, AdSize.Banner, AdPosition.Top);
-				bannerView.AdLoaded += HandleAdLoaded;
-				bannerView.AdFailedToLoad += HandleAdFailedToLoad;
-				bannerView.AdOpened += HandleAdOpened;
-				bannerView.AdClosing += HandleAdClosing;
-				bannerView.AdClosed += HandleAdClosed;
-				bannerView.AdLeftApplication += HandleAdLeftApplication;
-//				
-				bannerView.Show ();
-//				RequestBanner ();
+		
+				Setup ();
+		
 		}
 		
 		public void ShowAd (bool show)
@@ -34,34 +26,61 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 						bannerView.Show ();
 				} else {
 						bannerView.Hide ();
+						bannerView.Destroy ();
 				}
 		}
 		
+		void Update ()
+		{
+				if (GameControl.control.CurrentLevel <= 0 && showing == false) {
+						Setup ();
+						RequestBanner ();
+						ShowAd (true);
+						showing = true;
+				}
+				if (GameControl.control.CurrentLevel > 0 && showing == true) {
+						ShowAd (false);
+						bannerView.Destroy ();
+						showing = false;
+				}
+		}
+		
+		private void Setup ()
+		{
+		
+				showing = true;
+				string adUnitId = "ca-app-pub-2255839828586145/5498178517";
+		
+				bannerView = new BannerView (adUnitId, AdSize.Banner, AdPosition.Top);
+				bannerView.AdLoaded += HandleAdLoaded;
+				bannerView.AdFailedToLoad += HandleAdFailedToLoad;
+				bannerView.AdOpened += HandleAdOpened;
+				bannerView.AdClosing += HandleAdClosing;
+				bannerView.AdClosed += HandleAdClosed;
+				bannerView.AdLeftApplication += HandleAdLeftApplication;
+				//				
+				RequestBanner ();			
+				ShowAd (true);
+		}
 	
-//		private void RequestBanner ()
-//		{
-//				#if UNITY_EDITOR
-//				string adUnitId = "unused";
-//				#elif UNITY_ANDROID
-//		string adUnitId = "INSERT_ANDROID_BANNER_AD_UNIT_ID_HERE";
-//				#elif UNITY_IPHONE
-//		string adUnitId = "INSERT_IOS_BANNER_AD_UNIT_ID_HERE";
-//				#else
-//		string adUnitId = "unexpected_platform";
-//				#endif
-//		
-//				// Create a 320x50 banner at the top of the screen.
-//				bannerView = new BannerView (adUnitId, AdSize.SmartBanner, AdPosition.Top);
-//				// Register for ad events.
-//				bannerView.AdLoaded += HandleAdLoaded;
-//				bannerView.AdFailedToLoad += HandleAdFailedToLoad;
-//				bannerView.AdOpened += HandleAdOpened;
-//				bannerView.AdClosing += HandleAdClosing;
-//				bannerView.AdClosed += HandleAdClosed;
-//				bannerView.AdLeftApplication += HandleAdLeftApplication;
-//				// Load a banner ad.
-//				bannerView.LoadAd (createAdRequest ());
-//		}
+		private void RequestBanner ()
+		{
+
+				string adUnitId = "ca-app-pub-2255839828586145/5498178517";
+
+				// Create a 320x50 banner at the top of the screen.
+				bannerView = new BannerView (adUnitId, AdSize.SmartBanner, AdPosition.Top);
+				// Register for ad events.
+				bannerView.AdLoaded += HandleAdLoaded;
+				bannerView.AdFailedToLoad += HandleAdFailedToLoad;
+				bannerView.AdOpened += HandleAdOpened;
+				bannerView.AdClosing += HandleAdClosing;
+				bannerView.AdClosed += HandleAdClosed;
+				bannerView.AdLeftApplication += HandleAdLeftApplication;
+				// Load a banner ad.
+				bannerView.LoadAd (createAdRequest ());
+				ShowAd (true);
+		}
 	
 		private void RequestInterstitial ()
 		{
@@ -93,7 +112,7 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 		{
 				return new AdRequest.Builder ()
 			.AddTestDevice (AdRequest.TestDeviceSimulator)
-				.AddTestDevice ("0123456789ABCDEF0123456789ABCDEF")
+				.AddTestDevice ("9b9bb3ff")
 				.AddKeyword ("game")
 				.SetGender (Gender.Male)
 				.SetBirthday (new DateTime (1985, 1, 1))

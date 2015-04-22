@@ -48,8 +48,6 @@ public class PlayerBehavior : MonoBehaviour
 						scoreBoard.text = temp [levelNumber - 1, 0].ToString ("000.0") + "\n" + temp [levelNumber - 1, 1].ToString ("000.0")
 								+ "\n" + temp [levelNumber - 1, 2].ToString ("000.0") + "\n" + temp [levelNumber - 1, 3].ToString ("000.0") 
 								+ "\n" + temp [levelNumber - 1, 4].ToString ("000.0");
-				} else {
-						//		GoogleMobileAdsDemoScript.googleAd.ShowAd (false);
 				}
 		}
 		void FixedUpdate ()
