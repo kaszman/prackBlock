@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMobility : MonoBehaviour
 {
-
+		public static PlayerMobility changer;
 		public Animator anim;
 		public GameObject owner;
 		public PolygonCollider2D polygon;
 		public CircleCollider2D circle;
 		public float speed;
+		public bool useJoystick;
 		private Vector2 velocity;
+
+		public PlayerMobility ()
+		{
+		}
 
 		void Start ()
 		{
@@ -18,6 +24,12 @@ public class PlayerMobility : MonoBehaviour
 
 		float Speed {
 				set { speed = value;}
+		}
+
+		Vector2 Velocity {
+				set {
+						velocity = value;
+				}
 		}
 
 		void FixedUpdate ()
@@ -76,9 +88,14 @@ public class PlayerMobility : MonoBehaviour
 		/// </summary>
 		private void doMobileMovement ()
 		{
-				Vector2 tempDest = Input.GetTouch (0).deltaPosition;
-				velocity = tempDest;
-				velocity *= PlayerPrefs.GetInt ("PlayerSpeedPref");
+				if (!useJoystick) {
+						Vector2 tempDest = Input.GetTouch (0).deltaPosition;
+						velocity = tempDest;
+						velocity *= PlayerPrefs.GetInt ("PlayerSpeedPref");
+				} else {
+						velocity = new Vector2 (CrossPlatformInputManager.GetAxis ("Horizontal"), CrossPlatformInputManager.GetAxis ("Vertical"));
+						velocity *= PlayerPrefs.GetInt ("PlayerSpeedPref");
+				}
 		}
 	#endregion
 
