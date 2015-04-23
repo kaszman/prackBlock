@@ -112,7 +112,7 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 		{
 				return new AdRequest.Builder ()
 			.AddTestDevice (AdRequest.TestDeviceSimulator)
-				.AddTestDevice ("9b9bb3ff")
+				.AddTestDevice ("53A3E2583A7F53AE0682D297CD96907C")
 				.AddKeyword ("game")
 				.SetGender (Gender.Male)
 				.SetBirthday (new DateTime (1985, 1, 1))
