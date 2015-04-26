@@ -29,6 +29,7 @@ public class GameControl : MonoBehaviour
 		public int fxVolumePref;
 		public int musicVolumePref;
 		public int ramAmount;
+		public int joystickPref;
 
 		//save variables
 		public int highestUnlock;
@@ -62,7 +63,7 @@ public class GameControl : MonoBehaviour
 		{
 				//what to do with the screen on mobile devices
 				if (Application.isMobilePlatform) {
-						Screen.sleepTimeout = 0;
+						Screen.sleepTimeout = 999999;
 				}
 				Load ();
 		}
@@ -201,6 +202,14 @@ public class GameControl : MonoBehaviour
 						ApplyChanges ("MusicVolumePref", value);
 				}
 		}
+		
+		public int JoystickPref {
+				get { return joystickPref; }
+				set {
+						joystickPref = value;
+						ApplyChanges ("JoystickPref", value);
+				}
+		}
 
 		public int RamAmount {
 				get { 
@@ -228,6 +237,8 @@ public class GameControl : MonoBehaviour
 				PlayerPrefs.SetString (variableName, stringValue);
 				Save ();
 		}
+		
+		
 	#endregion
 
 	#region game data access
@@ -402,7 +413,7 @@ public class GameControl : MonoBehaviour
 
 				BinaryFormatter formatter = new BinaryFormatter ();
 				formatter.Binder = new VersionDeserializationBinder ();
-				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), PlayerPrefs.GetInt ("FxVolumePref"), PlayerPrefs.GetInt ("MusicVolumePref"), ramAmount, highestUnlock, scoreData);
+				SaveData data = new SaveData (PlayerPrefs.GetInt ("BlockSpeedPref"), PlayerPrefs.GetInt ("PlayerSpeedPref"), PlayerPrefs.GetInt ("FxVolumePref"), PlayerPrefs.GetInt ("MusicVolumePref"), PlayerPrefs.GetInt ("JoystickPref"), ramAmount, highestUnlock, scoreData);
 
 
 				formatter.Serialize (stream, data);
@@ -466,7 +477,7 @@ public class GameControl : MonoBehaviour
 						}
 				}
 
-				SaveData data = new SaveData (3, 3, 10, 10, ramAmount, 1, scoreData);
+				SaveData data = new SaveData (3, 3, 9, 9, 1, ramAmount, 1, scoreData);
 
 				formatter.Serialize (stream, data);
 		
@@ -501,6 +512,7 @@ public class SaveData
 		public int playerSpeedPref;
 		public int fxVolumePref;
 		public int musicVolumePref;
+		public int joystickPref;
 		public int ramAmount;
 		public int highestUnlock;
 		public float[,] scoreData;
@@ -508,12 +520,13 @@ public class SaveData
 		public SaveData ()
 		{
 		}
-		public SaveData (int bsp, int psp, int fxv, int mv, int ra, int hu, float[,] ld)
+		public SaveData (int bsp, int psp, int fxv, int mv, int jp, int ra, int hu, float[,] ld)
 		{
 				blockSpeedPref = bsp;
 				playerSpeedPref = psp;
 				fxVolumePref = fxv;
 				musicVolumePref = mv;
+				joystickPref = jp;
 				ramAmount = ra;
 				highestUnlock = hu;
 				scoreData = ld;

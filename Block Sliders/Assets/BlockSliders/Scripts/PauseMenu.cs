@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 		public Canvas helpCanvas;
 		public Text helpText;
 		public Canvas optionsCanvas;
+		public Canvas joystickCanvas;
 		public Text levelNameDisplay;
 		public bool paused;
 
@@ -18,11 +19,10 @@ public class PauseMenu : MonoBehaviour
 		public Slider playerspeedSlider;
 		public Slider fxvolumeSlider;
 		public Slider musicvolumeSlider;
-		public Button calibrate;
-
 	
 		void Start ()
 		{
+				//	joystickCanvas.enabled = true;
 				displayCanvas = menuCanvas;
 				if (Application.isMobilePlatform) {
 						helpText.text = "Touch the screen with two fingers to activate ramming" +
@@ -44,6 +44,12 @@ public class PauseMenu : MonoBehaviour
 	
 		void Update ()
 		{
+				if (GameControl.control.JoystickPref == 1) {
+						//		joystickCanvas.enabled = true;
+				} else if (GameControl.control.JoystickPref == 0) {
+						//		joystickCanvas.enabled = false;
+				}
+		
 				if (GameControl.control.PausedMenu && GameControl.control.Paused) {
 						displayCanvas.enabled = true;
 				} else {
