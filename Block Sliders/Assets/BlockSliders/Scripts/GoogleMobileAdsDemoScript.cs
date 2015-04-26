@@ -6,8 +6,6 @@ using GoogleMobileAds.Api;
 // Example script showing how to invoke the Google Mobile Ads Unity plugin.
 public class GoogleMobileAdsDemoScript : MonoBehaviour
 {
-		public static GoogleMobileAdsDemoScript googleAd;
-
 		private BannerView bannerView;
 		private InterstitialAd interstitial;
 		
@@ -32,13 +30,13 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 		
 		void Update ()
 		{
-				if (GameControl.control.CurrentLevel <= 0 && showing == false) {
+
+				if (Application.loadedLevel <= 1 && !showing) {
 						Setup ();
 						RequestBanner ();
 						ShowAd (true);
 						showing = true;
-				}
-				if (GameControl.control.CurrentLevel > 0 && showing == true) {
+				} else if (Application.loadedLevel >= 2 && showing) {
 						ShowAd (false);
 						bannerView.Destroy ();
 						showing = false;

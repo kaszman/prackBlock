@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PlayerMobility.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../Engine/SolarSystem/SolarSystem/Assets/Scripts/CameraScript.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/PlayerMobility.cs" Line="3" Column="7" />
+      <File FileName="../../../Engine/SolarSystem/SolarSystem/Assets/Scripts/CameraScript.cs" Line="165" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
