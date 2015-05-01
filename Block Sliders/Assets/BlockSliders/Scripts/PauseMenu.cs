@@ -26,6 +26,11 @@ public class PauseMenu : MonoBehaviour
 	
 		void Start ()
 		{
+				if (GameControl.control.JoystickPref == 1) {
+						joystickControl.isOn = true;
+				} else {
+						joystickControl.isOn = false;
+				}
 				displayCanvas = menuCanvas;
 				if (Application.isMobilePlatform) {
 						helpText.text = "Touch the screen with two fingers to activate ramming" +
@@ -34,8 +39,6 @@ public class PauseMenu : MonoBehaviour
 								"\nTilt the device to move the blocks " +
 								"\nHole traps can be plugged by blocks" +
 								"\nAcid traps can not be plugged";
-						joystickControl.enabled = true;
-						calibrateButton.enabled = true;
 				} else {
 						helpText.text = "Press E to activate ramming" +
 								"\nRamming needs a running start!" +
@@ -48,9 +51,11 @@ public class PauseMenu : MonoBehaviour
 						calibrateButton.enabled = false;
 						joystickControl.transform.localScale = Vector3.zero;
 						calibrateButton.transform.localScale = Vector3.zero;
+						GameControl.control.JoystickPref = 0;
 			
 				}
 				levelNameDisplay.text = "Level " + GameControl.control.CurrentLevel.ToString ();
+				JoystickEnable ();
 		}
 	
 		void Update ()
@@ -131,14 +136,10 @@ public class PauseMenu : MonoBehaviour
 				bool tempBool = joystickControl.isOn;
 				if (tempBool == true) {
 						GameControl.control.JoystickPref = 1;
+						joystickCanvas.transform.localScale = Vector3.one;
 				} else {
 						GameControl.control.JoystickPref = 0;
-				}
-				
-				if (GameControl.control.JoystickPref == 1) {
-						joystickCanvas.enabled = true;
-				} else if (GameControl.control.JoystickPref == 0) {
-						joystickCanvas.enabled = false;
+						joystickCanvas.transform.localScale = Vector3.zero;
 				}
 		}
 	

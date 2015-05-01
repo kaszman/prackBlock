@@ -10,6 +10,8 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 		private InterstitialAd interstitial;
 		
 		private bool showing;
+		
+		private int insureClosed = 5;
 	
 		void Start ()
 		{
@@ -31,16 +33,22 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 		void Update ()
 		{
 
-				if (Application.loadedLevel <= 1 && !showing) {
+				if (GameControl.control.CurrentLevel <= 0 && !showing) {
 						Setup ();
 						RequestBanner ();
 						ShowAd (true);
 						showing = true;
-				} else if (Application.loadedLevel >= 2 && showing) {
+						insureClosed = 5;
+				}
+				if (GameControl.control.CurrentLevel >= 1 && showing && insureClosed > 1) {
 						ShowAd (false);
 						bannerView.Destroy ();
-						showing = false;
+						if (insureClosed <= 1) {
+								showing = false;
+						}
+						insureClosed--;
 				}
+
 		}
 		
 		private void Setup ()

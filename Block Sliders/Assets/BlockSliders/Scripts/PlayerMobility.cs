@@ -78,7 +78,7 @@ public class PlayerMobility : MonoBehaviour
 		/// </summary>
 		private void doMobileMovement ()
 		{
-				if (!useJoystick) {
+				if (PlayerPrefs.GetInt ("JoystickPref") == 0) {
 						Vector2 tempDest = Input.GetTouch (0).deltaPosition;
 						velocity = tempDest;
 						velocity *= PlayerPrefs.GetInt ("PlayerSpeedPref");
