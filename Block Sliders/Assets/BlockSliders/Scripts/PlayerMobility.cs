@@ -10,7 +10,8 @@ public class PlayerMobility : MonoBehaviour
 		public CircleCollider2D circle;
 		public float speed;
 		public bool useJoystick;
-		private Vector2 velocity;
+		public Vector2 velocity;
+		public int tweak;
 
 		public PlayerMobility ()
 		{
@@ -40,8 +41,6 @@ public class PlayerMobility : MonoBehaviour
 						doKeyboardMovement ();
 				}
 		
-				velocity.Normalize ();	
-				velocity *= speed * PlayerPrefs.GetInt ("PlayerSpeedPref");
 				GetComponent<Rigidbody2D> ().AddForce (velocity);		
 				doAnimation ();
 		}
@@ -71,6 +70,8 @@ public class PlayerMobility : MonoBehaviour
 				if (Input.GetKey ("d")) {
 						velocity.x += 1;
 				}
+				velocity.Normalize ();	
+				velocity *= speed * PlayerPrefs.GetInt ("PlayerSpeedPref");
 		}
 
 		/// <summary>
@@ -81,10 +82,12 @@ public class PlayerMobility : MonoBehaviour
 				if (!useJoystick) {
 						Vector2 tempDest = Input.GetTouch (0).deltaPosition;
 						velocity = tempDest;
-						velocity *= PlayerPrefs.GetInt ("PlayerSpeedPref");
+						velocity.Normalize ();	
+						velocity *= speed * PlayerPrefs.GetInt ("PlayerSpeedPref");
 				} else {
 						velocity = new Vector2 (CrossPlatformInputManager.GetAxis ("Horizontal"), CrossPlatformInputManager.GetAxis ("Vertical"));
-						velocity *= PlayerPrefs.GetInt ("PlayerSpeedPref");
+				
+						velocity *= speed * PlayerPrefs.GetInt ("PlayerSpeedPref");
 				}
 		}
 	#endregion

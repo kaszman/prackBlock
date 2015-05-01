@@ -34,8 +34,8 @@ public class PauseMenu : MonoBehaviour
 								"\nTilt the device to move the blocks " +
 								"\nHole traps can be plugged by blocks" +
 								"\nAcid traps can not be plugged";
-						joystickControl.enabled = true;
-						calibrateButton.enabled = true;
+						//	joystickControl.enabled = true;
+						//	calibrateButton.enabled = true;
 				} else {
 						helpText.text = "Press E to activate ramming" +
 								"\nRamming needs a running start!" +
@@ -44,10 +44,10 @@ public class PauseMenu : MonoBehaviour
 								"\nHole traps can be plugged by blocks" +
 								"\nAcid traps can not be plugged";
 						//make the buttons not display, this does not do that
-						joystickControl.enabled = false;
-						calibrateButton.enabled = false;
-						joystickControl.transform.localScale = Vector3.zero;
-						calibrateButton.transform.localScale = Vector3.zero;
+						//joystickControl.enabled = false;
+						//calibrateButton.enabled = false;
+						//joystickControl.transform.localScale = Vector3.zero;
+						//calibrateButton.transform.localScale = Vector3.zero;
 			
 				}
 				levelNameDisplay.text = "Level " + GameControl.control.CurrentLevel.ToString ();

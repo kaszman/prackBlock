@@ -6,25 +6,26 @@ using GoogleMobileAds.Api;
 // Example script showing how to invoke the Google Mobile Ads Unity plugin.
 public class GoogleMobileAdsDemoScript : MonoBehaviour
 {
-		private BannerView bannerView;
-		private InterstitialAd interstitial;
-		
+		private string adUnitId;
+		private BannerView bannerView;		
 		private bool showing;
 	
 		void Start ()
 		{
-		
+				bannerView = new BannerView (adUnitId, AdSize.Banner, AdPosition.Top);	
+				adUnitId = "ca-app-pub-2255839828586145/5498178517";
 				Setup ();
-		
 		}
 		
 		public void ShowAd (bool show)
 		{
 				if (show == true) {
 						bannerView.Show ();
+						showing = true;
 				} else {
 						bannerView.Hide ();
-						bannerView.Destroy ();
+						showing = false;
+						//bannerView.Destroy ();
 				}
 		}
 		
@@ -32,42 +33,33 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 		{
 
 				if (Application.loadedLevel <= 1 && !showing) {
-						Setup ();
+						//Setup ();
 						RequestBanner ();
 						ShowAd (true);
-						showing = true;
+						//showing = true;
 				} else if (Application.loadedLevel >= 2 && showing) {
 						ShowAd (false);
 						bannerView.Destroy ();
-						showing = false;
+						//showing = false;
 				}
 		}
 		
 		private void Setup ()
 		{
 		
-				showing = true;
-				string adUnitId = "ca-app-pub-2255839828586145/5498178517";
-		
-				bannerView = new BannerView (adUnitId, AdSize.Banner, AdPosition.Top);
+				//	showing = true;
 				bannerView.AdLoaded += HandleAdLoaded;
 				bannerView.AdFailedToLoad += HandleAdFailedToLoad;
 				bannerView.AdOpened += HandleAdOpened;
 				bannerView.AdClosing += HandleAdClosing;
 				bannerView.AdClosed += HandleAdClosed;
-				bannerView.AdLeftApplication += HandleAdLeftApplication;
-				//				
+				bannerView.AdLeftApplication += HandleAdLeftApplication;			
 				RequestBanner ();			
 				ShowAd (true);
 		}
 	
 		private void RequestBanner ()
 		{
-
-				string adUnitId = "ca-app-pub-2255839828586145/5498178517";
-
-				// Create a 320x50 banner at the top of the screen.
-				bannerView = new BannerView (adUnitId, AdSize.SmartBanner, AdPosition.Top);
 				// Register for ad events.
 				bannerView.AdLoaded += HandleAdLoaded;
 				bannerView.AdFailedToLoad += HandleAdFailedToLoad;
@@ -77,33 +69,9 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 				bannerView.AdLeftApplication += HandleAdLeftApplication;
 				// Load a banner ad.
 				bannerView.LoadAd (createAdRequest ());
-				ShowAd (true);
+				//ShowAd (true);
 		}
 	
-		private void RequestInterstitial ()
-		{
-				#if UNITY_EDITOR
-				string adUnitId = "unused";
-				#elif UNITY_ANDROID
-		string adUnitId = "INSERT_ANDROID_INTERSTITIAL_AD_UNIT_ID_HERE";
-				#elif UNITY_IPHONE
-		string adUnitId = "INSERT_IOS_INTERSTITIAL_AD_UNIT_ID_HERE";
-				#else
-		string adUnitId = "unexpected_platform";
-				#endif
-		
-				// Create an interstitial.
-				interstitial = new InterstitialAd (adUnitId);
-				// Register for ad events.
-				interstitial.AdLoaded += HandleInterstitialLoaded;
-				interstitial.AdFailedToLoad += HandleInterstitialFailedToLoad;
-				interstitial.AdOpened += HandleInterstitialOpened;
-				interstitial.AdClosing += HandleInterstitialClosing;
-				interstitial.AdClosed += HandleInterstitialClosed;
-				interstitial.AdLeftApplication += HandleInterstitialLeftApplication;
-				// Load an interstitial ad.
-				interstitial.LoadAd (createAdRequest ());
-		}
 	
 		// Returns an ad request with custom ad targeting.
 		private AdRequest createAdRequest ()
@@ -118,15 +86,6 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 				.AddExtra ("color_bg", "9B30FF")
 				.Build ();
 		
-		}
-	
-		private void ShowInterstitial ()
-		{
-				if (interstitial.IsLoaded ()) {
-						interstitial.Show ();
-				} else {
-						print ("Interstitial is not ready yet.");
-				}
 		}
 	
 	#region Banner callback handlers
@@ -159,40 +118,6 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 		public void HandleAdLeftApplication (object sender, EventArgs args)
 		{
 				print ("HandleAdLeftApplication event received");
-		}
-	
-	#endregion
-	
-	#region Interstitial callback handlers
-	
-		public void HandleInterstitialLoaded (object sender, EventArgs args)
-		{
-				print ("HandleInterstitialLoaded event received.");
-		}
-	
-		public void HandleInterstitialFailedToLoad (object sender, AdFailedToLoadEventArgs args)
-		{
-				print ("HandleInterstitialFailedToLoad event received with message: " + args.Message);
-		}
-	
-		public void HandleInterstitialOpened (object sender, EventArgs args)
-		{
-				print ("HandleInterstitialOpened event received");
-		}
-	
-		void HandleInterstitialClosing (object sender, EventArgs args)
-		{
-				print ("HandleInterstitialClosing event received");
-		}
-	
-		public void HandleInterstitialClosed (object sender, EventArgs args)
-		{
-				print ("HandleInterstitialClosed event received");
-		}
-	
-		public void HandleInterstitialLeftApplication (object sender, EventArgs args)
-		{
-				print ("HandleInterstitialLeftApplication event received");
 		}
 	
 	#endregion
