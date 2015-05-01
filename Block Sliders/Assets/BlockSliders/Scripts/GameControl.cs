@@ -489,7 +489,6 @@ public class GameControl : MonoBehaviour
 				ramAmount = data.ramAmount;
 				highestUnlock = data.highestUnlock;
 				scoreData = data.scoreData;
-				JoystickPref = 1;
 		}
 
 	#endregion
