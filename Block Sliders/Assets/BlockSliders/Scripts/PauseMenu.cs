@@ -14,6 +14,10 @@ public class PauseMenu : MonoBehaviour
 
 		private Canvas displayCanvas;
 
+		//joystick control option
+		public Toggle joystickControl;
+		public Button calibrateButton;
+
 		//options sliders
 		public Slider blockspeedSlider;
 		public Slider playerspeedSlider;
@@ -22,7 +26,6 @@ public class PauseMenu : MonoBehaviour
 	
 		void Start ()
 		{
-				//	joystickCanvas.enabled = true;
 				displayCanvas = menuCanvas;
 				if (Application.isMobilePlatform) {
 						helpText.text = "Touch the screen with two fingers to activate ramming" +
@@ -31,6 +34,8 @@ public class PauseMenu : MonoBehaviour
 								"\nTilt the device to move the blocks " +
 								"\nHole traps can be plugged by blocks" +
 								"\nAcid traps can not be plugged";
+						joystickControl.enabled = true;
+						calibrateButton.enabled = true;
 				} else {
 						helpText.text = "Press E to activate ramming" +
 								"\nRamming needs a running start!" +
@@ -38,18 +43,18 @@ public class PauseMenu : MonoBehaviour
 								"\nUse the ARROW keys to move the blocks " +
 								"\nHole traps can be plugged by blocks" +
 								"\nAcid traps can not be plugged";
+						//make the buttons not display, this does not do that
+						joystickControl.enabled = false;
+						calibrateButton.enabled = false;
+						joystickControl.transform.localScale = Vector3.zero;
+						calibrateButton.transform.localScale = Vector3.zero;
+			
 				}
 				levelNameDisplay.text = "Level " + GameControl.control.CurrentLevel.ToString ();
 		}
 	
 		void Update ()
-		{
-				if (GameControl.control.JoystickPref == 1) {
-						//		joystickCanvas.enabled = true;
-				} else if (GameControl.control.JoystickPref == 0) {
-						//		joystickCanvas.enabled = false;
-				}
-		
+		{		
 				if (GameControl.control.PausedMenu && GameControl.control.Paused) {
 						displayCanvas.enabled = true;
 				} else {
@@ -119,6 +124,22 @@ public class PauseMenu : MonoBehaviour
 		{
 				GameControl.control.Paused = true;
 				GameControl.control.PausedMenu = true;
+		}
+		
+		public void JoystickEnable ()
+		{
+				bool tempBool = joystickControl.isOn;
+				if (tempBool == true) {
+						GameControl.control.JoystickPref = 1;
+				} else {
+						GameControl.control.JoystickPref = 0;
+				}
+				
+				if (GameControl.control.JoystickPref == 1) {
+						joystickCanvas.enabled = true;
+				} else if (GameControl.control.JoystickPref == 0) {
+						joystickCanvas.enabled = false;
+				}
 		}
 	
 }

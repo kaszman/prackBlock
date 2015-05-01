@@ -12,6 +12,7 @@ public class QuitGame : MonoBehaviour
 						UnityEngine.Resources.UnloadUnusedAssets ();
 						System.GC.Collect ();
 						System.GC.WaitForPendingFinalizers ();
+						Screen.sleepTimeout = SleepTimeout.SystemSetting;
 						Application.Quit ();
 				}
 		}

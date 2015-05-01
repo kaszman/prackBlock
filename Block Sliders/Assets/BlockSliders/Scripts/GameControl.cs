@@ -43,9 +43,6 @@ public class GameControl : MonoBehaviour
 		//runs on game start
 		void Awake ()
 		{
-				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
-						NewGame ();
-				}
 				offSet = Vector3.zero;
 				if (control == null) {
 						DontDestroyOnLoad (gameObject);
@@ -55,16 +52,19 @@ public class GameControl : MonoBehaviour
 				}
 				paused = false;
 				gameMusic = cupidMusic;
+				if (Application.isMobilePlatform) {
+						Screen.sleepTimeout = SleepTimeout.NeverSleep;
+				}
 		}
 
 
 		// Use this for initialization
 		void Start ()
 		{
-				//what to do with the screen on mobile devices
-				if (Application.isMobilePlatform) {
-						Screen.sleepTimeout = 999999;
+				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
+						NewGame ();
 				}
+				//what to do with the screen on mobile devices
 				Load ();
 		}
 	

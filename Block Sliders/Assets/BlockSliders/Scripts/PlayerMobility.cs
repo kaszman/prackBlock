@@ -7,7 +7,6 @@ public class PlayerMobility : MonoBehaviour
 		public static PlayerMobility changer;
 		public Animator anim;
 		public GameObject owner;
-		public PolygonCollider2D polygon;
 		public CircleCollider2D circle;
 		public float speed;
 		public bool useJoystick;
@@ -19,7 +18,6 @@ public class PlayerMobility : MonoBehaviour
 
 		void Start ()
 		{
-				polygon.enabled = true;
 		}
 
 		float Speed {
@@ -57,29 +55,21 @@ public class PlayerMobility : MonoBehaviour
 				//up
 				if (Input.GetKey ("w")) {
 						velocity.y += 1;
-						circle.enabled = false;
-						polygon.enabled = true;
 				}
 		
 				//down
 				if (Input.GetKey ("s")) {
 						velocity.y -= 1;
-						circle.enabled = false;
-						polygon.enabled = true;
 				}
 		
 				//left
 				if (Input.GetKey ("a")) {
 						velocity.x -= 1;
-						polygon.enabled = false;
-						circle.enabled = true;
 				}
 		
 				//right
 				if (Input.GetKey ("d")) {
 						velocity.x += 1;
-						polygon.enabled = false;
-						circle.enabled = true;
 				}
 		}
 

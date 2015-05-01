@@ -1,8 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../Engine/SolarSystem/SolarSystem/Assets/Scripts/CameraScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/QuitGame.cs">
     <Files>
-      <File FileName="../../../Engine/SolarSystem/SolarSystem/Assets/Scripts/CameraScript.cs" Line="165" Column="45" />
+      <File FileName="Assets/BlockSliders/Scripts/PauseMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/BlockSliders/Scripts/GameControl.cs" Line="56" Column="53" />
+      <File FileName="Assets/BlockSliders/Scripts/PlayerMobility.cs" Line="1" Column="1" />
+      <File FileName="Assets/BlockSliders/Scripts/QuitGame.cs" Line="15" Column="56" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
