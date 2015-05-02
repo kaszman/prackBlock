@@ -25,7 +25,7 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 				} else {
 						bannerView.Hide ();
 						showing = false;
-						//bannerView.Destroy ();
+						bannerView.Destroy ();
 				}
 		}
 		
@@ -33,21 +33,23 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 		{
 
 				if (Application.loadedLevel <= 1 && !showing) {
-						//Setup ();
+						bannerView.Show ();
+						Setup ();
 						RequestBanner ();
 						ShowAd (true);
-						//showing = true;
+						showing = true;
 				} else if (Application.loadedLevel >= 2 && showing) {
+						bannerView.Hide ();
 						ShowAd (false);
 						bannerView.Destroy ();
-						//showing = false;
+						showing = false;
 				}
 		}
 		
 		private void Setup ()
 		{
 		
-				//	showing = true;
+				showing = true;
 				bannerView.AdLoaded += HandleAdLoaded;
 				bannerView.AdFailedToLoad += HandleAdFailedToLoad;
 				bannerView.AdOpened += HandleAdOpened;
@@ -69,7 +71,7 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 				bannerView.AdLeftApplication += HandleAdLeftApplication;
 				// Load a banner ad.
 				bannerView.LoadAd (createAdRequest ());
-				//ShowAd (true);
+				ShowAd (true);
 		}
 	
 	
