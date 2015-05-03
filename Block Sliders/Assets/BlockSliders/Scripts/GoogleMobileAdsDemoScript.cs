@@ -7,13 +7,11 @@ using GoogleMobileAds.Api;
 public class GoogleMobileAdsDemoScript : MonoBehaviour
 {
 		private string adUnitId;
-		private BannerView bannerView;		
+		BannerView bannerView;		
 		private bool showing;
 	
 		void Start ()
 		{
-				bannerView = new BannerView (adUnitId, AdSize.Banner, AdPosition.Top);	
-				adUnitId = "ca-app-pub-2255839828586145/5498178517";
 				Setup ();
 		}
 		
@@ -62,6 +60,8 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 	
 		private void RequestBanner ()
 		{
+				bannerView = new BannerView (adUnitId, AdSize.Banner, AdPosition.Top);	
+				adUnitId = "ca-app-pub-2255839828586145/5498178517";
 				// Register for ad events.
 				bannerView.AdLoaded += HandleAdLoaded;
 				bannerView.AdFailedToLoad += HandleAdFailedToLoad;

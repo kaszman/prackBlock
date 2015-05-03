@@ -55,15 +55,16 @@ public class GameControl : MonoBehaviour
 				if (Application.isMobilePlatform) {
 						Screen.sleepTimeout = SleepTimeout.NeverSleep;
 				}
-				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
-						NewGame ();
-				}
+
 		}
 
 
 		// Use this for initialization
 		void Start ()
 		{
+				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
+						NewGame ();
+				}
 				//what to do with the screen on mobile devices
 				Load ();
 		}
