@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
 				if (Application.isMobilePlatform) {
 						helpText.text = "Touch the screen with two fingers to activate ramming" +
 								"\nRamming needs a running start!" +
-								"\nSwipe the screen to move the ram" +
+								"\nUse the joystick or swipe the screen to move the ram" +
 								"\nTilt the device to move the blocks " +
 								"\nHole traps can be plugged by blocks" +
 								"\nAcid traps can not be plugged";
@@ -46,8 +46,8 @@ public class PauseMenu : MonoBehaviour
 						//make the buttons not display, this does not do that
 						//joystickControl.enabled = false;
 						//calibrateButton.enabled = false;
-						//joystickControl.transform.localScale = Vector3.zero;
-						//calibrateButton.transform.localScale = Vector3.zero;
+						joystickControl.transform.localScale = Vector3.zero;
+						calibrateButton.transform.localScale = Vector3.zero;
 			
 				}
 				levelNameDisplay.text = "Level " + GameControl.control.CurrentLevel.ToString ();
@@ -128,17 +128,21 @@ public class PauseMenu : MonoBehaviour
 		
 		public void JoystickEnable ()
 		{
-				bool tempBool = joystickControl.isOn;
-				if (tempBool == true) {
-						GameControl.control.JoystickPref = 1;
-				} else {
-						GameControl.control.JoystickPref = 0;
-				}
-				
-				if (GameControl.control.JoystickPref == 1) {
-						joystickCanvas.enabled = true;
-				} else if (GameControl.control.JoystickPref == 0) {
+				if (!Application.isMobilePlatform) {
 						joystickCanvas.enabled = false;
+				} else {
+						bool tempBool = joystickControl.isOn;
+						if (tempBool == true) {
+								GameControl.control.JoystickPref = 1;
+						} else {
+								GameControl.control.JoystickPref = 0;
+						}
+				
+						if (GameControl.control.JoystickPref == 1) {
+								joystickCanvas.enabled = true;
+						} else if (GameControl.control.JoystickPref == 0) {
+								joystickCanvas.enabled = false;
+						}
 				}
 		}
 	

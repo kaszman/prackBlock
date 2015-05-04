@@ -65,6 +65,12 @@ public class GameControl : MonoBehaviour
 				if (!File.Exists (Application.persistentDataPath + "/GameData.bin")) {
 						NewGame ();
 				}
+				if (Application.isMobilePlatform) {
+						JoystickPref = 1;
+				} else {
+						JoystickPref = 0;
+			
+				}
 				//what to do with the screen on mobile devices
 				Load ();
 		}
@@ -161,7 +167,7 @@ public class GameControl : MonoBehaviour
 		{
 				gameMusic.volume = (float)musicVolumePref / 10;
 
-				BlockSlideFX.volume = (float)FxVolumePref / 50;
+				BlockSlideFX.volume = (float)FxVolumePref / 100;
 				DoorSoundFX.volume = (float)FxVolumePref / 10;
 				PewFX.volume = (float)FxVolumePref / 10;
 				FallFX.volume = (float)FxVolumePref / 10;
@@ -327,7 +333,7 @@ public class GameControl : MonoBehaviour
 		{
 				if (BlockSlideFX != null) {
 						if (!BlockSlideFX.isPlaying && playing) {
-								BlockSlideFX.volume = (float)FxVolumePref / 50;
+								BlockSlideFX.volume = (float)FxVolumePref / 100;
 								BlockSlideFX.Play ();
 								BlockSlideFX.loop = true;
 						}

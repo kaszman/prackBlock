@@ -15,6 +15,8 @@ public class LevelSelect : MonoBehaviour
 				if (isLevelUnlocked (toLevel)) {
 						if (toLevel == 0) {
 								Application.LoadLevel ("Menu");
+						} else if (toLevel == 26) {
+								Application.LoadLevel ("End");
 						} else {
 								Application.LoadLevel ("Lvl" + toLevel.ToString ());
 						}

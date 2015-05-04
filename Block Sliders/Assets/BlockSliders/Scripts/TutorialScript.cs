@@ -28,7 +28,7 @@ public class TutorialScript : MonoBehaviour
 				switch (level) {
 				case 1:
 						if (Application.isMobilePlatform) {
-								tutorialText.text = "Swipe the screen to move";
+								tutorialText.text = "Use the joystick to move. This can be changed in the options menu";
 						} else {
 								tutorialText.text = "Use WASD to move";
 						}
