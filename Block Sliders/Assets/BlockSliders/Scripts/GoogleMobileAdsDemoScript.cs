@@ -6,7 +6,7 @@ using GoogleMobileAds.Api;
 // Example script showing how to invoke the Google Mobile Ads Unity plugin.
 public class GoogleMobileAdsDemoScript : MonoBehaviour
 {
-		private string adUnitId;
+		private string adUnitId = "ca-app-pub-2255839828586145/5498178517";
 		BannerView bannerView;		
 		private bool showing;
 	
@@ -32,20 +32,21 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 
 				if (Application.loadedLevel <= 1 && !showing) {
 						bannerView.Show ();
-						Setup ();
-						RequestBanner ();
-						ShowAd (true);
+						//	Setup ();
+						//	RequestBanner ();
+						//	ShowAd (true);
 						showing = true;
 				} else if (Application.loadedLevel >= 2 && showing) {
 						bannerView.Hide ();
-						ShowAd (false);
-						bannerView.Destroy ();
+						//	ShowAd (false);
+						//	bannerView.Destroy ();
 						showing = false;
 				}
 		}
 		
 		private void Setup ()
 		{
+				bannerView = new BannerView (adUnitId, AdSize.SmartBanner, AdPosition.Top);	
 		
 				showing = true;
 				bannerView.AdLoaded += HandleAdLoaded;
@@ -55,14 +56,14 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 				bannerView.AdClosed += HandleAdClosed;
 				bannerView.AdLeftApplication += HandleAdLeftApplication;			
 				RequestBanner ();			
-				ShowAd (true);
+				//	ShowAd (true);
 		}
 	
 		private void RequestBanner ()
 		{
-				bannerView = new BannerView (adUnitId, AdSize.Banner, AdPosition.Top);	
-				adUnitId = "ca-app-pub-2255839828586145/5498178517";
 				// Register for ad events.
+				bannerView = new BannerView (adUnitId, AdSize.Banner, AdPosition.Top);	
+		
 				bannerView.AdLoaded += HandleAdLoaded;
 				bannerView.AdFailedToLoad += HandleAdFailedToLoad;
 				bannerView.AdOpened += HandleAdOpened;
@@ -71,7 +72,7 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 				bannerView.AdLeftApplication += HandleAdLeftApplication;
 				// Load a banner ad.
 				bannerView.LoadAd (createAdRequest ());
-				ShowAd (true);
+				//	ShowAd (true);
 		}
 	
 	

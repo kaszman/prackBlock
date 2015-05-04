@@ -478,7 +478,7 @@ public class GameControl : MonoBehaviour
 						}
 				}
 
-				SaveData data = new SaveData (3, 3, 9, 9, 1, ramAmount, 1, scoreData);
+				SaveData data = new SaveData (3, 3, 5, 5, 1, ramAmount, 1, scoreData);
 
 				formatter.Serialize (stream, data);
 		

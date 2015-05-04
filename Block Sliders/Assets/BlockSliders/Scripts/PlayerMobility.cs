@@ -9,7 +9,6 @@ public class PlayerMobility : MonoBehaviour
 		public GameObject owner;
 		public CircleCollider2D circle;
 		public float speed;
-		public bool useJoystick;
 		public Vector2 velocity;
 		public int tweak;
 
@@ -34,7 +33,6 @@ public class PlayerMobility : MonoBehaviour
 		void FixedUpdate ()
 		{
 				velocity = Vector2.zero;
-
 				if (Application.isMobilePlatform) {
 						doMobileMovement ();
 				} else {
@@ -79,14 +77,13 @@ public class PlayerMobility : MonoBehaviour
 		/// </summary>
 		private void doMobileMovement ()
 		{
-				if (!useJoystick) {
+				if (GameControl.control.JoystickPref == 0) {
 						Vector2 tempDest = Input.GetTouch (0).deltaPosition;
 						velocity = tempDest;
 						velocity.Normalize ();	
 						velocity *= speed * PlayerPrefs.GetInt ("PlayerSpeedPref");
 				} else {
 						velocity = new Vector2 (CrossPlatformInputManager.GetAxis ("Horizontal"), CrossPlatformInputManager.GetAxis ("Vertical"));
-				
 						velocity *= speed * PlayerPrefs.GetInt ("PlayerSpeedPref");
 				}
 		}
