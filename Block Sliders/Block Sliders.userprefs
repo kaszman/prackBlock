@@ -1,12 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/GoogleMobileAdsDemoScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSliders/Scripts/PauseMenu.cs">
     <Files>
-      <File FileName="Assets/BlockSliders/Scripts/GoogleMobileAdsDemoScript.cs" Line="86" Column="32" />
-      <File FileName="Assets/BlockSliders/Scripts/TutorialScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/BlockSliders/Scripts/LevelSelect.cs" Line="1" Column="1" />
-      <File FileName="Assets/BlockSliders/Scripts/PauseMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets/BlockSliders/Scripts/GameControl.cs" Line="170" Column="51" />
+      <File FileName="Assets/BlockSliders/Scripts/GoogleMobileAdsDemoScript.cs" Line="65" Column="62" />
+      <File FileName="Assets/BlockSliders/Scripts/GameControl.cs" Line="496" Column="34" />
+      <File FileName="Assets/BlockSliders/Scripts/PlayerBehavior.cs" Line="1" Column="1" />
+      <File FileName="Assets/BlockSliders/Scripts/PauseMenu.cs" Line="145" Column="7" />
+      <File FileName="Assets/BlockSliders/Scripts/BlockCode.cs" Line="70" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
