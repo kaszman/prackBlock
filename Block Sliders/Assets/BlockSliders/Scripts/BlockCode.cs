@@ -67,12 +67,13 @@ public class BlockCode: MonoBehaviour
 				velocity = Input.acceleration - GameControl.control.Offset;	
 				//test code
 
-				if (velocity.magnitude > .2f) {
+				if (velocity.magnitude > .05f) {
 						GameControl.control.PlayBlockSlide (true);
+						velocity.Normalize ();
 				} else {
 						GameControl.control.PlayBlockSlide (false);
+						velocity = Vector2.zero;
 				}
-				velocity.Normalize ();
 		}
 
 		void OnDestroy ()

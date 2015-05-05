@@ -23,7 +23,7 @@ public class PauseMenu : MonoBehaviour
 		public Slider playerspeedSlider;
 		public Slider fxvolumeSlider;
 		public Slider musicvolumeSlider;
-	
+
 		void Start ()
 		{
 				displayCanvas = menuCanvas;
@@ -51,6 +51,12 @@ public class PauseMenu : MonoBehaviour
 			
 				}
 				levelNameDisplay.text = "Level " + GameControl.control.CurrentLevel.ToString ();
+				if (GameControl.control.JoystickPref == 1) {
+						joystickControl.isOn = true;
+				} else if (GameControl.control.JoystickPref == 0) {
+						joystickControl.isOn = false;
+				}
+				JoystickEnable ();
 		}
 	
 		void Update ()
@@ -137,12 +143,13 @@ public class PauseMenu : MonoBehaviour
 						} else {
 								GameControl.control.JoystickPref = 0;
 						}
-				
-						if (GameControl.control.JoystickPref == 1) {
-								joystickCanvas.enabled = true;
-						} else if (GameControl.control.JoystickPref == 0) {
-								joystickCanvas.enabled = false;
-						}
+				}
+				if (GameControl.control.JoystickPref == 1) {
+						joystickCanvas.enabled = true;
+						joystickControl.isOn = true;
+				} else if (GameControl.control.JoystickPref == 0) {
+						joystickCanvas.enabled = false;
+						joystickControl.isOn = false;
 				}
 		}
 	

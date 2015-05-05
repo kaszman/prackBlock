@@ -159,6 +159,7 @@ public class GameControl : MonoBehaviour
 								break;
 						}
 						gameMusic.Play ();
+						gameMusic.volume = (float)musicVolumePref / 10;
 				}
 
 		}
@@ -493,6 +494,7 @@ public class GameControl : MonoBehaviour
 				BlockSpeedPref = data.blockSpeedPref;
 				PlayerSpeedPref = data.playerSpeedPref;
 				FxVolumePref = data.fxVolumePref;
+				MusicVolumePref = data.musicVolumePref;
 				ramAmount = data.ramAmount;
 				highestUnlock = data.highestUnlock;
 				scoreData = data.scoreData;

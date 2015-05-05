@@ -62,7 +62,7 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 		private void RequestBanner ()
 		{
 				// Register for ad events.
-				bannerView = new BannerView (adUnitId, AdSize.Banner, AdPosition.Top);	
+				bannerView = new BannerView (adUnitId, AdSize.SmartBanner, AdPosition.Top);	
 		
 				bannerView.AdLoaded += HandleAdLoaded;
 				bannerView.AdFailedToLoad += HandleAdFailedToLoad;
@@ -83,9 +83,8 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 			.AddTestDevice (AdRequest.TestDeviceSimulator)
 				.AddTestDevice ("53A3E2583A7F53AE0682D297CD96907C")
 				.AddKeyword ("game")
-				.SetGender (Gender.Male)
-				.SetBirthday (new DateTime (1985, 1, 1))
-				.TagForChildDirectedTreatment (false)
+				.SetGender (Gender.Unknown)
+				.TagForChildDirectedTreatment (true)
 				.AddExtra ("color_bg", "9B30FF")
 				.Build ();
 		
