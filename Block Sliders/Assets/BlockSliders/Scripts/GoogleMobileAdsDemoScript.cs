@@ -6,7 +6,7 @@ using GoogleMobileAds.Api;
 // Example script showing how to invoke the Google Mobile Ads Unity plugin.
 public class GoogleMobileAdsDemoScript : MonoBehaviour
 {
-		private string adUnitId = "ca-app-pub-2255839828586145/5498178517";
+		private string adUnitId = "ca-app-pub-2255839828586145/6305320113";
 		BannerView bannerView;		
 		private bool showing;
 	

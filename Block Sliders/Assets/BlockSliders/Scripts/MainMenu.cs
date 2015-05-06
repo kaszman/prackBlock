@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
 				if (Application.isMobilePlatform) {
 						helpText.text = "Touch the screen with two fingers to activate ramming" +
 								"\nRamming needs a running start!" +
-								"\nSwipe the screen to move the ram" +
+								"\nUse the joystick or swipe the screen to move the ram" +
 								"\nTilt the device to move the blocks " +
 								"\nHole traps can be plugged by blocks" +
 								"\nAcid traps can not be plugged";
